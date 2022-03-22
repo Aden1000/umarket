@@ -50,6 +50,7 @@ input,select{
   border-radius: 0px;
   text-align: center;
   cursor:pointer;
+  box-sizing: border-box;
 }
 input[class='Invalid'],select[class='Invalid']{
   border:2px solid rgb(255,0,0);
