@@ -1,0 +1,334 @@
+<!DOCTYPE html>
+<html lang="en">
+<head id="SignupPage">  
+  <title>Welcome: Create an account.</title> 
+  <meta name="viewport" content="user-scalable=no, width=device-width, initial-scale=1"/>
+  <meta name='description' content="Create a Umarket account today.">
+  <meta charset="utf-8">
+  <meta name="keywords" content="Umarket, Signup, Create Account">
+  <link rel="icon" href="../Images/Umarket.ico">
+  <link rel='stylesheet' href="../Styles/Signup.css" media="all">
+    
+  
+  </head>
+  <body>
+     <div id="Banner">
+       <a href='../index.html'>
+       <img alt="" class="Desktop"  src="../Images/Desktop/Umarket.png" id="UmarketImg">
+     <img alt="" class="Mobile" src="../Images/Mobile/Umarket.png" id="UmarketImg">
+     <img alt="" class="Tablet" src="../Images/Tablet/Umarket.png" id="UmarketImg">
+       </a>
+     <div id='CTA'>
+       <a href="Login.html"><input type='button' value="Login your account" class="LoginBtn"></a>
+     </div>
+  </div>
+   <div id="BannerExtra"></div>
+ 
+   <div id="MainContent">
+     <img alt="Umarket Banner" class="Desktop" src="../Images/Desktop/Umarket%20Banner.png">
+     <img alt="Umarket Banner" class="Tablet" src="../Images/Tablet/Umarket%20Banner.png">
+     <img alt="Umarket Banner" class="Mobile" src="../Images/Mobile/Umarket%20Banner.png">
+     <h1>Create a Umarket account today!</h1>
+     <span class='Green'>Choose an account type:</span>
+     <div id="AccountType">
+     <div  class='unselected' onclick='DisplayForm(this)'>SELLER</div>
+     <div class='unselected' onclick='DisplayForm(this)'>BUYER</div>
+     <div class='unselected'  onclick='DisplayForm(this)'>DELIVERY AGENT</div>
+     </div>
+     <form  class='hidden' id="SellerType" action="" onsubmit="return EvaluateForm(this)" method="post" enctype="text/plain">
+       <input type='hidden' name='AccountType' value='Seller'>
+       <fieldset id='BusInfo1' class='shown'>  
+         <legend>Business Information</legend>
+         <div class='error'></div>
+         <div>
+           <div>
+             <label for='txtBusName1'>Business Name:
+             </label>
+           </div>
+           <div>
+             <input type='text' name='txtBusName1' id='txtBusName1' >
+             <div class='error'></div>
+           </div>
+         </div>
+       </fieldset>
+       <fieldset id='OwnerInfo1' class='shown'>
+         <legend>Owner's Information</legend>
+        <div>
+          <div>
+            <label for='sltTitle1'>Title: </label> 
+          </div>
+          <div>
+            <select id='sltTitle1' name="sltTitle1" title='Title' >
+           <option></option>
+           <option value="Miss">Miss</option>
+           <option value="Mr">Mr</option>
+           <option value="Mrs">Mrs</option>
+         </select> 
+            <div class='error'></div>
+          </div>
+         </div>
+        <div> 
+          <div>        
+            <label for='txtFname1'>
+            Firstname:
+            </label>
+          </div>
+          <div> 
+            <input id='txtFname1' type="text" name="txtFname1" title="First name" >
+            <div class='error'></div>
+          </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtLname1'>
+               Lastname:
+             </label>
+           </div>
+           <div>
+             <input id='txtLname1' type="text" name="txtLname1" title="Last name" >
+             <div class='error'></div>
+           </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtDOB1'>
+             Date of Birth:
+             </label>
+           </div>
+           <div>
+             <input id='txtDOB1' title="Date Of Birth" type='date' >
+             <div class='error'></div>
+           </div>      
+         </div>
+        </fieldset>
+       <fieldset id='AccountInfo1' class='shown'>
+         <legend>Account Information</legend>
+         <div>
+           <div>
+             <label for='txtUname1'>
+               Username:
+             </label>
+           </div>
+           <div>
+             <input type='text' name='txtUname1' id='txtUname1' >
+             <div class='error'></div>
+           </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtPwd1'>
+               Password:
+             </label>
+           </div>
+           <div>
+             <input type='password' name='txtPwd1' id='txtPwd1' >
+             <div class='error'></div>
+           </div>           
+         </div>
+         <div>
+           <div> 
+             <label for='txtConfirmPwd1'>Confirm Password:
+             </label>
+           </div>
+           <div> 
+             <input type='password' name='txtConfirmPwd1' id='txtConfirmPwd1' >
+             <div class='error'></div>
+           </div>
+         </div>
+       </fieldset>
+       <input type="button" value="CREATE ACCOUNT" class="SubmitBtn" onclick="SubmitForm(this)">
+     </form>
+     <form class='hidden' id="BuyerType" action="" onsubmit="return EvaluateForm(this)"  method="post" enctype="text/plain">
+       <input type='hidden' name='AccountType' value='Buyer'>
+      <fieldset id='OwnerInfo2' class='shown'>
+         <legend>Owner's Information</legend>
+        <div>
+          <div>
+            <label for='sltTitle2'>
+              Title: 
+            </label> 
+          </div>
+          <div> 
+            <select id='sltTitle2' name="sltTitle2" title='Title' >
+             <option></option>
+             <option value="Miss">Miss</option>
+             <option value="Mr">Mr</option>
+             <option value="Mrs">Mrs</option>
+            </select>
+            <div class='error'></div>
+          </div>
+         </div>
+        <div> 
+          <div>   
+            <label for='txtFname2'>
+            Firstname:
+            </label>
+          </div>
+          <div>
+            <input id='txtFname2' type="text" name="txtFname2" title="First name" >
+            <div class='error'></div>
+          </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtLname2'>
+             Lastname:
+             </label>
+           </div>
+           <div>
+             <input id='txtLname2' type="text" name="txtLname2" title="Last name" >
+             <div class='error'></div>
+           </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtDOB2'>
+               Date of Birth:
+             </label>
+           </div>
+           <div>
+             <input id='txtDOB2' title="Date Of Birth" type='date' >
+                         <div class='error'></div>
+
+           </div>
+          
+         </div>
+       </fieldset>
+       <fieldset id='AccountInfo2' class='shown'>
+         <legend>Account Information</legend>
+         <div>
+           <div>  
+             <label for='txtUname2'>Username:</label>
+           </div>
+           <div>
+             <input type='text' name='txtUname2' id='txtUname2' >
+                         <div class='error'></div>
+           </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtPwd2'>Password:</label>
+           </div>
+           <div>
+             <input type='password' name='txtPwd2' id='txtPwd2' >
+             <div class='error'></div>
+           </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtConfirmPwd2'>Confirm Password:</label>
+           </div>
+           <div> 
+             <input type='password' name='txtConfirmPwd2' id='txtConfirmPwd2' >
+             <div class='error'></div>
+           </div>
+         </div>
+       </fieldset>
+       <input type="button" value="CREATE ACCOUNT" onclick="SubmitForm(this)" class="SubmitBtn"></form>
+     <form class='hidden' id="DeliveryAgentType" action="" onsubmit="return EvaluateForm(this)" method="post">
+     <input type='hidden' name='AccountType' value='DeliveryAgent'>
+        <fieldset id='BusInfo3' class='shown'>  
+         <legend>Business Information</legend>
+         <div>
+           <div>
+             <label for='txtBusName3'>Business Name:
+             </label>
+           </div>
+           <div>
+             <input type='text' name='txtBusName3' id='txtBusName3' >
+             <div class='error'></div>
+           </div>
+           
+         </div>
+         </fieldset>
+       <fieldset id='OwnerInfo3' class='shown'>
+         <legend>Owner's Information</legend>
+        <div>
+          <div>
+            <label for='sltTitle3'>Title: </label> 
+          </div>
+          <div>
+            <select id='sltTitle3' name="sltTitle3" title='Title' >
+              <option></option>
+              <option value="Miss">Miss</option>
+              <option value="Mr">Mr</option>
+              <option value="Mrs">Mrs</option>
+            </select> 
+            <div class='error'></div>
+          </div>
+   
+         </div>
+        <div> 
+          <div>
+            <label for='txtFname3'>
+            Firstname:
+            </label>
+          </div>
+          <div>
+            <input id='txtFname3' type="text" name="txtFname3" title="First name" >
+            <div class='error'></div>
+          </div>  
+         </div>
+         <div>
+           <div>
+             <label for='txtLname3'>
+             Lastname:
+           </label>
+           </div>
+           <div> 
+             <input id='txtLname3' type="text" name="txtLname3" title="Last name" >
+             <div class='error'></div>
+           </div>
+           
+         </div>
+         <div>
+           <div>
+             <label for='txtDOB3'>
+             Date of Birth:
+             </label>
+           </div>
+           <div>
+             <input id='txtDOB3' title="Date Of Birth" type='date' >
+             <div class='error'></div>
+           </div>
+         </div>
+        </fieldset>
+       <fieldset id='AccountInfo3' class='shown'>
+         <legend>Account Information</legend>
+         <div>
+           <div>
+             <label for='txtUname3'>Username:</label>
+           </div>
+           <div>
+             <input type='text' name='txtUname3' id='txtUname3' >
+             <div class='error'></div>
+           </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtPwd3'>Password:</label>
+           </div>
+           <div>
+             <input type='password' name='txtPwd3' id='txtPwd3' >
+             <div class='error'></div>
+           </div>
+           
+         </div>
+         <div>
+           <div>
+             <label for='txtConfirmPwd3'>Confirm 
+               Password:
+             </label>
+           </div>
+           <div>
+             <input type='password' name='txtConfirmPwd3' id='txtConfirmPwd3' >
+             <div class='error'></div>
+           </div>
+         </div>
+       </fieldset>
+       <input type="button" value="CREATE ACCOUNT" class="SubmitBtn" onclick="SubmitForm(this)">
+     </form>
+    </div>
+    <script data-main="../Scripts/app.js" src="../Scripts/require.js"></script>
+  </body>
+</html>

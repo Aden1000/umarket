@@ -1,0 +1,303 @@
+*{
+  font-family:"Calibri";
+}
+h1,h2,h3,h4,h5{
+  color:rgb(0,200,0);
+  font-weight:bolder;
+}
+img[class="Desktop"]{
+  display: block
+}
+img[class="Mobile"]{
+  display: none;
+}
+img[class="Tablet"]{
+  display: none;
+}
+
+#Banner{
+  width:100%;
+  height:80px;
+  position:fixed;
+  top:0px;
+  left:0px;
+  z-index: 1;
+  box-shadow:1px 0px 5px rgb(0,0,0);
+  background:white;
+  display:-webkit-box;
+  display:-webkit-flex; 
+  display:-ms-flexbox; 
+  display:flex; 
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding-left:10px;
+  padding-right:10px;
+  box-sizing:border-box;
+}
+#BannerExtra{
+  height:80px;
+}
+
+input,select{
+  -moz-appearance:none;
+  -webkit-appearance:none;
+  border:1px solid;
+  border-radius: 0px;
+  text-align: center;
+  cursor:pointer;
+}
+input[class='Invalid'],select[class='Invalid']{
+  border:2px solid rgb(255,0,0);
+}
+input[class='Valid'],select[class='Valid']{
+  border:2px solid rgb(0,200,0);
+}
+
+.LoginBtn{
+  font-family: "Calibri";
+  font-weight:bold;
+  font-size:15px;
+  color:rgb(0,200,0);
+  background: white;
+  border:1px solid rgb(0,200,0);
+  padding:5px;
+  cursor:pointer;
+  width:100%;
+}
+.LoginBtn:hover{
+  transform:translateY(-2px);
+}
+
+#MainContent{
+  display:-webkit-box; 
+  display:-webkit-flex; 
+  display:-ms-flexbox; 
+  display:flex; 
+  flex-direction:column;
+  align-items:center;
+  flex-basis: 100%;
+  font-size:20px;
+}
+#AccountType{
+  display:-webkit-box; 
+  display:-webkit-flex; 
+  display:-ms-flexbox; 
+  display:flex; 
+  flex-direction: row;
+  justify-content: space-around;
+  width:50%;
+}
+#AccountType>div{
+  border:1px solid rgb(0,200,0);
+  padding:5px;
+  width:50%;
+  margin:5px;
+  text-align: center;
+  font-weight: bold;
+  color:rgb(0,200,0);
+  transition:0.5s;
+  -moz-transition:0.5s;
+  -web-transition:0.5s;
+  -ms-transition:0.5s;
+}
+#AccountType>div:hover{
+  cursor:pointer;
+}
+#AccountType>div[class='selected']{
+  background:rgb(0,200,0);
+  color:rgb(255,255,255);
+}
+#AccountType>div[class='unselected']{
+  background: white;
+  color:rgb(0,200,0);
+}
+.Green{
+  color:rgb(0,200,0);
+  font-weight: bold;
+}
+
+form{
+  display:-webkit-box; 
+  display:-webkit-flex; 
+  display:-ms-flexbox; 
+  display:flex;
+  flex-direction: column;
+  align-items:center;
+  border:1px solid rgb(0,200,0);
+  padding:10px;
+  width:50%;
+  box-sizing: border-box;  
+}
+form[class='hidden']{
+  display: none;
+}
+form[class='shown']{
+  display:-webkit-box; 
+  display:-webkit-flex; 
+  display:-ms-flexbox; 
+  display:flex;
+}
+
+legend{
+  font-size:18px;
+  color:rgb(0,200,0);
+  font-weight: bold;
+}
+fieldset{
+  display:-webkit-box; 
+  display:-webkit-flex; 
+  display:-ms-flexbox; 
+  display:flex; 
+  flex-direction: column;
+  align-items:stretch;
+  border:1px solid rgb(0,0,0);
+  margin-bottom:20px;
+  color:rgb(0,200,0);
+  font-weight: bold;
+  box-sizing: border-box;
+  width:100%;
+}
+fieldset[class='shown']{
+  display:-webkit-box; 
+  display:-webkit-flex; 
+  display:-ms-flexbox; 
+  display:flex;
+}
+fieldset[class='hidden']{
+  display:none;
+}
+fieldset>div{
+  display:-webkit-box; 
+  display:-webkit-flex; 
+  display:-ms-flexbox; 
+  display:flex; 
+  flex-direction:row;
+  flex-wrap:nowrap;
+  justify-content:space-between;
+  align-items: center;
+  margin-bottom:10px;
+  word-wrap: break-word;
+}
+fieldset>div>div:nth-child(2){
+  width:60%;
+  display:-webkit-box; 
+  display:-webkit-flex; 
+  display:-ms-flexbox; 
+  display:flex; 
+  flex-direction: column;
+}
+fieldset input, fieldset select{
+  height:40px;
+  width:100%;
+  font-size:20px;
+  text-align: center;
+  color:rgb(0,200,0);
+  font-weight: bold;
+  border:1px solid rgb(0,0,0);
+  padding: 0px;
+  box-sizing: border-box;
+}
+
+div[class='error']{
+  color: rgb(255,0,0);
+  font-weight: bold;
+}
+.SubmitBtn{
+  height:40px;
+  font-size:20px;
+  font-weight: bold;
+  color:rgb(0,200,0);
+  background:white;
+  border:1px solid rgb(0,200,0);
+   transition:0.5s;
+  -moz-transition:0.5s;
+  -ms-transition:0.5s;
+  -webkit-transition:0.5s;
+}
+.SubmitBtn:hover{
+  cursor:pointer;
+  background:rgb(0,200,0);
+  color:white;
+}
+
+@media screen and (max-width:700px){
+  img[class="Desktop"]{
+  display: none
+}
+  img[class="Mobile"]{
+  display: block;
+}
+  img[class="Tablet"]{
+  display: none;
+}
+  #AccountType{
+    width:100%
+  }
+  #AccountType div{
+    height:50px;
+    display:-webkit-box; 
+    display:-webkit-flex; 
+    display:-ms-flexbox; 
+    display:flex; 
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-around;
+  }
+  form{
+    width:100%
+  }
+  fieldset>div>div:nth-child(2){
+    width:60%;
+  }
+  fieldset input, fieldset select{
+   width:100%;
+  }
+}
+
+@media screen and (orientation:landscape) and (max-width:700px){
+  img[class="Desktop"]{
+  
+  display: none
+}
+  img[class="Mobile"]{
+    display: none;
+  }
+  img[class="Tablet"]{
+    display: block;
+  }
+  #AccountType{
+    width:80%;
+  }
+  #AccountType div{
+    height:25px;
+  }
+  fieldset input, fieldset select{
+    width:100%;
+  }
+}
+
+@media screen and (min-width:700px) and (max-width:999px){
+  img[class="Desktop"]{
+  
+  display: none
+}
+  img[class="Mobile"]{
+  
+    display: none;
+  }
+  img[class="Tablet"]{
+  
+    display: block;
+  }
+  #AccountType{
+    width:80%
+  }
+  form{
+    width:80%;
+  }
+  fieldset input, fieldset select{
+    width:100%
+  }
+}

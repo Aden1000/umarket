@@ -1,0 +1,338 @@
+*{
+  font-family:"Calibri"
+}
+h1,h2,h3,h4,h5{
+  color:rgb(0,200,0);
+}
+input{
+  -moz-appearance:none;
+  -web-appearance:none;
+}
+img[class="Desktop"]{
+  display: block
+}
+img[class="Mobile"]{
+  display: none;
+}
+img[class="Tablet"]{
+  display: none;
+}
+#Banner{
+  width:100%;
+  height:80px;
+  position:fixed;
+  top:0px;
+  left:0px;
+  z-index: 1;
+  box-shadow:1px 0px 5px rgb(0,0,0);
+  background:white;
+  display:-webkit-box;    
+  display:-webkit-flex;
+  display:-ms-flexbox;
+  display:flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-content: center;
+  align-items: center;
+  padding-left:10px;
+  padding-right:10px;
+  box-sizing:border-box;
+  
+}
+#BannerExtra{
+  height:80px;
+}
+#BannerImage{
+  display:-webkit-box;  
+  display:-webkit-flex;   
+  display:-ms-flexbox;   
+  display:flex; 
+  flex-direction: row;
+  justify-content: center;
+  padding:20px;
+}
+
+.JoinBtn{
+  font-family: "Calibri";
+  font-weight:bold;
+  font-size:15px;
+  color:white;
+  background:rgb(0,200,0);
+  border:1px solid rgb(0,200,0);
+  padding:5px;
+  
+}
+.JoinBtn:hover{
+  cursor:pointer;
+  transform:translateY(-2px);
+}
+
+.LoginBtn{
+  font-family: "Calibri";
+  font-weight:bold;
+  font-size:15px;
+  color:rgb(0,200,0);
+  background: white;
+  border:1px solid rgb(0,200,0);
+  padding:5px;
+  cursor:pointer;
+}
+.LoginBtn:hover{
+  transform:translateY(-2px);
+}
+
+[class="hidden module"]{
+  transition:1.5s;
+transform:translate(0%,50%);
+  opacity:0;  
+}
+[class="shown module"]{
+  transition:1.5s;
+  transform:translate(0,0);
+  opacity:1;
+}
+#AboutUmarket,#UmarketBenefits,#CallToAction{
+  font-size:20px;
+  display:-webkit-box;    
+  display:-webkit-flex;    
+  display:-ms-flexbox;    
+  display:flex; 
+  flex-direction: column;
+  justify-content: center;
+  max-width:80%;
+  border:1px solid rgb(0,200,0);
+  position:relative;
+  left:10%;
+  padding:5px;
+  overflow: hidden;
+}
+#UmarketBenefits,#CallToAction{
+margin-top:100px;
+ }
+
+#AboutUmarket>div{
+  display: flex;
+  flex-direction: row;
+  justify-content: space-around;
+  align-items: center;
+}
+#AboutUmarket>div div{
+  max-width:50%;
+  
+}
+#AboutUmarketPng{max-width: 300px;
+  padding:10px;
+}
+.Green{
+  color:rgb(0,200,0);
+  font-weight: bold;
+}
+
+#UmarketBenefits>div{
+  max-width:100%;
+  display:-webkit-box;    
+  display:-webkit-flex;    
+  display:-ms-flexbox;    
+  display:flex; 
+  flex-direction: row;
+  align-items:center;
+  justify-content: space-around
+}
+#UmarketBenefits>div div{
+  max-width:50%;
+}
+#UmarketBenefits>div:nth-child(2) div{
+  border:1px solid rgb(0,200,0);
+  padding:5px;
+  max-width:45%;
+  list-style-image: url('../Images/Umarket.ico');
+  list-style-position: outside;
+  
+}
+
+#CallToAction{
+   font-size:20px;
+  display:-webkit-box;    
+  display:-webkit-flex;    
+  display:-ms-flexbox;   
+  display:flex; 
+  flex-direction: column;
+  max-width:80%;
+  border:1px solid rgb(0,200,0);
+  position:relative;
+  left:10%;
+  padding:5px;
+  margin-top:100px;
+  overflow: hidden;
+}
+#CallToAction>div{
+  display:-webkit-box;   
+  display:-webkit-flex;   
+  display:-ms-flexbox;
+  display:flex; 
+  flex-direction: row;
+  justify-content: space-around;
+  align-items:center; 
+  max-width:100%;
+}
+#CallToAction>div:nth-child(1) div:nth-child(1){
+  max-width:60%
+}
+#CallToAction div:nth-child(1) h1{
+  margin:10px;
+}
+#CallToAction>div:nth-child(2){
+  height:200px;
+}
+#CallToAction>div:nth-child(2) div:not(div:nth-child(2)){
+  display: flex;
+  flex-basis:40%;
+  flex-direction: column;
+  align-items: center;
+  justify-content:center;
+  padding:10px;
+  width:30%;
+  height:60%;
+  border:1px solid rgb(0,200,0);
+ text-align: center;
+}
+
+
+@media screen and (max-width:700px){
+  img[class="Desktop"]{
+    display: none;
+  }
+  img[class="Mobile"]{
+    display: block;
+  }
+  img[class="Tablet"]{
+  display:none;  
+  }
+  
+  #Banner{
+    height:100px; 
+  }
+  #Banner #CTA{
+    display:-webkit-box;    
+    display:-webkit-flex;    
+    display:-ms-flexbox;    
+    display:flex; 
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: stretch;
+    height:70%
+}
+  
+  .LoginBtn:first-child{
+    width:100%
+  }
+  
+  #AboutUmarket,#UmarketBenefits,#CallToAction{
+    position: static;
+    max-width:100%;
+    font-size:15px
+  }
+  
+  #AboutUmarket>div{
+    flex-direction: column;
+    align-items: stretch;
+    width:100%
+  }
+  #AboutUmarket>div div:nth-child(1){
+    display:-webkit-box;    
+    display:-webkit-flex;    
+    display:-ms-flexbox;    
+    display:flex; 
+    flex-direction:column;
+   max-width:100%;
+    align-items:center;
+  }
+  
+  #UmarketBenefits>div{
+    flex-direction:column;
+    max-width:100%;
+    align-content:center;
+    align-self: center;
+    justify-content: center;
+  }
+  #UmarketBenefits>div:nth-child(1) div:nth-child(1){
+    max-width: 100%;
+  }
+  #UmarketBenefits>div:nth-child(2) div{
+    margin-bottom: 10px;
+    max-width:90%;  
+    min-width:0px;
+    min-height:0px;
+  }
+  
+  #CallToAction>div{
+    flex-direction:column;
+    align-content: stretch;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  #CallToAction>div:nth-child(1) div:nth-child(1){
+    max-width:100%;
+  }
+  #CallToAction>div:nth-child(2) {
+    margin-top:20px;
+    height:100%;
+  }
+  #CallToAction>div:nth-child(2) div:not(div:nth-child(2)){
+    width:90%
+  }
+  
+}
+@media screen and (max-width:700px) and (orientation:landscape){
+   img[class="Desktop"]{
+    display: none;
+  }
+  img[class="Mobile"]{
+    display: block;
+  }
+ #AboutUmarket,#UmarketBenefits,#CallToAction{
+   position: relative;
+   left:5%;
+   max-width:90%;
+   font-size:15px;
+  }
+  #CallToAction>div:nth-child(2) {
+    flex-direction: row;
+    justify-content: space-around;  
+  }
+  #CallToAction>div:nth-child(2) div:not(div:nth-child(2)){
+    width:40%;
+    height:100px;
+    justify-content: space-around;
+  }
+}
+@media screen and (min-width:700px) and (max-width:900px){
+ img[class="Desktop"]{
+  display: none
+}
+img[class="Mobile"]{
+  display: none;
+}
+img[class="Tablet"]{
+  display: block;
+}
+ 
+  #AboutUmarket,#UmarketBenefits,#CallToAction{
+    width:95%;  
+    left:9.5%;
+    font-size:15px;
+  }
+  #CallToAction>div:nth-child(2) div:not(div:nth-child(2)){
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding:10px;
+    width:40%;
+    height:60%;
+    border:1px solid rgb(0,200,0);
+    text-align: center;
+}
+
+}
