@@ -1,5 +1,8 @@
 @font-face{
-  font-family:'Calibri', src:url("../Fonts/calibri.ttf");
+  font-family:'Calibri', src:url("../Fonts/Calibri.ttf");
+  font-family:'Calibri', src:url("../Fonts/Calibri.woff");
+  font-family:'Calibri', src:url("../Fonts/Calibri.woff2");
+  font-family:'Calibri', src:url("../Fonts/Calibri.eot");
 }
 *{
   font-family:"Calibri";
