@@ -169,7 +169,6 @@ fieldset{
   box-sizing: border-box;
   width:100%;
   font-size:110%;
-  font-weight: bold;
 }
 fieldset[class='shown']{
   display:-webkit-box; 
