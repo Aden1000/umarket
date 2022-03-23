@@ -6,12 +6,19 @@
     url("../Fonts/Calibri.woff2") format("woff2"),
     url("../Fonts/Calibri.eot") format("embedded-opentype");
 }
-*{
-  font-family:"Calibri";
+@font-face{
+  font-family:'Calibri Bold';
+  src:
+    url("../Fonts/Calibri Bold.ttf") format("truetype"),
+    url("../Fonts/Calibri Bold.woff") format("woff"),
+    url("../Fonts/Calibri Bold.woff2") format("woff2"),
+    url("../Fonts/Calibri Bold.eot") format("embedded-opentype"),
+    url("../fonts/Calibri Bold.otf") format("opentype");
 }
+
 h1,h2,h3,h4,h5{
   color:rgb(0,200,0);
-  font-weight:bold;
+  font-family:"Calibri Bold"
 }
 img[class="Desktop"]{
   display: block
@@ -59,7 +66,7 @@ input,select{
   cursor:pointer;
   box-sizing: border-box;
   font-size:100%;
-  font-weight: 550;
+  font-family: "Calibri"
 }
 input[class='Invalid'],select[class='Invalid']{
   border:2px solid rgb(255,0,0);
@@ -99,7 +106,7 @@ input[class='Valid'],select[class='Valid']{
   flex-direction: row;
   justify-content: space-around;
   width:50%;
-  font-weight: bold;
+  font-family: "Calibri Bold";
 }
 #AccountType>div{
   border:1px solid rgb(0,200,0);
@@ -127,7 +134,7 @@ input[class='Valid'],select[class='Valid']{
 }
 .Green{
   color:rgb(0,200,0);
-  font-weight: bold;
+  font-family: "Calibri Bold";
 }
 
 form{
@@ -168,7 +175,8 @@ fieldset{
   color:rgb(0,200,0);
   box-sizing: border-box;
   width:100%;
-  font-size:110%;
+  font-size: 110%;
+  font-family: "Calibri Bold"
 }
 fieldset[class='shown']{
   display:-webkit-box; 
@@ -258,14 +266,15 @@ div[class='error']{
     width:100%
   }
   fieldset{
+    font-family: "Calibri";
     font-size:100%;
     font-weight:500
   }
   fieldset>div>div:nth-child(2){
-    min-width:60%;
+   min-width:190px;
   }
   fieldset input, fieldset select{
-   width:100%;
+   width:190px;
   }
 }
 
