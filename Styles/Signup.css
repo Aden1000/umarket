@@ -1,9 +1,11 @@
 @font-face{
   font-family:'Calibri';
-  src:url("../Fonts/Calibri.ttf") fomat('truetype'),
+  src:url("../Fonts/Calibri.ttf")
+/*
     url("../Fonts/Calibri.woff") format("woff"),
     url("../Fonts/Calibri.woff2") format("woff2"),
     url("../Fonts/Calibri.eot") format("embedded-opentype");
+*/
 }
 *{
   font-family:"Calibri";
