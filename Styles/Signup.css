@@ -1,14 +1,16 @@
 @font-face{
   font-family:'Calibri';
-  src:url("../Fonts/Calibri.ttf");
-  
+  src:url("../Fonts/Calibri.ttf") fomat('truetype'),
+    url("../Fonts/Calibri.woff") format("woff"),
+    url("../Fonts/Calibri.woff2") format("woff2"),
+    url("../Fonts/Calibri.eot") format("embedded-opentype");
 }
 *{
   font-family:"Calibri";
 }
 h1,h2,h3,h4,h5{
   color:rgb(0,200,0);
-  font-weight:bolder;
+  font-weight:bold;
 }
 img[class="Desktop"]{
   display: block
@@ -48,11 +50,15 @@ img[class="Tablet"]{
 input,select{
   -moz-appearance:none;
   -webkit-appearance:none;
+  -ms-appearance:none;
+  appearance:none;
   border:1px solid;
   border-radius: 0px;
   text-align: center;
   cursor:pointer;
   box-sizing: border-box;
+  font-size:100%;
+  font-weight: 550;
 }
 input[class='Invalid'],select[class='Invalid']{
   border:2px solid rgb(255,0,0);
@@ -63,8 +69,6 @@ input[class='Valid'],select[class='Valid']{
 
 .LoginBtn{
   font-family: "Calibri";
-  font-weight:bold;
-  font-size:15px;
   color:rgb(0,200,0);
   background: white;
   border:1px solid rgb(0,200,0);
@@ -84,7 +88,7 @@ input[class='Valid'],select[class='Valid']{
   flex-direction:column;
   align-items:center;
   flex-basis: 100%;
-  font-size:20px;
+  font-size:100%;
 }
 #AccountType{
   display:-webkit-box; 
@@ -94,6 +98,7 @@ input[class='Valid'],select[class='Valid']{
   flex-direction: row;
   justify-content: space-around;
   width:50%;
+  font-weight: bold;
 }
 #AccountType>div{
   border:1px solid rgb(0,200,0);
@@ -101,7 +106,6 @@ input[class='Valid'],select[class='Valid']{
   width:50%;
   margin:5px;
   text-align: center;
-  font-weight: bold;
   color:rgb(0,200,0);
   transition:0.5s;
   -moz-transition:0.5s;
@@ -149,7 +153,6 @@ form[class='shown']{
 legend{
   font-size:18px;
   color:rgb(0,200,0);
-  font-weight: bold;
 }
 fieldset{
   display:-webkit-box; 
@@ -161,9 +164,10 @@ fieldset{
   border:1px solid rgb(0,0,0);
   margin-bottom:20px;
   color:rgb(0,200,0);
-  font-weight: bold;
   box-sizing: border-box;
   width:100%;
+  font-size:100%;
+  font-weight: bold;
 }
 fieldset[class='shown']{
   display:-webkit-box; 
@@ -185,6 +189,7 @@ fieldset>div{
   align-items: center;
   margin-bottom:10px;
   word-wrap: break-word;
+  font-size:100%;
 }
 fieldset>div>div:nth-child(2){
   width:60%;
@@ -197,10 +202,8 @@ fieldset>div>div:nth-child(2){
 fieldset input, fieldset select{
   height:40px;
   width:100%;
-  font-size:20px;
   text-align: center;
   color:rgb(0,200,0);
-  font-weight: bold;
   border:1px solid rgb(0,0,0);
   padding: 0px;
   box-sizing: border-box;
@@ -208,16 +211,14 @@ fieldset input, fieldset select{
 
 div[class='error']{
   color: rgb(255,0,0);
-  font-weight: bold;
 }
 .SubmitBtn{
   height:40px;
-  font-size:20px;
-  font-weight: bold;
+  font-size:110%;
   color:rgb(0,200,0);
   background:white;
   border:1px solid rgb(0,200,0);
-   transition:0.5s;
+  transition:0.5s;
   -moz-transition:0.5s;
   -ms-transition:0.5s;
   -webkit-transition:0.5s;
@@ -277,7 +278,7 @@ div[class='error']{
     width:80%;
   }
   #AccountType div{
-    height:25px;
+    height:30px;
   }
   fieldset input, fieldset select{
     width:100%;

@@ -4,9 +4,9 @@ requirejs.config(
   }
 )
 if(document.head.id=="SignupPage"){
- define(['Signup','jquery-2.1.3.min']) 
+ define(['Signup','jquery-3.6.0']) 
 }
 
 if(document.head.id=="IndexPage"){
-  define(['index','jquery-2.1.3.min'])
+  define(['index','jquery-3.6.0'])
 }
