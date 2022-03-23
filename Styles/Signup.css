@@ -112,6 +112,7 @@ input[class='Valid'],select[class='Valid']{
   -moz-transition:0.5s;
   -web-transition:0.5s;
   -ms-transition:0.5s;
+  font-size: 120%
 }
 #AccountType>div:hover{
   cursor:pointer;
@@ -167,7 +168,7 @@ fieldset{
   color:rgb(0,200,0);
   box-sizing: border-box;
   width:100%;
-  font-size:100%;
+  font-size:110%;
   font-weight: bold;
 }
 fieldset[class='shown']{
@@ -193,7 +194,7 @@ fieldset>div{
   font-size:100%;
 }
 fieldset>div>div:nth-child(2){
-  width:60%;
+  min-width:60%;
   display:-webkit-box; 
   display:-webkit-flex; 
   display:-ms-flexbox; 
@@ -252,12 +253,17 @@ div[class='error']{
     flex-direction: row;
     align-items: center;
     justify-content: space-around;
+    font-size:100%;
   }
   form{
     width:100%
   }
+  fieldset{
+    font-size:100%;
+    font-weight:500
+  }
   fieldset>div>div:nth-child(2){
-    width:60%;
+    min-width:60%;
   }
   fieldset input, fieldset select{
    width:100%;
@@ -280,6 +286,11 @@ div[class='error']{
   }
   #AccountType div{
     height:30px;
+    font-size:100%
+  }
+  fieldset{
+    font-size:100%;
+    font-weight:500
   }
   fieldset input, fieldset select{
     width:100%;
@@ -306,6 +317,6 @@ div[class='error']{
     width:80%;
   }
   fieldset input, fieldset select{
-    width:100%
+    min-width:100%
   }
 }
