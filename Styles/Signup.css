@@ -63,6 +63,9 @@ input,select{
   border:1px solid;
   border-radius: 0px;
   text-align: center;
+  text-align:-webkit-center;
+  text-align:-ms-center;
+  text-align:-moz-center;
   cursor:pointer;
   box-sizing: border-box;
   font-size:100%;
@@ -76,7 +79,7 @@ input[class='Valid'],select[class='Valid']{
 }
 
 .LoginBtn{
-  font-family: "Calibri";
+  font-family: "Calibri Bold";
   color:rgb(0,200,0);
   background: white;
   border:1px solid rgb(0,200,0);
