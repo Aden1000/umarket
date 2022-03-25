@@ -22,7 +22,6 @@ h1,h2,h3,h4,h5{
 }
 img[class="Desktop"]{
   display: block;
-  width:900px
 }
 img[class="Mobile"]{
   display: none;
