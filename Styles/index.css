@@ -76,6 +76,9 @@ img[class="Tablet"]{
   justify-content: center;
   padding:20px;
 }
+#UmarketImg{
+  width:180px;
+}
 
 .JoinBtn{
   font-family: "Calibri Bold";
@@ -250,7 +253,7 @@ margin-top:100px;
     height:70%
 }
   
-  .LoginBtn:first-child{
+  .LoginBtn:first-child,.JoinBtn:first-child{
     width:100%
   }
   
