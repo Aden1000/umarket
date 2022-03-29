@@ -57,6 +57,9 @@ img[class="Tablet"]{
   height:80px;
 }
 
+div{
+  box-sizing: border-box;
+}
 input,select{
   -moz-appearance:none;
   -webkit-appearance:none;
@@ -206,7 +209,7 @@ fieldset>div{
   font-size:100%;
 }
 fieldset>div>div:nth-child(2){
-  min-width:60%;
+  width:60%;
   display:-webkit-box; 
   display:-webkit-flex; 
   display:-ms-flexbox; 
@@ -221,6 +224,7 @@ fieldset input, fieldset select{
   border:1px solid rgb(0,0,0);
   padding: 0px;
   box-sizing: border-box;
+   background:white;
 }
 
 div[class='error']{
@@ -279,10 +283,11 @@ div[class='error']{
     font-size:100%;
   }
   fieldset>div>div:nth-child(2){
-   min-width:190px;
+    width:190px;
+  
   }
   fieldset input, fieldset select{
-   width:190px;
+   width:100%;
   }
 }
 
@@ -297,6 +302,9 @@ div[class='error']{
     display: block;
     width:400px;
   }
+  #UmarketImg{
+    width:150px;
+  }
   #AccountType{
     width:80%;
   }
@@ -307,6 +315,9 @@ div[class='error']{
   fieldset{
     font-size:100%;
   }
+  fieldset>div>div:nth-child(2){
+   width:50%;
+  }
   fieldset input, fieldset select{
     width:100%;
   }
@@ -314,7 +325,6 @@ div[class='error']{
 
 @media screen and (min-width:700px) and (max-width:999px){
   img[class="Desktop"]{
-  
   display: none
 }
   img[class="Mobile"]{
@@ -322,8 +332,8 @@ div[class='error']{
     display: none;
   }
   img[class="Tablet"]{
-  
     display: block;
+    width:700px;
   }
   #AccountType{
     width:80%
@@ -332,6 +342,6 @@ div[class='error']{
     width:80%;
   }
   fieldset input, fieldset select{
-    min-width:100%
+    width:100%
   }
 }

@@ -3,11 +3,11 @@
 
 <svg
    xml:space="preserve"
-   width="79.375mm"
-   height="24.1129mm"
+   width="26.458334mm"
+   height="8.0376329mm"
    version="1.0"
    style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   viewBox="0 0 7937.8185 2411.1078"
+   viewBox="0 0 2645.9396 803.70257"
    id="svg115181"
    sodipodi:docname="Buy-Sell.svg"
    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
@@ -25,8 +25,8 @@
    inkscape:document-units="mm"
    showgrid="false"
    inkscape:zoom="3.3500107"
-   inkscape:cx="149.99952"
-   inkscape:cy="45.37299"
+   inkscape:cx="49.99984"
+   inkscape:cy="15.223832"
    inkscape:window-width="1366"
    inkscape:window-height="745"
    inkscape:window-x="-8"
@@ -53,7 +53,7 @@
    id="Layer_x0020_1"
    inkscape:label="Layer 1"
    inkscape:groupmode="layer"
-   transform="translate(-849.53499,-665.51112)">
+   transform="translate(-849.53499,-665.40562)">
   <metadata
    id="CorelCorpID_0Corel-Layer" />
   
@@ -67,7 +67,7 @@
   
   <g
    id="g115275"
-   transform="matrix(1.2769023,0,0,1.2769023,-235.23821,-184.21375)"><path
+   transform="matrix(0.4256341,0,0,0.4256341,487.94392,382.10619)"><path
      class="fil0 str0"
      d="m 4820,672 -756,830 -168,185 -783,860"
      id="path115163" /><path

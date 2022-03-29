@@ -1,6 +1,3 @@
-document.body.onload=function(){
-  ShowModule();
-}
 function ShowModule(){
   var NhiddenModule=$("[class='hidden module']").length;
   for(j=0; j<NhiddenModule; j++){

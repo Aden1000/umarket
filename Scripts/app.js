@@ -7,5 +7,11 @@ if(document.head.id=="SignupPage"){
 }
 
 if(document.head.id=="IndexPage"){
-  define(['index','jquery-3.6.0'])
+  define(['index','jquery-3.6.0'],function(){
+    $("body").on("load",function(){
+  ShowModule();
+    });
+
+$("body").on("scroll",ShowModule());
+  })
 }
