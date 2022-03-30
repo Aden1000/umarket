@@ -74,7 +74,6 @@ img[class="Tablet"]{
   display:flex; 
   flex-direction: row;
   justify-content: center;
-  padding:20px;
 }
 #UmarketImg{
   width:180px;
@@ -255,8 +254,14 @@ p{
   #UmarketImg{
     width:120px;
   }
+  #UmarketBanner{
+    width:100%;
+  }
   #Banner{
     height:100px; 
+  }
+  #BannerExtra{
+    height:100px;
   }
   #Banner #CTA{
     display:-webkit-box;    
@@ -368,7 +373,7 @@ p{
     transform: translate(0%,10%);
   }
   #UmarketBanner{
-    width:500px;
+    width:80%;
   }
   #UmarketImg{
     width:150px
@@ -412,7 +417,7 @@ p{
     width:180px;
   }
   #UmarketBanner{
-    width:500px;
+    width:80%;
   }
  
   #AboutUmarket,#UmarketBenefits,#CallToAction{

@@ -56,6 +56,9 @@ img[class="Tablet"]{
 #BannerExtra{
   height:80px;
 }
+#UmarketBanner{
+  width:800px;
+}
 
 div{
   box-sizing: border-box;
@@ -262,6 +265,9 @@ div[class='error']{
   #UmarketImg{
     width:120px;
   }
+  #UmarketBanner{
+    width:100%;
+  }
   #AccountType{
     width:100%
   }
@@ -305,6 +311,9 @@ div[class='error']{
   #UmarketImg{
     width:150px;
   }
+  #UmarketBanner{
+    width:80%;
+  }
   #AccountType{
     width:80%;
   }
@@ -334,6 +343,9 @@ div[class='error']{
   img[class="Tablet"]{
     display: block;
     width:700px;
+  }
+  #UmarketBanner{
+    width:80%;
   }
   #AccountType{
     width:80%
