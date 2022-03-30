@@ -74,12 +74,13 @@ img[class="Tablet"]{
   display:flex; 
   flex-direction: row;
   justify-content: center;
+  margin-bottom:20px;
 }
 #UmarketImg{
   width:180px;
 }
 #UmarketBanner{
-  width:700px;
+  width:60%;
 }
 
 div{
