@@ -9,3 +9,7 @@ if(document.head.id=="SignupPage"){
 if(document.head.id=="IndexPage"){
   define(['index'])
 }
+
+if(document.head.id=="TestPage"){
+  define(['test','jquery-3.6.0'])
+}
