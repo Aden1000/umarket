@@ -86,6 +86,8 @@ img[class="Tablet"]{
   justify-content: center;
   margin-bottom:20px;
   width:100%;
+  height:auto;
+  align-items: stretch;
 }
 #UmarketImg{
   width:180px;
