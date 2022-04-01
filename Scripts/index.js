@@ -1,12 +1,14 @@
+ShowModule();
 function ShowModule(){
-  var NhiddenModule=$("[class='hidden module']").length;
-  for(j=0; j<NhiddenModule; j++){
-    Position=document.getElementsByClassName("hidden module").item(0).getBoundingClientRect().top;
-   if (CheckPosition(Position)==true){
-    $("[class='hidden module']").first().attr("class","shown module"); 
+  var count=document.getElementsByClassName("hidden module").length;
+  for(j=0; j<count; j++){
+    var HiddenModule=document.getElementsByClassName("hidden module").item(0);
+   if (CheckPosition(HiddenModule)==true){
+     HiddenModule.setAttribute('class','shown module');
    }
   }
-  function CheckPosition(Position){
+  function CheckPosition(Object){
+    Position=Object.getBoundingClientRect().top;
     var ScreenHeight=window.innerHeight-40;
     if(Position<ScreenHeight){
       return true

@@ -113,7 +113,7 @@ div{
 
 [class="hidden module"]{
   transition:1s;
-  transform:translate(0%,50%);
+  transform:translateY(50%);
   opacity:0;  
 }
 [class="shown module"]{
@@ -244,7 +244,7 @@ p{
   }
   img[class="Mobile"]{
     display: block;
-    width:250px;
+    width:150px;
   }
   img[class="Tablet"]{
   display:none;  
@@ -272,7 +272,7 @@ p{
     height:70%
 }
   [class='hidden module']{
-    transform: translate(0%,20%);
+    transform: translate(0%,30%);
   }
   .LoginBtn:first-child,.JoinBtn:first-child{
     width:100%
