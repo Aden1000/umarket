@@ -1,5 +1,6 @@
 var ErrorCount=0;
 var Error=[""];
+var http=new window.XMLHttpRequest;
 function DisplayForm(Button){
   $(Button).siblings().attr('class','unselected');
   $(Button).attr('class','selected');
@@ -23,11 +24,9 @@ function DisplayForm(Button){
       break;
   }
 }
-
 function SubmitForm(Button){
   $(Button).parent().submit();
 }
-
 function EvaluateForm(Form){
   ErrorCount=0;
   var BusName=Form.getElementsByTagName("input").item(1);
@@ -67,14 +66,49 @@ function EvaluateForm(Form){
       ErrorCount++
     }
   }
- 
-  
   if(ErrorCount>0){
       return false
     }
   else{
-      return true
+    http.onreadystatechange=handleResponse();
+    http.open("POST",'Scripts/signup.php',true);
+    http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+    if($(Form).children("input[name='AccountType']").eq(0).attr("value")=="Seller account" || $(Form).children("input[name='AccountType']").eq(0).attr("value")=="Delivery Agent account"){
+      http.send(
+        "BusName="+ BusName.value +
+        "&Title="+ Title.value +
+        "&Fname="+ Fname.value +
+        "&Lname="+ Lname.value +
+        "&DOB="+ DOB.value +
+        "&Uname="+ Uname.value +
+        "&Pwd="+Pwd.value+
+        "&ConfirmPwd="+ConfirmPwd.value
+      );
     }
+    else{
+      http.send(
+        "Title="+ Title.value +
+        "&Fname="+ Fname.value +
+        "&Lname="+ Lname.value +
+        "&DOB="+ DOB.value +
+        "&Uname="+ Uname.value +
+        "&Pwd="+Pwd.value+
+        "&ConfirmPwd="+ConfirmPwd.value
+      )
+    }
+      function handleResponse(){
+        if(http.readyState==4){
+          if(http.status==200){
+            alert(http.responseText);
+            http.abort();
+          }
+        }
+        else{
+          setTimeout(handleResponse,2000);
+        }
+      }
+    return false;
+  }
 }
 
 function checkBname(input){
