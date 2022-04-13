@@ -230,10 +230,15 @@ fieldset input, fieldset select{
    background:white;
 }
 
+.HelpTip{
+  font-family:"Calibri";
+  display: block;
+  
+}
 div[class='error']{
   color: rgb(255,0,0);
 }
-.SubmitBtn{
+#SubmitBtn{
   font-family: "Calibri Bold";
   height:40px;
   font-size:110%;
@@ -245,10 +250,14 @@ div[class='error']{
   -ms-transition:0.5s;
   -webkit-transition:0.5s;
 }
-.SubmitBtn:hover{
+#SubmitBtn:hover{
   cursor:pointer;
   background:rgb(0,200,0);
   color:white;
+}
+#SubmitBtn.disabled{
+  opacity:0.5;
+  
 }
 
 @media screen and (max-width:700px){

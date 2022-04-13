@@ -33,7 +33,7 @@
      <div class='unselected' onclick='DisplayForm(this)'>BUYER</div>
      <div class='unselected'  onclick='DisplayForm(this)'>DELIVERY AGENT</div>
      </div>
-     <form  class='hidden' id="Form" action="Scripts/signup.php" onsubmit="return EvaluateForm(this)" method="post" enctype="text/plain">
+     <form  class='hidden' id="Form" action="Scripts/signup.php" onsubmit="return EvaluateForm(event,this)" method="post" enctype="text/plain">
        <input type='hidden' name='AccountType' value=''>
        <fieldset id='BusInfo1' class='shown'>  
          <legend>Business Information</legend>
@@ -104,7 +104,7 @@
          <div>
            <div>
              <label for='txtUname'>
-               Username:
+               Username:<span class='HelpTip'></span>
              </label>
            </div>
            <div>
@@ -134,9 +134,10 @@
            </div>
          </div>
        </fieldset>
-       <input type="button" value="CREATE ACCOUNT" class="SubmitBtn" onclick="SubmitForm(this)">
+       <input type="button" value="CREATE ACCOUNT" id="SubmitBtn" onclick="SubmitForm(this)">
      </form>
     </div>
+    <div id='response'></div>
     <script data-main="Scripts/app.js" src="Scripts/require.js"></script>
   </body>
 </html>

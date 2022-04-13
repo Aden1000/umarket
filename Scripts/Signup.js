@@ -9,17 +9,21 @@ function DisplayForm(Button){
   $("input[class='Invalid'],select[class='Invalid']").attr('class',"");
   switch(Button.innerHTML){
    case "SELLER":
-      $("#Form").children("fieldset").attr('class','shown');      $("#Form").children("fieldset").eq(1).children("legend").eq(0).html("Owner's Information");
+      $("#Form").children("fieldset").attr('class','shown');     
+      $("#Form").children("fieldset").eq(1).children("legend").eq(0).html("Owner's Information");
+      $("#Form").children("fieldset").eq(2).find("label").eq(0).find(".HelpTip").html("[for your business]")
       $("input[name='AccountType']").eq(0).attr('value','Seller account');
       break;
     case "BUYER":
       $("#Form").children("fieldset:nth-child(2)").attr('class','hidden');
       $("#Form").children("fieldset").eq(1).children("legend").eq(0).html("Personal Information");
+      $("#Form").children("fieldset").eq(2).find("label").eq(0).find(".HelpTip").html("[for you]")
             $("input[name='AccountType']").eq(0).attr('value','Buyer account');
 
       break;
     case "DELIVERY AGENT":
          $("#Form").children("fieldset").attr('class','shown');      $("#Form").children("fieldset").eq(1).children("legend").eq(0).html("Owner's Information");
+      $("#Form").children("fieldset").eq(2).find("label").eq(0).find(".HelpTip").html("[for your business]")
             $("input[name='AccountType']").eq(0).attr('value','Delivery Agent account');
       break;
   }
@@ -27,8 +31,10 @@ function DisplayForm(Button){
 function SubmitForm(Button){
   $(Button).parent().submit();
 }
-function EvaluateForm(Form){
+function EvaluateForm(event,Form){
+  event.preventDefault();
   ErrorCount=0;
+  var AccountType=Form.getElementsByTagName("input").item(0);
   var BusName=Form.getElementsByTagName("input").item(1);
   var Title=Form.getElementsByTagName("select").item(0);
   var Fname=Form.getElementsByTagName("input").item(2);
@@ -70,12 +76,16 @@ function EvaluateForm(Form){
       return false
     }
   else{
+    $("#SubmitBtn").attr('class','disabled');
+    document.getElementById("SubmitBtn").disabled=true;
+    document.body.style.cursor="progress";
     http.onreadystatechange=handleResponse();
     http.open("POST",'Scripts/signup.php',true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
     if($(Form).children("input[name='AccountType']").eq(0).attr("value")=="Seller account" || $(Form).children("input[name='AccountType']").eq(0).attr("value")=="Delivery Agent account"){
       http.send(
-        "BusName="+ BusName.value +
+        "AccountType="+ AccountType.value +
+        "&BusName="+ BusName.value +
         "&Title="+ Title.value +
         "&Fname="+ Fname.value +
         "&Lname="+ Lname.value +
@@ -87,7 +97,8 @@ function EvaluateForm(Form){
     }
     else{
       http.send(
-        "Title="+ Title.value +
+        "AccountType="+ AccountType.value +
+        "&Title="+ Title.value +
         "&Fname="+ Fname.value +
         "&Lname="+ Lname.value +
         "&DOB="+ DOB.value +
@@ -99,7 +110,10 @@ function EvaluateForm(Form){
       function handleResponse(){
         if(http.readyState==4){
           if(http.status==200){
-            alert(http.responseText);
+            $("#response").html(http.responseText);
+            $("#SubmitBtn").attr("class","");  
+            document.getElementById("SubmitBtn").disabled=false;
+            document.body.style.cursor="normal";
             http.abort();
           }
         }
@@ -114,13 +128,13 @@ function EvaluateForm(Form){
 function checkBname(input){
   $(input).siblings().eq(0).html("");
    if($(input).val()==""){
-      Error[0]="Please enter your Business' name.";
+      Error[0]="Please enter your business' name.";
       ErrorCount +=1;
       $(input).siblings().eq(0).html(Error[0]);
       $(input).attr('class','Invalid');
      return false;
     }  
-    else if(/[^a-zA-Z,\.'? ]/.test($(input).val())==true){
+    else if(/[^a-zA-Z,\.'? 0-9]/.test($(input).val())==true){
       Error[0]="Only characters a-z, commas(,), apostrophes(') and fullstops(.) are allowed."
       ErrorCount++;
       $(input).siblings().eq(0).html(Error[0]);
@@ -136,9 +150,9 @@ function checkBname(input){
 function checkTitle(input){
   $(input).siblings().eq(0).html("");
    if($(input).val()==""){
-      Error[2]="Please select a title.";
+      Error[1]="Please select a title.";
       ErrorCount++;
-      $(input).siblings().eq(0).html(Error[2]);
+      $(input).siblings().eq(0).html(Error[1]);
       $(input).attr('class','Invalid');
      return false;
     }
@@ -151,7 +165,30 @@ function checkTitle(input){
 function checkFname(input){
   $(input).siblings().eq(0).html("");
     if($(input).val()==""){
-        Error[3]="Please enter your firstname."
+        Error[2]="Please enter your firstname."
+        ErrorCount++;
+        $(input).siblings().eq(0).html(Error[2]);
+        $(input).attr('class','Invalid');
+      return false;
+    }
+      else if(/[^a-zA-Z ]/.test($(input).val())==true){
+        Error[2]="Only letters a-z are allowed."
+        ErrorCount++;
+        $(input).siblings().eq(0).html(Error[2]);
+        $(input).attr('class','Invalid');
+        return false;
+      }
+      else{
+        $(input).siblings().eq(0).html("");
+        $(input).attr('class','Valid');
+        return true;
+      }
+
+}
+function checkLname(input){
+  $(input).siblings().eq(0).html("");
+    if($(input).val()==""){
+        Error[3]="Please enter your lastname."
         ErrorCount++;
         $(input).siblings().eq(0).html(Error[3]);
         $(input).attr('class','Invalid');
@@ -171,35 +208,12 @@ function checkFname(input){
       }
 
 }
-function checkLname(input){
-  $(input).siblings().eq(0).html("");
-    if($(input).val()==""){
-        Error[4]="Please enter your firstname."
-        ErrorCount++;
-        $(input).siblings().eq(0).html(Error[3]);
-        $(input).attr('class','Invalid');
-      return false;
-    }
-      else if(/[^a-zA-Z ]/.test($(input).val())==true){
-        Error[4]="Only letters a-z are allowed."
-        ErrorCount++;
-        $(input).siblings().eq(0).html(Error[4]);
-        $(input).attr('class','Invalid');
-        return false;
-      }
-      else{
-        $(input).siblings().eq(0).html("");
-        $(input).attr('class','Valid');
-        return true;
-      }
-
-}
 function checkDOB(input){
   $(input).siblings().eq(0).html("");
    if($(input).val()==""){
-     Error[5]="Please enter your date of birth."
+     Error[4]="Please enter your date of birth."
      ErrorCount++;
-     $(input).siblings().eq(0).html(Error[5]);
+     $(input).siblings().eq(0).html(Error[4]);
      $(input).attr('class','Invalid');
      return false;
      }
@@ -213,23 +227,23 @@ function checkDOB(input){
 function checkUname(input){
   $(input).siblings().eq(0).html("");
   if($(input).val()==""){
-      Error[6]="Please enter a username.";
+      Error[5]="Please enter a username.";
       ErrorCount++;
-      $(input).siblings().eq(0).html(Error[6]);
+      $(input).siblings().eq(0).html(Error[5]);
       $(input).attr('class','Invalid');
     return false;
     }
   else if($(input).val().length<6){
-      Error[6]="Your username must be longer than 5 characters.\n"
+      Error[5]="Your username must be longer than 5 characters.\n"
     ErrorCount++;
-    $(input).siblings().eq(0).html(Error[6]);
+    $(input).siblings().eq(0).html(Error[5]);
     $(input).attr('class','Invalid');
     return false;
   }
   else if(/[^a-zA-Z0-9_]/.test($(input).val())==true){
-      Error[6]="Only characters a-z, numbers 0-9 and the underscore(_) are allowed.";
+      Error[5]="Only characters a-z, numbers 0-9 and the underscore(_) are allowed.";
     ErrorCount++;
-    $(input).siblings().eq(0).html(Error[6]);
+    $(input).siblings().eq(0).html(Error[5]);
     $(input).attr('class','Invalid');
     return false;
     }
@@ -242,16 +256,16 @@ function checkUname(input){
 function checkPwd(input){
   $(input).siblings().eq(0).html("");
    if($(input).val()==""){
-      Error[7]="Please enter a password.";
+      Error[6]="Please enter a password.";
       ErrorCount++;
-      $(input).siblings().eq(0).html(Error[7]);
+      $(input).siblings().eq(0).html(Error[6]);
       $(input).attr('class','Invalid');
      return false;
     }
     else if($(input).val().length<6){
-      Error[7]="Your password must be longer than 5 characters";
+      Error[6]="Your password must be longer than 5 characters";
       ErrorCount++;
-      $(input).siblings().eq(0).html(Error[7]);
+      $(input).siblings().eq(0).html(Error[6]);
       $(input).attr('class','Invalid');
       return false;
     }
@@ -264,16 +278,16 @@ function checkPwd(input){
 function checkConfirmPwd(input){
   $(input).siblings().eq(0).html("");
   if($(input).val()==""){
-      Error[8]="Please confirm your password.";
+      Error[7]="Please confirm your password.";
       ErrorCount++;
-      $(input).siblings().eq(0).html(Error[8]);
+      $(input).siblings().eq(0).html(Error[7]);
       $(input).attr('class','Invalid');
     return false;
     }
   else if($(input).val()!=$("#txtPwd").val()){
-      Error[8]="Both passwords must match.";
+      Error[7]="Both passwords must match.";
       ErrorCount++;
-      $(input).siblings().eq(0).html(Error[8]);
+      $(input).siblings().eq(0).html(Error[7]);
       $(input).attr('class','Invalid');
     return false;
     }

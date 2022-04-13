@@ -4,11 +4,13 @@ echo "<head>";
 echo "<link rel='stylesheet' href='../Styles/test.css'>";
 echo "</head>";
 echo "<body>";
-echo "<pre>";
-printf("%.2f<br>",10/3);
-printf("%15.2f<br>",10/3);
-printf("%015.2f<br>",10/3);
-printf("%'#-15.2f<br>",10/3);
-echo "</pre>";
+global $test;
+$test="Adriel";
+echo display();
+function display(){
+//  $test=$test." Enehizena";
+  echo $test;
+}
+//echo $test;
 echo "</body>";
 ?>
