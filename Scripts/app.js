@@ -1,7 +1,8 @@
 require.config(
-{
-  baseUrl:"Scripts"
-})
+  {
+    baseUrl:"Scripts"
+  }
+)
 if(document.head.id=="SignupPage"){
  define(['Signup','jquery-3.6.0']) 
 }

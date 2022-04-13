@@ -9,8 +9,8 @@ function ShowModule(){
   }
   function CheckPosition(Object){
     Position=Object.getBoundingClientRect().top;
-    var ScreenHeight=window.innerHeight-40;
-    if(Position<ScreenHeight){
+    var ScreenHeight=window.innerHeight;
+    if(Position<=ScreenHeight){
       return true
     }
   }

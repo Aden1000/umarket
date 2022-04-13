@@ -1,5 +1,5 @@
 var ErrorCount=0;
-var Error=[""];
+var Error;
 var http=new window.XMLHttpRequest;
 function DisplayForm(Button){
   $(Button).siblings().attr('class','unselected');
@@ -34,15 +34,17 @@ function SubmitForm(Button){
 function EvaluateForm(event,Form){
   event.preventDefault();
   ErrorCount=0;
-  var AccountType=Form.getElementsByTagName("input").item(0);
-  var BusName=Form.getElementsByTagName("input").item(1);
-  var Title=Form.getElementsByTagName("select").item(0);
-  var Fname=Form.getElementsByTagName("input").item(2);
-  var Lname=Form.getElementsByTagName("input").item(3);
-  var DOB=Form.getElementsByTagName("input").item(4);
-  var Uname=Form.getElementsByTagName("input").item(5);
-  var Pwd=Form.getElementsByTagName("input").item(6);
-  var ConfirmPwd=Form.getElementsByTagName("input").item(7);
+  var AccountType=document.getElementById("hidAccountType");
+  var BusName=document.getElementById("txtBusName");
+  var BusType=document.getElementById('txtBusType');
+  var Email=document.getElementById('txtEmail');
+  var Title=document.getElementById('sltTitle');
+  var Fname=document.getElementById('txtFname');
+  var Lname=document.getElementById('txtLname');
+  var DOB=document.getElementById('txtDOB');
+  var Uname=document.getElementById('txtUname');
+  var Pwd=document.getElementById('txtPwd');
+  var ConfirmPwd=document.getElementById('txtConfirmPwd');
   
   //evaluate data
    if(checkTitle(Title)==false){
@@ -71,6 +73,12 @@ function EvaluateForm(event,Form){
     if(checkBname(BusName)==false){
       ErrorCount++
     }
+    if(checkBtype(BusType)==false){
+      ErrorCount++
+    }
+    if(checkEmail(Email)==false){
+      ErrorCount++
+    }
   }
   if(ErrorCount>0){
       return false
@@ -86,6 +94,8 @@ function EvaluateForm(event,Form){
       http.send(
         "AccountType="+ AccountType.value +
         "&BusName="+ BusName.value +
+        "&BusType=" + BusType.value +
+        "&Email=" + Email.value +
         "&Title="+ Title.value +
         "&Fname="+ Fname.value +
         "&Lname="+ Lname.value +
@@ -113,7 +123,7 @@ function EvaluateForm(event,Form){
             $("#response").html(http.responseText);
             $("#SubmitBtn").attr("class","");  
             document.getElementById("SubmitBtn").disabled=false;
-            document.body.style.cursor="normal";
+            document.body.style.cursor="default";
             http.abort();
           }
         }
@@ -128,36 +138,65 @@ function EvaluateForm(event,Form){
 function checkBname(input){
   $(input).siblings().eq(0).html("");
    if($(input).val()==""){
-      Error[0]="Please enter your business' name.";
+      Error="Please enter your business' name.";
       ErrorCount +=1;
-      $(input).siblings().eq(0).html(Error[0]);
+      $(input).siblings().eq(0).html(Error);
       $(input).attr('class','Invalid');
      return false;
     }  
     else if(/[^a-zA-Z,\.'? 0-9]/.test($(input).val())==true){
-      Error[0]="Only characters a-z, commas(,), apostrophes(') and fullstops(.) are allowed."
-      ErrorCount++;
-      $(input).siblings().eq(0).html(Error[0]);
+      Error="Only characters a-z, commas(,), apostrophes(') and fullstops(.) are allowed."
+      
+      $(input).siblings().eq(0).html(Error);
       $(input).attr('class','Invalid');
       return false;
     }
     else{
-      $(input).siblings().eq(0).html("");
       $(input).attr('class','Valid');
       return true;
     }
 }
-function checkTitle(input){
+function checkBtype(input){
   $(input).siblings().eq(0).html("");
-   if($(input).val()==""){
-      Error[1]="Please select a title.";
-      ErrorCount++;
-      $(input).siblings().eq(0).html(Error[1]);
+   if($(input).val()=="" || /[^a-zA-Z| ]/.test($(input).val())==true){
+      Error="Please select a business type.";
+      $(input).siblings().eq(0).html(Error);
       $(input).attr('class','Invalid');
      return false;
     }
-      else{
-        $(input).siblings().eq(0).html("");
+  else{
+        $(input).attr('class','Valid');
+        return true;
+      } 
+ }
+function checkEmail(input){
+  $(input).siblings().eq(0).html("");
+  if($(input).val()==""){
+    Error="Please enter an email address.";
+    $(input).siblings().eq(0).html(Error);
+    $(input).attr('class','Invalid');
+    return false;
+  }
+  else if(/@.*\.[a-z]+$/.test($(input).val())==false){
+    Error='Please enter a valid email address.';
+    $(input).siblings().eq(0).html(Error);
+    $(input).attr('class','Invalid');
+    return false;
+  }
+  else{
+    $(input).attr('class','Valid');
+    return true;
+  }
+}
+function checkTitle(input){
+  $(input).siblings().eq(0).html("");
+  if($(input).val()=="" || /[^a-zA-Z]/.test($(input).val())==true){
+      Error="Please select a title.";
+      $(input).siblings().eq(0).html(Error);
+      $(input).attr('class','Invalid');
+     return false;
+    }  
+  else{
         $(input).attr('class','Valid');
         return true;
       } 
@@ -165,21 +204,20 @@ function checkTitle(input){
 function checkFname(input){
   $(input).siblings().eq(0).html("");
     if($(input).val()==""){
-        Error[2]="Please enter your firstname."
-        ErrorCount++;
-        $(input).siblings().eq(0).html(Error[2]);
+        Error="Please enter your firstname."
+        
+        $(input).siblings().eq(0).html(Error);
         $(input).attr('class','Invalid');
       return false;
     }
       else if(/[^a-zA-Z ]/.test($(input).val())==true){
-        Error[2]="Only letters a-z are allowed."
-        ErrorCount++;
-        $(input).siblings().eq(0).html(Error[2]);
+        Error="Only letters a-z are allowed."
+        
+        $(input).siblings().eq(0).html(Error);
         $(input).attr('class','Invalid');
         return false;
       }
       else{
-        $(input).siblings().eq(0).html("");
         $(input).attr('class','Valid');
         return true;
       }
@@ -188,21 +226,20 @@ function checkFname(input){
 function checkLname(input){
   $(input).siblings().eq(0).html("");
     if($(input).val()==""){
-        Error[3]="Please enter your lastname."
-        ErrorCount++;
-        $(input).siblings().eq(0).html(Error[3]);
+        Error="Please enter your lastname."
+        
+        $(input).siblings().eq(0).html(Error);
         $(input).attr('class','Invalid');
       return false;
     }
       else if(/[^a-zA-Z ]/.test($(input).val())==true){
-        Error[3]="Only letters a-z are allowed."
-        ErrorCount++;
-        $(input).siblings().eq(0).html(Error[3]);
+        Error="Only letters a-z are allowed."
+        
+        $(input).siblings().eq(0).html(Error);
         $(input).attr('class','Invalid');
         return false;
       }
       else{
-        $(input).siblings().eq(0).html("");
         $(input).attr('class','Valid');
         return true;
       }
@@ -211,14 +248,13 @@ function checkLname(input){
 function checkDOB(input){
   $(input).siblings().eq(0).html("");
    if($(input).val()==""){
-     Error[4]="Please enter your date of birth."
-     ErrorCount++;
-     $(input).siblings().eq(0).html(Error[4]);
+     Error="Please enter your date of birth."
+     
+     $(input).siblings().eq(0).html(Error);
      $(input).attr('class','Invalid');
      return false;
      }
       else{
-        $(input).siblings().eq(0).html("");
         $(input).attr('class','Valid');
         return true;
       }
@@ -227,28 +263,27 @@ function checkDOB(input){
 function checkUname(input){
   $(input).siblings().eq(0).html("");
   if($(input).val()==""){
-      Error[5]="Please enter a username.";
-      ErrorCount++;
-      $(input).siblings().eq(0).html(Error[5]);
+      Error="Please enter a username.";
+      
+      $(input).siblings().eq(0).html(Error);
       $(input).attr('class','Invalid');
     return false;
     }
   else if($(input).val().length<6){
-      Error[5]="Your username must be longer than 5 characters.\n"
-    ErrorCount++;
-    $(input).siblings().eq(0).html(Error[5]);
+      Error="Your username must be longer than 5 characters.\n"
+    
+    $(input).siblings().eq(0).html(Error);
     $(input).attr('class','Invalid');
     return false;
   }
   else if(/[^a-zA-Z0-9_]/.test($(input).val())==true){
-      Error[5]="Only characters a-z, numbers 0-9 and the underscore(_) are allowed.";
-    ErrorCount++;
-    $(input).siblings().eq(0).html(Error[5]);
+      Error="Only characters a-z, numbers 0-9 and the underscore(_) are allowed.";
+    
+    $(input).siblings().eq(0).html(Error);
     $(input).attr('class','Invalid');
     return false;
     }
   else{
-      $(input).siblings().eq(0).html("");
       $(input).attr('class','Valid');
     return true;
     }
@@ -256,21 +291,20 @@ function checkUname(input){
 function checkPwd(input){
   $(input).siblings().eq(0).html("");
    if($(input).val()==""){
-      Error[6]="Please enter a password.";
-      ErrorCount++;
-      $(input).siblings().eq(0).html(Error[6]);
+      Error="Please enter a password.";
+      
+      $(input).siblings().eq(0).html(Error);
       $(input).attr('class','Invalid');
      return false;
     }
     else if($(input).val().length<6){
-      Error[6]="Your password must be longer than 5 characters";
-      ErrorCount++;
-      $(input).siblings().eq(0).html(Error[6]);
+      Error="Your password must be longer than 5 characters";
+      
+      $(input).siblings().eq(0).html(Error);
       $(input).attr('class','Invalid');
       return false;
     }
     else{
-      $(input).siblings().eq(0).html("");
       $(input).attr('class','Valid');
       return true;
     }
@@ -278,21 +312,18 @@ function checkPwd(input){
 function checkConfirmPwd(input){
   $(input).siblings().eq(0).html("");
   if($(input).val()==""){
-      Error[7]="Please confirm your password.";
-      ErrorCount++;
-      $(input).siblings().eq(0).html(Error[7]);
+      Error="Please confirm your password.";
+      $(input).siblings().eq(0).html(Error);
       $(input).attr('class','Invalid');
     return false;
     }
   else if($(input).val()!=$("#txtPwd").val()){
-      Error[7]="Both passwords must match.";
-      ErrorCount++;
-      $(input).siblings().eq(0).html(Error[7]);
+      Error="Both passwords must match.";
+      $(input).siblings().eq(0).html(Error);
       $(input).attr('class','Invalid');
     return false;
     }
   else{
-      $(input).siblings().eq(0).html("");
       $(input).attr('class','Valid');
     return true;
     }

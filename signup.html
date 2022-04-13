@@ -34,29 +34,52 @@
      <div class='unselected'  onclick='DisplayForm(this)'>DELIVERY AGENT</div>
      </div>
      <form  class='hidden' id="Form" action="Scripts/signup.php" onsubmit="return EvaluateForm(event,this)" method="post" enctype="text/plain">
-       <input type='hidden' name='AccountType' value=''>
-       <fieldset id='BusInfo1' class='shown'>  
+       <input id='hidAccountType' type='hidden' name='AccountType' value=''>
+       <fieldset id='BusInfo' class='shown'>  
          <legend>Business Information</legend>
          <div class='error'></div>
          <div>
            <div>
-             <label for='txtBusname'>Business Name:
+             <label for='txtBusName'>Business Name:
              </label>
            </div>
            <div>
-             <input onkeyup='checkBname(this)' type='text' name='txtBusname' id='txtBusname' >
+             <input onkeyup='checkBname(this)' type='text' name='txtBusName' id='txtBusName' >
+             <div class='error'></div>
+           </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtBusType'>
+             Business Type:</label>
+           </div>
+           <div>
+             <select name='sltBusType' onchange="checkBtype(this)" id='txtBusType' type='text'>
+               <option></option>
+               <option>Individual|Sole proprietary</option>
+               <option>Company|Patnership</option>
+             </select>
+             <div class='error'></div>
+           </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtEmail'>Email:</label>
+           </div>
+           <div>
+             <input type='text' id='txtEmail' onkeyup='checkEmail(this)'>
              <div class='error'></div>
            </div>
          </div>
        </fieldset>
-       <fieldset id='OwnerInfo1' class='shown'>
+       <fieldset id='OwnerInfo' class='shown'>
          <legend>Owner's Information</legend>
         <div>
           <div>
-            <label for='sltTitle1'>Title: </label> 
+            <label for='sltTitle'>Title: </label> 
           </div>
           <div>
-            <select onchange='checkTitle(this)' id='sltTitle1' name="sltTitle1" title='Title' >
+            <select onchange='checkTitle(this)' id='sltTitle' name="sltTitle" title='Title' >
            <option></option>
            <option value="Miss">Miss</option>
            <option value="Mr">Mr</option>
@@ -99,7 +122,7 @@
            </div>      
          </div>
         </fieldset>
-       <fieldset id='AccountInfo1' class='shown'>
+       <fieldset id='AccountInfo' class='shown'>
          <legend>Account Information</legend>
          <div>
            <div>
