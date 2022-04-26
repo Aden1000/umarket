@@ -1,0 +1,218 @@
+.disclaimer{
+  display: none;
+}
+@font-face{
+  font-family:'Calibri';
+  src:
+    url("../../Fonts/Calibri.ttf") format('truetype'),    
+    url("../../Fonts/Calibri.woff") format("woff"),
+    url("../../Fonts/Calibri.woff2") format("woff2"),
+    url("../../Fonts/Calibri.eot") format("embedded-opentype");
+}
+@font-face{
+  font-family:'Calibri Bold';
+  src:
+    url("../../Fonts/Calibri Bold.ttf") format("truetype"),
+    url("../../Fonts/Calibri Bold.woff") format("woff"),
+    url("../../Fonts/Calibri Bold.woff2") format("woff2"),
+    url("../../Fonts/Calibri Bold.eot") format("embedded-opentype"),
+    url("../../Fonts/Calibri Bold.otf") format("opentype");
+}
+@font-face{
+  font-family:"Corbel";
+  src:
+    url('../../Fonts/Corbel.ttf') format('truetype'),
+    url('../../Fonts/Corbel.woff') format('woff'),
+    url('../../Fonts/Corbel.woff2') format('woff2'),
+    url('../../Fonts/Corbel.eot') format('embedded-opentype'),
+    url('../../Fonts/Corbel.otf') format('opentype');
+    
+}
+@font-face{
+  font-family:"Corbel Bold";
+  src:
+    url('../../Fonts/Corbel Bold.ttf') format('truetype');
+}
+div{
+  box-sizing: border-box;
+}
+h1{
+  font-family: "Corbel Bold";
+  color:rgb(0,200,0);
+  margin-bottom: 0px;
+}
+#Banner{
+  position: fixed;
+  top:0px;
+  left:0px;
+  width:100%;
+  height:80px;
+  padding:10px;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: 0px 0px 5px rgb(0,0,0);
+  background: white;
+}
+#BannerExtra{
+  height:80px;
+  width:100%;
+}
+input[type='button']{
+  font-family: "Calibri Bold";
+}
+input,select{
+  appearance:none;
+  -moz-appearance:none;
+  -webkit-appearance:none;
+}
+#SignUpBtn{
+  height:30px;
+  font-size: 15px;
+  color:white;
+  background: rgb(0,200,0);
+  border:0px;
+}
+#SignUpBtn:hover{
+  transform: translateY(-2px);
+  cursor: pointer;
+}
+#UmarketImg{
+  width:150px;
+}
+#UmarketBanner{
+  width:800px;
+  align-self: center;
+}
+#MainContent{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+}
+#Form{
+  width:40%;
+  border:1px solid rgb(0,200,0);
+  margin-top: 30px;
+  font-family: "Calibri Bold";
+  font-size:17px;
+  color:rgb(0,200,0);
+  padding: 10px;
+   display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: column;
+  box-sizing: border-box;
+  text-align: center;
+}
+label{
+  cursor:pointer;
+}
+#Form>div input,#Form>div select{
+  border:1px solid rgb(0,0,0);
+  height:40px;
+  width:100%;
+  font-family: "Corbel";
+  font-size:17px;
+  color:rgb(0,200,0);
+  text-align: center;
+}
+#Form>div{
+  width:100%;
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  align-content: center;
+  flex-direction: row;
+  justify-content: space-between;
+}
+#Form>div{
+    margin-bottom: 30px;
+}
+#Form>div>div:nth-child(2){
+  min-width:70%;
+}
+#Form>div input[class='Invalid'],#Form>div select[class='Invalid']{
+  border:1px solid rgb(255,0,0);
+}
+#Form>div input[class='Valid'],#Form>div select[class='Valid']{
+  border:1px solid rgb(0,200,0);
+}
+#LoginBtn{
+  font-family: "Calibri Bold";
+  width:auto;
+  background: white;
+  border:1px solid rgb(0,200,0);
+  cursor:pointer;
+  height:40px;
+  font-size: 17px;
+  color:rgb(0,200,0);
+}
+#LoginBtn.hidden{
+  display: none;
+}
+#LoadingImg{
+  display: block;
+  animation-name: Loading;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 2s;
+  align-self: center;
+  height:30px;
+}
+#LoadingImg.hidden{
+  display: none;
+}
+@keyframes Loading{
+  to{
+    transform: rotateZ(360deg)
+  }
+}
+.error{
+  color:rgb(255,0,0)
+}
+.error:nth-of-type(1){
+  display: block !important;
+}
+@media screen and (max-width:700px){
+  #Banner{
+    height:100px;
+  }
+  #BannerExtra{
+    height: 100px;
+  }
+  #UmarketBanner{
+    width:100%;
+  }
+  #Form{
+    width:100%;
+    text-align: left;
+  }
+}
+@media screen and (max-width:700px) and (orientation:landscape){
+  #UmarketBanner{
+    width:80%;
+  }
+  #Form{
+    width:80%;
+  }
+}
+@media screen and (min-width:700px) and (max-width:999px){
+  #UmarketBanner{
+    width:80%
+  }
+  #Form{
+    width:80%;
+  }
+}

@@ -1,14 +1,13 @@
 var http=new window.XMLHttpRequest;
-function getResponse(value){
+function getResponse(){
   http.onreadystatechange=handleResponse();
-  http.open("POST",'Scripts/test.php',true);
-  http.setRequestHeader("Content-type",
- "application/x-www-form-urlencoded");
-  http.send('Name='+value);
+  http.open("GET",'./Scripts/test.php',true);
+  http.send(null);
   function handleResponse(){
     if(http.readyState==4){
      if(http.status==200){
-       $("#response").html(http.responseText);
+       var response=$("#response").eq(0).html(http.responseText);
+       alert(response);
        http.abort();
      }
      else{

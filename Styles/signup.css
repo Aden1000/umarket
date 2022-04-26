@@ -1,3 +1,6 @@
+.disclaimer{
+  display: none;
+}
 @font-face{
   font-family:'Calibri';
   src:
@@ -15,10 +18,24 @@
     url("../Fonts/Calibri Bold.eot") format("embedded-opentype"),
     url("../fonts/Calibri Bold.otf") format("opentype");
 }
-
+@font-face{
+  font-family:"Corbel";
+  src:
+    url('../Fonts/Corbel.ttf') format('truetype'),
+    url('../Fonts/Corbel.woff') format('woff'),
+    url('../Fonts/Corbel.woff2') format('woff2'),
+    url('../Fonts/Corbel.eot') format('embedded-opentype'),
+    url('../Fonts/Corbel.otf') format('opentype');
+    
+}
+@font-face{
+  font-family:"Corbel Bold";
+  src:
+    url('../Fonts/Corbel Bold.ttf') format('truetype');
+}
 h1,h2,h3,h4,h5{
   color:rgb(0,200,0);
-  font-family:"Calibri Bold"
+  font-family:"Corbel Bold"
 }
 img[class="Desktop"]{
   display: block;
@@ -85,8 +102,7 @@ input[class='Invalid'],select[class='Invalid']{
 input[class='Valid'],select[class='Valid']{
   border:2px solid rgb(0,200,0);
 }
-
-.LoginBtn{
+#LoginBtn{
   font-family: "Calibri Bold";
   color:rgb(0,200,0);
   background: white;
@@ -95,7 +111,7 @@ input[class='Valid'],select[class='Valid']{
   cursor:pointer;
   width:100%;
 }
-.LoginBtn:hover{
+#LoginBtn:hover{
   transform:translateY(-2px);
 }
 
@@ -235,7 +251,7 @@ fieldset input, fieldset select{
   display: block;
   
 }
-div[class='error']{
+.error{
   color: rgb(255,0,0);
 }
 #SubmitBtn{
@@ -255,9 +271,25 @@ div[class='error']{
   background:rgb(0,200,0);
   color:white;
 }
-#SubmitBtn.disabled{
-  opacity:0.5;
-  
+#SubmitBtn.hidden{
+  display: none;
+}
+#LoadingImg{
+  display: block;
+  animation-name: Loading;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-duration: 2s;
+  align-self: center;
+  height:30px;
+}
+#LoadingImg.hidden{
+  display: none;
+}
+@keyframes Loading{
+  to{
+    transform: rotateZ(360deg)
+  }
 }
 
 @media screen and (max-width:700px){
@@ -305,7 +337,6 @@ div[class='error']{
    width:100%;
   }
 }
-
 @media screen and (orientation:landscape) and (max-width:700px){
   img[class="Desktop"]{
   display: none
@@ -340,7 +371,6 @@ div[class='error']{
     width:100%;
   }
 }
-
 @media screen and (min-width:700px) and (max-width:999px){
   img[class="Desktop"]{
   display: none

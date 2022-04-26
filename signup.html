@@ -6,26 +6,27 @@
   <meta name='description' content="Create a Umarket account today.">
   <meta charset="utf-8">
   <meta name="keywords" content="Umarket, Signup, Create Account">
-  <link rel="icon" href="Images/Umarket.ico">
+  <link rel="icon" href="../Images/Umarket.ico">
   <link rel='stylesheet' href="Styles/signup.css" media="all">
   </head>
   <body>
-     <div id="Banner">
+    <div id="Banner">
        <a href='index.html'>
-       <img alt="" class="Desktop"  src="Images/Umarket.svg" id="UmarketImg">
-     <img alt="" class="Mobile" src="Images/Umarket.svg" id="UmarketImg">
-     <img alt="" class="Tablet" src="Images/Umarket.svg" id="UmarketImg">
+       <img alt="" class="Desktop"  src="../Images/Umarket.svg" id="UmarketImg">
+     <img alt="" class="Mobile" src="../Images/Umarket.svg" id="UmarketImg">
+     <img alt="" class="Tablet" src="../Images/Umarket.svg" id="UmarketImg">
        </a>
      <div id='CTA'>
-       <a href="Login.html"><input type='button' value="Login your account" class="LoginBtn"></a>
+       <a href="./Scripts/login.php">
+         <input type='button' value="Login your account!" id="LoginBtn">
+       </a>
      </div>
   </div>
-   <div id="BannerExtra"></div>
- 
-   <div id="MainContent">
-     <img id="UmarketBanner" class="Desktop" src="Images/Umarket%20Banner.svg">
-     <img id="UmarketBanner" class="Tablet" src="Images/Umarket%20Banner.svg">
-     <img id="UmarketBanner" class="Mobile" src="Images/Umarket%20Banner.svg">
+    <div id="BannerExtra"></div>
+    <div id="MainContent">
+     <img id="UmarketBanner" class="Desktop" src="../Images/Umarket%20Banner.svg">
+     <img id="UmarketBanner" class="Tablet" src="../Images/Umarket%20Banner.svg">
+     <img id="UmarketBanner" class="Mobile" src="../Images/Umarket%20Banner.svg">
      <h1>Create a Umarket account today!</h1>
      <span class='Green'>Choose an account type:</span>
      <div id="AccountType">
@@ -33,7 +34,7 @@
      <div class='unselected' onclick='DisplayForm(this)'>BUYER</div>
      <div class='unselected'  onclick='DisplayForm(this)'>DELIVERY AGENT</div>
      </div>
-     <form  class='hidden' id="Form" action="Scripts/signup.php" onsubmit="return EvaluateForm(event,this)" method="post" enctype="text/plain">
+     <form  class='hidden' id="Form" action="Scripts/signup.php" onsubmit="return EvaluateForm(event,this)" method="post" enctype="application/x-www-form-urlencoded">
        <input id='hidAccountType' type='hidden' name='AccountType' value=''>
        <fieldset id='BusInfo' class='shown'>  
          <legend>Business Information</legend>
@@ -59,15 +60,6 @@
                <option>Individual|Sole proprietary</option>
                <option>Company|Patnership</option>
              </select>
-             <div class='error'></div>
-           </div>
-         </div>
-         <div>
-           <div>
-             <label for='txtEmail'>Email:</label>
-           </div>
-           <div>
-             <input type='text' id='txtEmail' onkeyup='checkEmail(this)'>
              <div class='error'></div>
            </div>
          </div>
@@ -127,11 +119,24 @@
          <div>
            <div>
              <label for='txtUname'>
-               Username:<span class='HelpTip'></span>
+               Username:
+               <span class='HelpTip'></span>
              </label>
            </div>
            <div>
              <input onkeyup="checkUname(this)" type='text' name='txtUname' id='txtUname' >
+             <div class='error'></div>
+           </div>
+         </div>
+         <div>
+           <div>
+             <label for='txtEmail'>
+               Email:
+               <span class='HelpTip'></span>
+             </label>
+           </div>
+           <div>
+             <input type='text' id='txtEmail' onkeyup='checkEmail(this)'>
              <div class='error'></div>
            </div>
          </div>
@@ -158,9 +163,10 @@
          </div>
        </fieldset>
        <input type="button" value="CREATE ACCOUNT" id="SubmitBtn" onclick="SubmitForm(this)">
+       <img src='./Images/Loading.svg' id="LoadingImg" class="hidden">
      </form>
     </div>
     <div id='response'></div>
-    <script data-main="Scripts/app.js" src="Scripts/require.js"></script>
+    <script data-main="../Scripts/app.js" src="../Scripts/require.js"></script>
   </body>
 </html>

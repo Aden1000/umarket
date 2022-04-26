@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: CorelDRAW X7 -->
+
+<svg
+   xml:space="preserve"
+   width="28.723732"
+   height="30"
+   version="1.0"
+   style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+   viewBox="0 0 2872373.2 3000000"
+   id="svg2306"
+   sodipodi:docname="Message.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   id="namedview2308"
+   pagecolor="#ffffff"
+   bordercolor="#999999"
+   borderopacity="1"
+   inkscape:pageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   showgrid="false"
+   inkscape:zoom="18.733333"
+   inkscape:cx="14.386121"
+   inkscape:cy="15"
+   inkscape:window-width="1366"
+   inkscape:window-height="745"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="Layer_x0020_1" />
+ <defs
+   id="defs2291">
+  <style
+   type="text/css"
+   id="style2289">
+   <![CDATA[
+    .fil0 {fill:#00C800}
+   ]]>
+  </style>
+ </defs>
+ <g
+   id="Layer_x0020_1"
+   inkscape:label="Layer 1"
+   inkscape:groupmode="layer"
+   transform="translate(-4253120.1,-3307025)">
+  <metadata
+   id="CorelCorpID_0Corel-Layer" />
+  <g
+   id="_1996849477152"
+   transform="matrix(0.38460957,0,0,0.38460957,2617329.4,2035111.5)">
+   <g
+   id="g2296">
+    <path
+   class="fil0"
+   d="m 4965137,3307025 h 6044131 c 391739,0 712135,321104 712135,712136 v 4239323 c 0,391149 -320986,712135 -712135,712135 H 9111419 l 2358,2136524 L 6979729,8970619 H 4965137 c -390560,0 -712017,-320396 -712017,-712135 V 4019161 c 0,-391739 320396,-712136 712017,-712136 z m 6044131,499167 H 4965137 c -59197,0 -112380,23349 -149880,60967 l -2004,2004 c -37618,37500 -60966,90683 -60966,149998 v 4239323 c 0,57782 24292,110965 63088,149762 l -1061,1061 1061,943 c 37618,37618 90801,61202 149762,61202 h 2014592 v 1533 c 127829,0 255657,48938 352943,146696 l 1282646,1284061 -1061,-887841 c -1298,-14976 -2005,-30070 -2005,-45282 0,-275585 223581,-499167 499167,-499167 h 1897849 c 58961,0 112144,-23584 149761,-61202 l 2005,-2004 c 37617,-37618 61202,-90801 61202,-149762 V 4019161 c 0,-57782 -24292,-111083 -63089,-149880 -38796,-38796 -92097,-63089 -149879,-63089 z"
+   id="path2294" />
+   </g>
+   <rect
+   class="fil0"
+   x="6067616"
+   y="4780479"
+   width="3839242"
+   height="443700"
+   rx="293707"
+   ry="213651"
+   id="rect2298" />
+   <rect
+   class="fil0"
+   x="6067616"
+   y="7174368"
+   width="3839242"
+   height="443700"
+   rx="274208"
+   ry="199467"
+   id="rect2300" />
+   <rect
+   class="fil0"
+   x="6067616"
+   y="5977424"
+   width="3839242"
+   height="443700"
+   rx="274208"
+   ry="199467"
+   id="rect2302" />
+  </g>
+ </g>
+</svg>

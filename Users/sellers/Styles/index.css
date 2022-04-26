@@ -1,0 +1,321 @@
+/*for sellers index.html*/
+/*
+@font-face{
+  font-family:'Calibri';
+  src:
+    url("../../../Fonts/Calibri.ttf") format('truetype'),    
+    url("../../../Fonts/Calibri.woff") format("woff"),
+    url("../../../Fonts/Calibri.woff2") format("woff2"),
+    url("../../../Fonts/Calibri.eot") format("embedded-opentype");
+}
+@font-face{
+  font-family:'Calibri Bold';
+  src:
+    url("../../../Fonts/Calibri Bold.ttf") format("truetype"),
+    url("../../../Fonts/Calibri Bold.woff") format("woff"),
+    url("../../../Fonts/Calibri Bold.woff2") format("woff2"),
+    url("../../../Fonts/Calibri Bold.eot") format("embedded-opentype"),
+    url("../../../Fonts/Calibri Bold.otf") format("opentype");
+}
+*/
+@font-face{
+  font-family:"Corbel";
+  src:
+    url('../../../Fonts/Corbel.ttf') format('truetype'),
+    url('../../../Fonts/Corbel.woff') format('woff'),
+    url('../../../Fonts/Corbel.woff2') format('woff2'),
+    url('../../../Fonts/Corbel.eot') format('embedded-opentype'),
+    url('../../../Fonts/Corbel.otf') format('opentype');
+    
+}
+@font-face{
+  font-family:"Corbel Bold";
+  src:
+    url('../../../Fonts/Corbel Bold.ttf') format('truetype');
+}
+h1,h2,h3{
+  font-family: "Corbel Bold";
+  color: rgb(0,200,0);
+}
+div{
+  box-sizing: border-box;
+}
+#Banner{
+  position: fixed;
+  left:0px;
+  top:0px;
+  z-index:3;
+  height:12%;
+  width:100%;
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  box-shadow: 0px 0px 3px rgb(0,0,0);
+  padding:0px 10px 0px 10px;
+  background:white;
+  overflow-y: hidden;
+}
+#BannerTabs{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  font-family: "Corbel Bold";
+  font-size:15px;
+  width:90%;
+  height: 100%;
+}
+#BannerTabs>div{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+#BannerTabs img{
+  height:30px;
+}
+div[class='selected']{ 
+  color:rgb(0,200,0);
+  border-bottom: 1px solid rgb(0,200,0);
+  }
+div[class='unselected']{
+  color:rgb(100,100,100);
+  cursor: pointer;
+  }
+div[class='unselected'] img{
+  filter:grayscale(1);
+}
+#BannerExtra{
+  position: fixed;
+  z-index: 1;
+  top:0px;
+  left:0px;
+  z-index: 1;
+  height:17%;
+  width:100%;
+  background:white;
+}
+#PageName{
+  position: fixed;
+  top:12%;
+  left:25%;
+  z-index: 2;
+  width:50%;
+  height:6%;
+  padding:0px;
+  background: white;
+  overflow: hidden;
+}
+#PageName h1{
+    margin: 0px;
+  }
+#MainContent{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  position: relative;
+  left:25%;
+  top:18%;
+  width:50%;
+  background: rgb(245,245,245);
+  padding: 10px;
+  font-family:"Corbel";
+}
+#MainContent>div[class='hidden']{
+  display: none;
+}
+#MainContent>div{
+  width:100%;
+}
+#Footer{
+  display: none; 
+}
+#UmarketImg{
+  width:150px;
+}
+
+@media screen and (max-width:700px){
+  #Banner{
+    height:15%;
+    z-index: 3;
+  }
+  #BannerExtra{
+    height:22%;
+    z-index: 1;
+  }
+  #PageName{
+    top:15%;
+    left:0px;
+    z-index: 2;
+    height: 7%;
+    width: 100%;
+    padding-left:5px;
+    
+  }
+  #MainContent{
+     position: relative;
+     width:100%;
+     height:65%;
+     left:0px;
+     top:22%;
+  }
+  #Footer{
+    height:12%;
+    font-size:12px;
+  }
+  #Footer div{
+    margin-left: 20px;
+    margin-right: 20px;
+  }
+  #FooterExtra{
+    height:12%;
+    width:100%;
+    background: white;
+  }
+}
+@media screen and (max-width:700px) and (orientation:landscape){
+  #Banner{
+    height:20%;
+    z-index: 3;
+  }
+  #UmarketImg{
+    width:130px;
+  }
+  #BannerExtra{
+    height:30%;
+    z-index:1;
+  }
+  #PageName{
+    left:0px;
+    top:20%;
+    height:11%;
+    width:100%;
+    z-index: 2;
+    padding-left: 5px;
+  }
+  #MainContent{
+    top:29%;
+    left:0px;
+    width:100%;
+    height: 50%;
+  }
+  #Footer{
+    display: -webkit-box;
+    display:-webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-between;
+    align-items: center;
+    height:20%;
+    font-size: 12px;
+    overflow-x: scroll;
+    overflow-y: hidden
+  }
+  #Footer>div{
+    margin-right: 10px;
+    margin-left:10px;
+  }
+  #FooterExtra{
+    height:20%;
+  }
+}
+@media screen and (min-width:700px) and (max-width:999px) and (orientation:landscape){
+  #Banner{
+    height:20%;
+    z-index: 3;
+  }
+  #BannerExtra{
+    height:30%;
+    z-index: 1;
+  }
+  #PageName{
+    top:20%;
+    left:5px;
+    height:10%;
+    width: 100%;
+    z-index: 2;
+  }
+  #MainContent{
+    top:30%;
+    left:0px;
+    overflow: scroll;
+    height: 52%;
+    width:100%;
+  }
+  #Footer{
+    display: -webkit-box;
+    display:-webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height:17%;
+  }
+  #Footer>div{
+    display: -webkit-box;
+    display:-webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    font-family: "Corbel Bold";
+    margin-right: 10px;
+    margin-left:10px;
+  }
+  #FooterExtra{
+    height:17%;
+  }
+}
+@media screen and (max-width:999px){
+  #BannerTabs{
+    display: none;
+  }
+  #MainContent{
+    overflow-y: scroll;
+  }
+  #Footer{
+    display: -webkit-box;
+    display:-webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background: white;
+    width:100%;
+    position:fixed;
+    bottom:0px;
+    left:0px;
+    overflow-x: scroll;
+    overflow-y: hidden;
+    color:rgb(0,200,0);
+    font-family: "Corbel Bold";
+    border:1px solid rgb(0,200,0);
+  }
+  #Footer div{
+    display: -webkit-box;
+    display:-webkit-flex;
+    display: -ms-flexbox;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    align-content: center;
+    font-family: "Corbel Bold";
+  }
+  #Footer img{
+    height:30px;
+  }
+  #UmarketImg{
+    width:120px
+  }
+}

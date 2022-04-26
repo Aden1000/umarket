@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
+<!-- Creator: CorelDRAW X7 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="500px" height="500px" version="1.0" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 50000 50000"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .str5 {stroke:#00C800;stroke-width:191.457;stroke-linecap:round;stroke-linejoin:round}
+    .str6 {stroke:#00C800;stroke-width:191.457;stroke-linecap:round;stroke-linejoin:round}
+    .str4 {stroke:#00C800;stroke-width:191.457;stroke-linecap:round;stroke-linejoin:round}
+    .str7 {stroke:#00C800;stroke-width:191.457;stroke-linecap:round;stroke-linejoin:round}
+    .str0 {stroke:#00C800;stroke-width:191.457;stroke-linecap:round;stroke-linejoin:round}
+    .str2 {stroke:#00C800;stroke-width:191.457;stroke-linecap:round;stroke-linejoin:round}
+    .str1 {stroke:#00C800;stroke-width:191.457;stroke-linecap:round;stroke-linejoin:round}
+    .str3 {stroke:#00C800;stroke-width:191.457;stroke-linecap:round;stroke-linejoin:round}
+    .fil0 {fill:#00C800}
+   ]]>
+  </style>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <circle class="fil0 str0" cx="5999" cy="25000" r="3545"/>
+  <circle class="fil0 str1" cx="25000" cy="5698" r="3545"/>
+  <circle class="fil0 str2" cx="44302" cy="25000" r="3545"/>
+  <circle class="fil0 str3" cx="25000" cy="44302" r="3545"/>
+  <circle class="fil0 str4" transform="matrix(0.572976 -0.572976 0.572976 0.572976 11608.5 38542)" r="4375"/>
+  <circle class="fil0 str5" transform="matrix(0.572976 -0.572976 0.572976 0.572976 11395.6 11457.9)" r="4375"/>
+  <circle class="fil0 str6" transform="matrix(0.572976 -0.572976 0.572976 0.572976 38692.6 11457.9)" r="4375"/>
+  <circle class="fil0 str7" transform="matrix(0.572976 -0.572976 0.572976 0.572976 38692.6 38754.9)" r="4375"/>
+ </g>
+</svg>

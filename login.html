@@ -1,11 +1,72 @@
-<html>
-  <head lang="en">
+<html lang="en">
+  <head id="LoginPage">
     <title>Welcome: Login your account.</title>
     <meta name="viewport" content="user-scalable=no,width=device-width, initial-scale=1"/>
     <meta name='description' content="Login your Umarket account.">
      <meta charset="utf-8">
     <link rel="icon" href="../Images/Umarket.ico">
-    <link rel='stylesheet' href="../Styles/Login.css" media="all">
+    <link rel='stylesheet' href="../Styles/login.css" media="all">
   </head>
-  
+  <body>
+    <div id="Banner">
+      <a href='./index.html'>
+        <img src='./Images/Umarket.svg' id='UmarketImg'>
+      </a>
+      <a href="./Scripts/signup.php">
+        <input type='button' value="Create an account!" id="SignUpBtn">
+      </a>
+    </div>
+    <div id="BannerExtra"></div>
+    <div id="MainContent">
+      <img id="UmarketBanner" src="./Images/Umarket%20Banner.svg">
+      <h1>Log into your Umarket account!</h1>
+      <form id="Form">
+        <div class='error'></div>
+        <div>
+          <div>
+             <label for='txtUname'>
+            Username:
+          </label>
+          </div>
+          <div>
+            <input type='text' id='txtUname' onkeyup="checkUname()">
+            <div class='error'>
+            </div>
+          </div>
+        </div>
+        <div>
+          <div>
+            <label for='txtPwd'>
+            Password:
+            </label>
+          </div>
+          <div>
+            <input type='password' id='txtPwd' onkeyup=checkPwd()>           
+            <div class='error'>
+            </div>
+          </div>
+          </div>
+        <div>
+          <div>
+            <label for="sltAccountType">
+            Account Type:
+            </label>
+          </div>
+          <div>
+            <select id='sltAccountType' onkeyup="checkAccountType()">
+              <option></option>
+              <option value="sellers">Seller</option>
+              <option value="buyers">Buyer</option>
+              <option value="delivery_agents">Delivery Agent</option>
+            </select>
+            <div class='error'></div>
+          </div>
+        </div>
+        <input type="button" value="LOGIN ACCOUNT" id="LoginBtn" onclick="SubmitForm()">
+        <img src="./Images/Loading.svg" class='hidden' id='LoadingImg'>
+      </form>
+      <div id='response'></div>
+    </div>
+    <script data-main="./Scripts/app.js" src="./Scripts/require.js"></script>
+  </body>
 </html>
