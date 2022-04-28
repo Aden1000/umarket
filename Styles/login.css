@@ -159,20 +159,16 @@ label{
   font-size: 17px;
   color:rgb(0,200,0);
 }
-#LoginBtn.hidden{
+.hidden{
   display: none;
 }
 #LoadingImg{
-  display: block;
   animation-name: Loading;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-duration: 2s;
   align-self: center;
   height:30px;
-}
-#LoadingImg.hidden{
-  display: none;
 }
 @keyframes Loading{
   to{

@@ -263,17 +263,14 @@ p{
     display: none;
   }
   img[class="Mobile"]{
-   display: none
+   display: block;
+    width:50%;
+    align-self: center;
   }
-  img[class="Tablet"]{
-  display:none;  
-  }
-  #UmarketImg[class='Mobile']{
-    display:block;
+  #UmarketImg{
     width:120px;
   }
-  #UmarketBanner[class='Mobile']{
-    display:block;
+  #UmarketBanner{
     width:100%;
   }
   #Banner{
@@ -309,9 +306,9 @@ p{
   #AboutUmarket,#UmarketBenefits,#CallToAction{
     position: static;
     width:100%;
-    border:0px;
+    border:1px solid rgb(0,200,0);
     font-size:20px;
-    padding:1px;
+    padding:5px;
   }
   #UmarketBenefits,#CallToAction{
     margin-top:50px;
@@ -383,30 +380,45 @@ p{
 }
 @media screen and (max-width:700px) and (orientation:landscape){
   img[class="Desktop"]{
-    display: none;
+    display: block;
+    width:200px;
   }
   img[class="Mobile"]{
     display: none;
-  }
-   [class='hidden module']{
-    transform: translate(0%,10%);
   }
   #UmarketBanner[class='Mobile']{
     display:block;
     width:80%;
   }
+  #UmarketBanner[class='Desktop']{
+    display: none;
+  }
   #UmarketImg[class='Mobile']{
     display: block;
     width:150px
   }
+  #UmarketImg[class='Desktop']{
+    display: none;
+  }
   #AboutUmarket,#UmarketBenefits,#CallToAction{
-   position: relative;
-   left:2.5%;
-   width:95%;
-   font-size:20px;
+    position: relative;
+    left:2.5%;
+    width:95%;
+    font-size:20px;
+    border:0px;
+    padding: 1px;
+  }
+  #AboutUmarket div{
+    flex-direction: row;
+  }
+  #UmarketBenefits>div:nth-child(1){
+    flex-direction: row;
   }
   #UmarketBenefits>div:nth-child(2) div{
     width:100%;
+  }
+  #CallToAction>div:nth-child(1){
+    flex-direction: row;
   }
   #CallToAction>div:nth-child(2) {
     flex-direction: row;
@@ -427,12 +439,9 @@ p{
 @media screen and (min-width:700px) and (max-width:999px){
   img[class="Desktop"]{
     display: block;
-    width:250px;
+    width:200px;
 }
   img[class="Mobile"]{
-  display: none;
-}
-  img[class="Tablet"]{
   display: none;
 }
   #UmarketImg{
@@ -441,7 +450,6 @@ p{
   #UmarketBanner{
     width:80%;
   }
- 
   #AboutUmarket,#UmarketBenefits,#CallToAction{
     width:99%;  
     left:0.5%;

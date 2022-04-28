@@ -41,6 +41,7 @@ if(isset($_COOKIE['PHPSESSID']) && $_SESSION['initialized']==true && $_SESSION['
    $_SESSION['Uname']=$row['Username'];
    $_SESSION['Pwd']=$_POST['Pwd'];
    $_SESSION['loginID']=$loginID;
+   $_SESSION['CreationTime']=$row['CreationTime'];
    $script="
    <script>
    window.location.replace('$http://$host/Users/$table/Scripts/index.php');
@@ -136,12 +137,14 @@ else{
       break;
   }
   $mysql=disconnect();
-  mkdir("../Users/$table/$Uname");
-  mkdir("../Users/$table/$Uname/Profile");
-  mkdir("../Users/$table/$Uname/Messages");
-  mkdir("../Users/$table/$Uname/Orders");
-  mkdir("../Users/$table/$Uname/Images");
-  mkdir("../Users/$table/$Uname/Products");
+  if(!file_exists("../Users/$table/$Uname")){
+    mkdir("../Users/$table/$Uname");
+    mkdir("../Users/$table/$Uname/Profile");
+//  mkdir("../Users/$table/$Uname/Messages");
+//  mkdir("../Users/$table/$Uname/Orders");
+//  mkdir("../Users/$table/$Uname/Images");
+//  mkdir("../Users/$table/$Uname/Products");
+  }
   setcookie("PHPSESSID",session_id(),time()+60*60*24*7,"/",$host,true,true);
   $_SESSION['initialized']=true;
   $_SESSION['logged_in']=true;

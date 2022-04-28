@@ -40,6 +40,7 @@ if(isset($_COOKIE['PHPSESSID']) && $_SESSION['logged_in']==true && $_SESSION['in
    $_SESSION['AccountType']=$table;
    $_SESSION['Uname']=$row['Username'];
    $_SESSION['Pwd']=$row['Password'];
+    $_SESSION['CreationTime']=$row['CreationTime'];
    $script="
    <script>
    window.location.replace('$http://$host/Users/$table/Scripts/index.php');
@@ -67,10 +68,17 @@ switch($HTTP_REFERER){
       //then create a new login
       $query="INSERT INTO login (Username,LoginID,IP,AccountType) VALUES (\"$Uname\",\"$LoginID\",\"$REMOTE_ADDR\",\"$AccountType\")";
       $mysql->query($query);
-      $script="<script>
-      window.location.replace('$http://$host/Users/$AccountType/index.php');
-      </script>;";
+      //get the creation time
+      $mysql=connect('select');
+      $query="SELECT CreationTime FROM $AccountType WHERE Username='$Uname'";
+      $result=$mysql->query($query);
+      $row=$result->fetch_array();
+      $_SESSION['CreationTime']=$row['CreationTime'];
+      $mysql=disconnect();
       setcookie(session_name(),session_id(),time()+60*60*24*7,"/",$host,true,true);
+      $script="<script>
+      window.location.replace('$http://$host/Users/$AccountType/Scripts/index.php');
+      </script>;";
       echo $script;
     }
     else{
@@ -122,8 +130,9 @@ switch($HTTP_REFERER){
       $_SESSION['Uname']=$row['Username'];
       $_SESSION['Pwd']=$_POST['Pwd'];
       $_SESSION['loginID']=$loginID;
+      $_SESSION['CreationTime']=$row['CreationTime'];
       $script="<script>
-      window.location.replace('$http://$host/Users/$AccountType/index.php');
+      window.location.replace('$http://$host/Users/$AccountType/Scripts/index.php');
       </script>;";
       echo $script;
     }

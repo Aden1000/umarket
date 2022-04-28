@@ -1,0 +1,76 @@
+div{
+  box-sizing: border-box;
+}
+h1,h2,h3,h4,h5,h6{
+  margin-bottom: 0px;
+}
+#ProfileHead{
+}
+#ProfilePic{
+  border:2px solid rgb(0,200,0);
+  width:120px;
+  height:120px;
+  border-radius:20%;
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  justify-content: space-around;
+}
+#ProfilePic>img{
+  width:60%;
+}
+.EditBtn{
+  border:2px solid rgb(0,200,0);
+  width:40px;
+  height:40px;
+  border-radius: 100%;
+  background: white;
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  cursor: pointer;
+  filter: grayscale(1);
+}
+.EditBtn img{
+  height:25px;
+}
+.EditBtn:hover{
+  filter: grayscale(0);
+}
+#ProfileHead>.EditBtn:nth-child(2){
+  position: relative;
+  bottom: 25px;
+  left:95px;
+}
+#Uname,#CreationTime{
+  color:rgb(190,190,190)
+}
+#CreationTime{
+  font-family: "Calibri";
+}
+#ProfileHead>div:nth-child(3){
+  position: relative;
+  bottom:50px;
+}
+
+@media screen and (max-width:700px){
+  #ProfileHead{
+    width:100%;
+    justify-content: space-between;
+  }
+}
+@media screen and (max-width:700px) and (orientation:landscape){
+  #ProfileHead{
+    width:60%;
+  }
+  #ProfileHead>.EditBtn{
+    position: relative;
+    top:40px;
+}
+}

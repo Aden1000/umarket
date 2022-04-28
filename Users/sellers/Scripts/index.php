@@ -18,7 +18,7 @@ else{
 //check if the user had previously logged in
 session_start();
 if(isset($_COOKIE['PHPSESSID']) && $_SESSION['initialized']==true && $_SESSION['logged_in']==true){
-   $LoginID=$_COOKIE['PHPSESSID'];
+  $LoginID=$_COOKIE['PHPSESSID'];
   setcookie("PHPSESSID",$LoginID,time()-1,"/",TRUE,TRUE);
   $mysql=connect('select');
   $query="SELECT * FROM login WHERE LoginID=\"$LoginID\" and IP=\"$REMOTE_ADDR\"";
@@ -44,6 +44,7 @@ if(isset($_COOKIE['PHPSESSID']) && $_SESSION['initialized']==true && $_SESSION['
    $_SESSION['Uname']=$row['Username'];
    $_SESSION['Pwd']=$_POST['Pwd'];
    $_SESSION['loginID']=$loginID;
+   $_SESSION['CreationTime']=$row['CreationTime'];
    extract($_SESSION);
    echo file_get_contents('../Pages/index.html');
    $script="<script>
