@@ -293,16 +293,6 @@ fieldset input, fieldset select{
 }
 
 @media screen and (max-width:700px){
-  img[class="Desktop"]{
-  display: none
-}
-  img[class="Mobile"]{
-    display: block;
-    width:300px;
-}
-  img[class="Tablet"]{
-  display: none;
-}
   #UmarketImg{
     width:120px;
   }
@@ -338,16 +328,6 @@ fieldset input, fieldset select{
   }
 }
 @media screen and (orientation:landscape) and (max-width:700px){
-  img[class="Desktop"]{
-  display: none
-}
-  img[class="Mobile"]{
-    display: none;
-  }
-  img[class="Tablet"]{
-    display: block;
-    width:400px;
-  }
   #UmarketImg{
     width:150px;
   }
@@ -372,17 +352,6 @@ fieldset input, fieldset select{
   }
 }
 @media screen and (min-width:700px) and (max-width:999px){
-  img[class="Desktop"]{
-  display: none
-}
-  img[class="Mobile"]{
-  
-    display: none;
-  }
-  img[class="Tablet"]{
-    display: block;
-    width:700px;
-  }
   #UmarketBanner{
     width:80%;
   }

@@ -57,9 +57,6 @@ img[class="Desktop"]{
 img[class="Mobile"]{
   display: none;
 }
-img[class="Tablet"]{
-  display: none;
-}
 #Banner{
   width:100%;
   height:80px;
@@ -362,7 +359,6 @@ p{
     display:flex; 
     flex-direction: column;
     max-width:100%;
-    align-items: center;
   }
   #CallToAction>div:nth-child(2) {
     margin-top:20px;
@@ -381,35 +377,33 @@ p{
 @media screen and (max-width:700px) and (orientation:landscape){
   img[class="Desktop"]{
     display: block;
-    width:200px;
+    width:150px;
   }
   img[class="Mobile"]{
     display: none;
   }
-  #UmarketBanner[class='Mobile']{
+  #UmarketBanner{
     display:block;
     width:80%;
   }
-  #UmarketBanner[class='Desktop']{
-    display: none;
-  }
-  #UmarketImg[class='Mobile']{
+  #UmarketImg{
     display: block;
     width:150px
   }
-  #UmarketImg[class='Desktop']{
-    display: none;
-  }
   #AboutUmarket,#UmarketBenefits,#CallToAction{
-    position: relative;
-    left:2.5%;
-    width:95%;
-    font-size:20px;
-    border:0px;
-    padding: 1px;
+     position: relative;
+     left:2.5%;
+     width:95%;
+     font-size:20px;
+     border:0px;
+     padding: 1px;
   }
-  #AboutUmarket div{
+  #AboutUmarket>div>div, #UmarketBenefits>div:nth-child(1)>div,#CallToAction>div:nth-child(1)>div{
+    max-width:70% !important;
+  }
+  #AboutUmarket>div{
     flex-direction: row;
+    align-items: center;
   }
   #UmarketBenefits>div:nth-child(1){
     flex-direction: row;

@@ -37,6 +37,9 @@ h1,h2,h3{
   font-family: "Corbel Bold";
   color: rgb(0,200,0);
 }
+body{
+  height:100%;
+}
 div{
   box-sizing: border-box;
 }
@@ -133,7 +136,7 @@ div[class='unselected'] img{
   opacity:0;
   width:0px;
 }
-#MainContent>div[class='']{
+#MainContent>div:not(.hidden){
   width:100%;
 }
 #LoadingImg{

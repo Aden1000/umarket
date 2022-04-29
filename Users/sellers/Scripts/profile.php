@@ -31,6 +31,12 @@ elseif(file_exists("../$Uname/Profile/profile.jpg")){
 elseif(file_exists("../$Uname/Profile/profile.jpeg")){
   $profilePic="<img src='../$Uname/Profile/profile.jpeg'>";
 }
+if(!file_exists("../$Uname/Profile/description.txt")){
+  $profileDescription="N/A";
+}
+else{
+  $profileDescription=file_get_contents("../$Uname/Profile/description.txt");
+}
 $script=<<<_END
   <script>
   $("#ProfilePage").html("$profile");
@@ -38,8 +44,11 @@ $script=<<<_END
   $("#ProfilePage #BusName").html("<h3>$BusName</h3>")
   $("#ProfilePage #Uname").html("@$Uname");
   $("#ProfilePage #CreationTime").html("Joined $CreationTime");
+  $("#ProfilePage #BusDescription").append("$profileDescription");
+  setTimeout(function(){
   $("#LoadingImg").attr('class','hidden');
   $("#ProfilePage").attr('class','');
+  },2000);
   </script>
   _END;
 echo $script;
