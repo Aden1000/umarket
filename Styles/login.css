@@ -4,34 +4,34 @@
 @font-face{
   font-family:'Calibri';
   src:
-    url("../../Fonts/Calibri.ttf") format('truetype'),    
-    url("../../Fonts/Calibri.woff") format("woff"),
-    url("../../Fonts/Calibri.woff2") format("woff2"),
-    url("../../Fonts/Calibri.eot") format("embedded-opentype");
+    url("../Fonts/Calibri.ttf") format('truetype'),    
+    url("../Fonts/Calibri.woff") format("woff"),
+    url("../Fonts/Calibri.woff2") format("woff2"),
+    url("../Fonts/Calibri.eot") format("embedded-opentype");
 }
 @font-face{
   font-family:'Calibri Bold';
   src:
-    url("../../Fonts/Calibri Bold.ttf") format("truetype"),
-    url("../../Fonts/Calibri Bold.woff") format("woff"),
-    url("../../Fonts/Calibri Bold.woff2") format("woff2"),
-    url("../../Fonts/Calibri Bold.eot") format("embedded-opentype"),
-    url("../../Fonts/Calibri Bold.otf") format("opentype");
+    url("../Fonts/Calibri Bold.ttf") format("truetype"),
+    url("../Fonts/Calibri Bold.woff") format("woff"),
+    url("../Fonts/Calibri Bold.woff2") format("woff2"),
+    url("../Fonts/Calibri Bold.eot") format("embedded-opentype"),
+    url("../Fonts/Calibri Bold.otf") format("opentype");
 }
 @font-face{
   font-family:"Corbel";
   src:
-    url('../../Fonts/Corbel.ttf') format('truetype'),
-    url('../../Fonts/Corbel.woff') format('woff'),
-    url('../../Fonts/Corbel.woff2') format('woff2'),
-    url('../../Fonts/Corbel.eot') format('embedded-opentype'),
-    url('../../Fonts/Corbel.otf') format('opentype');
+    url('../Fonts/Corbel.ttf') format('truetype'),
+    url('../Fonts/Corbel.woff') format('woff'),
+    url('../Fonts/Corbel.woff2') format('woff2'),
+    url('../Fonts/Corbel.eot') format('embedded-opentype'),
+    url('../Fonts/Corbel.otf') format('opentype');
     
 }
 @font-face{
   font-family:"Corbel Bold";
   src:
-    url('../../Fonts/Corbel Bold.ttf') format('truetype');
+    url('../Fonts/Corbel Bold.ttf') format('truetype');
 }
 div{
   box-sizing: border-box;
