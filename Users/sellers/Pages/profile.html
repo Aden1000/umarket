@@ -1,13 +1,45 @@
-<html>
-  <head>
+<html lang='en'>
+  <head id='SellersProfilePage'>
     <link media='all' rel='stylesheet' href='../Styles/profile.css'>
   </head>
   <body>
     <div id='ProfileHead'>
-      <div id='ProfilePic' title='View profile picture'>
+      <div>
+        <div class='ProfilePic' title='View profile picture'>
+        </div>
+        <div id='EditProfilePic' onclick='showProfilePicOptions()'>
+        <div class='EditBtn' title='Edit profile picture.'>
+          <img src='../../../Images/Camera.svg'>
+        </div>
+        <input id='NewProfilePic' type='file' onchange='updateProfilePic(this)'>
+        </div>
       </div>
-      <div class='EditBtn' title='Edit profile picture.'>
-        <img src='../../../Images/Edit.svg'>
+      <div id='ProfilePicOptions' class='hidden'>
+        <div onclick='closeProfilePicOptions()'>
+          <img src='../../../Images/Close.svg'>
+        </div>
+        <label for='NewProfilePic' onclick='closeProfilePicOptions()'>
+          <img src='../../../Images/Upload.svg'>
+          Upload new picture
+        </label>
+        <label onclick='adjustProfilePic(false)'>
+          <img src='../../../Images/Edit.svg'>
+          Edit picture
+        </label>
+        <label onclick='deleteProfilePic()'>
+          <img src='../../../Images/Delete.svg'>
+          Delete picture
+        </label>
+      </div>
+      <div id='AdjustPic' class='hidden'>
+        <div id='Pic'></div>
+        <div>
+            Shift the picture to adjust it's position.
+          </div>
+        <div>
+          <input type='button' value='Cancel' onclick='adjustProfilePic(null)'>
+          <input type='button' value='Upload' onclick='adjustProfilePic(true)'>
+        </div>
       </div>
       <div>
         <div id='BusName'></div>
@@ -18,42 +50,51 @@
     <div id='BusDescription'>
       <div>
         <h2>About Business</h2>
-        <div class='EditBtn' title='Edit profile picture.'>
+        <div class='EditBtn' onclick='editAboutBus(false)'>
         <img src='../../../Images/Edit.svg'>
         </div>
       </div>
-    </div>
-    <div id='Products'>
-      <div>
-        <h2>Products</h2>
-        <div class='EditBtn' title='Edit profile picture.'>
-          <img src='../../../Images/Edit.svg'>
-        </div>
+      <div></div>
+      <div class='hidden'>
+        <textarea maxlength=1000 wrap='hard' placeholder='Write a description of your business. For example, you can tell what kind of goods or services you offer to customers and where you can deliver them.' onkeyup='enableEditAboutBus(this)'></textarea>
+        <br>
+        <input type='button' value='Cancel' onclick='editAboutBus(null)'>
+        <input type='button' value='Save' onclick='editAboutBus(true)' class='locked'>
       </div>
     </div>
-    <div id='Services'>
+    <div id='Products_Services'>
       <div>
-        <h2>Services</h2>
-        <div class='EditBtn' title='Edit profile picture.'>
-          <img src='../../../Images/Edit.svg'>
+        <h2>Products | Services</h2>
+        <div class='AddBtn'>
+          <img src='../../../Images/Add.svg'>
         </div>
       </div>
     </div>
     <div id='Ratings'>
       <div>
         <h2>Ratings</h2>
-        <div class='EditBtn' title='Edit profile picture.'>
-          <img src='../../../Images/Edit.svg'>
-        </div>
-
       </div>  
     </div>
     <div id='AboutOwner'>
       <div>
         <h2>About you</h2>
-        <div class='EditBtn' title='Edit profile picture.'>
+        <div class='EditBtn'>
           <img src='../../../Images/Edit.svg'>
         </div>
+      </div>
+      <div>
+        <div class='ProfilePic'>
+        </div>
+         <div id='EditProfilePic' onclick='showProfilePicOptions()'>
+        <div class='EditBtn' title='Edit profile picture.'>
+          <img src='../../../Images/Camera.svg'>
+        </div>
+        <input id='NewProfilePic' type='file' onchange='updateProfilePic(this)'>
+        </div>
+      </div>
+      <div>
+        <div id='Fullname'></div>
+        <div id='email'></div>
       </div>
     </div>
   </body>

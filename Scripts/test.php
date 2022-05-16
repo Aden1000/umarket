@@ -1,6 +1,7 @@
 <?php
-session_start();
-session_regenerate_id();
-setcookie('PHPSESSID',session_id(),time()+60,"/");
-echo "Done";
+$text="\rHello";
+$text="&";
+//$text=htmlspecialchars($text);
+$text=htmlentities($text);
+echo $text;
 ?>

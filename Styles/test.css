@@ -2,13 +2,23 @@
   font-family:"Calibri";
   font-size: 15px;
 }
-#Name{
-  height:40px;
-  width:300px;
-  border:1px solid rgb(0,200,0);
-  appearance:none;
-  -moz-appearance:none;
-  -webkit-appearance:none;
-  -ms-appearance:none;
-  text-align: center;
+#box{
+  width:500px;
+  height:500px;
+  overflow-y: scroll;
+  overflow-x: scroll;
+  border:3px solid rgb(0,200,0);
+/*  border-radius: 100%;*/
+}
+#box::-webkit-scrollbar{
+  display: none;
+}
+#box::-ms-scrollbar{
+  display: none;
+}
+#box::-moz-scrollbar{
+  display: none;
+}
+img{
+  width:110%;
 }

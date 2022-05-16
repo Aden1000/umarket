@@ -1,12 +1,12 @@
 <html lang='en'>
-  <head id="SellersUserPage">
+  <head id="SellersIndexPage">
     <title></title>
     <meta name="viewport" content="user-scalable=no,width=device-width, initial-scale=1"/>
     <meta charset="utf-8"/>
     <link rel="icon" href="../../../Images/Umarket.ico"/>
     <link rel="stylesheet" href="../Styles/index.css" media="all"/>
   </head>
-  <body>
+  <body onresize='ResizePage()'>
     <div id="Banner">
       <a href='../../../index.html'>
          <img  id="UmarketImg" src="../../../Images/Umarket.svg">
@@ -14,27 +14,21 @@
       <div id="BannerTabs">
         <div id="Profile" class="selected" onclick="ChangePage(this)">
         <img src="../../../Images/Profile.svg">
-        Profile
       </div>
         <div id="Orders" class="unselected" onclick="ChangePage(this)">
           <img src="../../../Images/Orders.svg">
-          Orders
         </div>
         <div id="Revenue" class="unselected" onclick="ChangePage(this)">
         <img src="../../../Images/Revenue.svg">
-        Revenue
       </div>
         <div id="Messages" class="unselected" onclick="ChangePage(this)">
         <img src="../../../Images/Message.svg">
-        Messages
       </div>
         <div id="Notifications"  class="unselected" onclick="ChangePage(this)">
         <img src="../../../Images/Notification.svg">
-        Notifications
       </div>
         <div id="Menu" class="unselected" onclick="ChangePage(this)">
           <img src='../../../Images/Menu.svg'>
-          Menu
         </div>
       </div>
          </div>
@@ -48,37 +42,44 @@
       <div id='RevenuePage' class='hidden'></div>
       <div id='MessagesPage' class='hidden'></div>
       <div id='NotificationsPage' class='hidden'></div>
-      <div id='MenuPage' class='hidden'></div>
-      <img src="../../../Images/Loading.svg" id="LoadingImg">
+      <div id='MenuPage' class='hidden'>
+        <div id='Logout'>
+          <img src='../../../Images/Logout.svg'>
+          <h3>Logout</h3>
+        </div>
+      </div>
+      <img src="../../../Images/Loading.svg" class="LoadingImg">
     </div>
     <div id="Footer">
       <div id="Profile" class="selected" onclick="ChangePage(this)">
         <img src="../../../Images/Profile.svg">
-        Profile
       </div>
       <div id="Orders" class="unselected" onclick="ChangePage(this)">
         <img src="../../../Images/Orders.svg">
-        Orders
       </div>
       <div id="Revenue" class="unselected" onclick="ChangePage(this)">
         <img src="../../../Images/Revenue.svg">
-        Revenue
       </div>
       <div id="Messages" class="unselected" onclick="ChangePage(this)">
         <img src="../../../Images/Message.svg">
-        Messages
       </div>
       <div id="Notifications"  class="unselected" onclick="ChangePage(this)">
         <img src="../../../Images/Notification.svg">
-        Notifications
       </div>
       <div id="Menu" class="unselected" onclick="ChangePage(this)">
           <img src='../../../Images/Menu.svg'>
-          Menu
         </div>
     </div>
     <div id="FooterExtra"></div>
-    <script src="../Scripts/jquery-3.6.0.js"></script>
-    <script src="../Scripts/index.js"></script>
+    <div id='response'></div>
+    <div id='alert' class='hidden'>
+      <div>
+        <img src='../../../Images/Close.svg' onclick="CloseAlert(this)">
+      </div>
+      <div id='content'></div>
+    </div>
+    <script  src='../Scripts/index.js'></script>
+    <script  src='../Scripts/profile.js'></script>
+    <script  src='../Scripts/jquery-3.6.0.js'></script>
   </body>
 </html>

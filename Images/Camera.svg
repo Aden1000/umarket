@@ -3,19 +3,19 @@
 
 <svg
    xml:space="preserve"
-   width="31.215593"
+   width="36.515144"
    height="30"
    version="1.0"
    style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   viewBox="0 0 3121559.3 3000000"
-   id="svg975"
-   sodipodi:docname="Menu.svg"
+   viewBox="0 0 3651514.4 3000000"
+   id="svg29"
+   sodipodi:docname="Camera.svg"
    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
-   id="namedview977"
+   id="namedview31"
    pagecolor="#ffffff"
    bordercolor="#999999"
    borderopacity="1"
@@ -24,7 +24,7 @@
    inkscape:pagecheckerboard="0"
    showgrid="false"
    inkscape:zoom="18.733333"
-   inkscape:cx="15.613879"
+   inkscape:cx="18.282918"
    inkscape:cy="15"
    inkscape:window-width="1366"
    inkscape:window-height="745"
@@ -33,12 +33,15 @@
    inkscape:window-maximized="1"
    inkscape:current-layer="Layer_x0020_1" />
  <defs
-   id="defs958">
+   id="defs11">
   <style
    type="text/css"
-   id="style956">
+   id="style9">
    <![CDATA[
+    .str0 {stroke:#00C800;stroke-width:89857.1}
     .fil0 {fill:#00C800}
+    .fil2 {fill:white}
+    .fil1 {fill:white}
    ]]>
   </style>
  </defs>
@@ -46,33 +49,53 @@
    id="Layer_x0020_1"
    inkscape:label="Layer 1"
    inkscape:groupmode="layer"
-   transform="translate(-3904304,-4118216)">
+   transform="translate(-3060567,-3319525)">
   <metadata
    id="CorelCorpID_0Corel-Layer" />
   <g
-   id="_2941918706784"
-   transform="matrix(0.400636,0,0,0.400636,2340099.3,2468310.4)">
+   id="_2394359639888"
+   transform="matrix(0.38522691,0,0,0.38522691,1881554.2,2040754.6)">
+   <rect
+   class="fil0 str0"
+   x="10997367"
+   y="4353691"
+   width="631800"
+   height="676584"
+   id="rect14" />
    <g
-   id="g963">
+   id="g19">
     <path
-   class="fil0"
-   d="m 3904304,4118216 h 7791510 V 5615835 H 3904304 Z m 7292343,383721 H 4403471 v 730177 h 6793176 z"
-   id="path961" />
-   </g>
-   <g
-   id="g967">
+   class="fil1"
+   d="m 5425861,3319525 h 4700165 l 916496,2937810 H 4557242 Z"
+   id="path16" />
     <path
+   id="1"
    class="fil0"
-   d="m 3904304,7113454 h 7791510 V 8611073 H 3904304 Z m 7292343,383720 H 4403471 v 730178 h 6793176 z"
-   id="path965" />
+   d="m 5425861,3319525 h 4700165 l 916496,2937810 H 4557242 Z m 4236493,631948 H 5896255 l -494922,1673914 h 4783301 z" />
    </g>
-   <g
-   id="g971">
-    <path
+   <rect
    class="fil0"
-   d="m 3904304,10108692 h 7791510 v 1497618 H 3904304 Z m 7292343,383720 H 4403471 v 730178 h 6793176 z"
-   id="path969" />
-   </g>
+   x="3060567"
+   y="4788007"
+   width="9478866"
+   height="6319136"
+   rx="947887"
+   ry="947889"
+   id="rect21" />
+   <ellipse
+   class="fil2"
+   cx="7800000"
+   cy="7947762"
+   rx="1579687"
+   ry="1579691"
+   id="ellipse23" />
+   <ellipse
+   class="fil1"
+   cx="11353828"
+   cy="5894126"
+   rx="473943"
+   ry="473945"
+   id="ellipse25" />
   </g>
  </g>
 </svg>

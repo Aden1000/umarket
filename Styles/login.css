@@ -121,7 +121,9 @@ label{
   font-family: "Corbel";
   font-size:17px;
   color:rgb(0,200,0);
-  text-align: center;
+  text-align: left;
+  padding-left: 20px;
+  background:rgb(245,245,245)
 }
 #Form>div{
   width:100%;
@@ -133,18 +135,21 @@ label{
   align-content: center;
   flex-direction: row;
   justify-content: space-between;
-}
-#Form>div{
-    margin-bottom: 30px;
+  margin-bottom: 30px;
 }
 #Form>div>div:nth-child(2){
   min-width:70%;
 }
+#Form>div:last-child{
+  align-items: center;
+  justify-content: center;
+  column-gap:10px;
+}
 input[class='Invalid'],#Form>div select[class='Invalid']{
-  border:1px solid rgb(255,0,0);
+  border:1px solid rgb(255,0,0) !important;
 }
 input[class='Valid'],#Form>div select[class='Valid']{
-  border:1px solid rgb(0,200,0);
+  border:1px solid rgb(0,200,0) !important;
 }
 #LoginBtn{
   font-family: "Calibri Bold";
@@ -157,7 +162,7 @@ input[class='Valid'],#Form>div select[class='Valid']{
   color:rgb(0,200,0);
 }
 .hidden{
-  display: none;
+  display: none !important;
 }
 #LoadingImg{
   animation-name: Loading;

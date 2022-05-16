@@ -86,8 +86,13 @@ function EvaluateForm(event,Form){
       return false
     }
   else{
+    var img=document.createElement("img");
+    img.src='../Images/Loading.svg';
+    img.id='LoadingImg';
     $("#SubmitBtn").attr('class','hidden');
-    $("#LoadingImg").removeAttr('class');
+    $("#Form>div:last-child").attr('class','');
+    $("#Form>div:last-child").html(img);
+    $("#Form>div:last-child").append("Uploading information...");
     var stamp=document.getElementById('txtDOB').valueAsDate.getTime();
     http.onreadystatechange=handleResponse();
     http.open("POST",'Scripts/signup.php',true);
@@ -125,10 +130,14 @@ function EvaluateForm(event,Form){
       function handleResponse(){
         if(http.readyState==4){
           if(http.status==200){
-            $("#response").html(http.responseText);
-            $("#SubmitBtn").attr("class","");
-            $("#LoadingImg").attr("class","hidden");
+            $("#Form>div:last-child").html(img);
+            $("#Form>div:last-child").append("Verifying data...");
+            setTimeout(function(){
+              $("#response").html(http.responseText);
+              $("#SubmitBtn").attr("class","");
+              $("#Form>div:last-child").attr("class","hidden");
             http.abort();
+            },2000);
           }
         }
         else{

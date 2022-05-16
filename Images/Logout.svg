@@ -3,19 +3,19 @@
 
 <svg
    xml:space="preserve"
-   width="28.090897"
+   width="26.067326"
    height="30"
    version="1.0"
    style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   viewBox="0 0 2809089.7 3000000"
-   id="svg148"
-   sodipodi:docname="Profile.svg"
+   viewBox="0 0 2606732.6 3000000"
+   id="svg29"
+   sodipodi:docname="Logout.svg"
    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
-   id="namedview150"
+   id="namedview31"
    pagecolor="#ffffff"
    bordercolor="#999999"
    borderopacity="1"
@@ -24,7 +24,7 @@
    inkscape:pagecheckerboard="0"
    showgrid="false"
    inkscape:zoom="18.733333"
-   inkscape:cx="14.065836"
+   inkscape:cx="13.051601"
    inkscape:cy="15"
    inkscape:window-width="1366"
    inkscape:window-height="745"
@@ -33,12 +33,15 @@
    inkscape:window-maximized="1"
    inkscape:current-layer="Layer_x0020_1" />
  <defs
-   id="defs135">
+   id="defs11">
   <style
    type="text/css"
-   id="style133">
+   id="style9">
    <![CDATA[
-    .fil0 {fill:#2DC000}
+    .str0 {stroke:#00C800;stroke-width:89857.1}
+    .fil1 {fill:#00C800}
+    .fil0 {fill:white}
+    .fil2 {fill:#00C800;fill-rule:nonzero}
    ]]>
   </style>
  </defs>
@@ -46,26 +49,38 @@
    id="Layer_x0020_1"
    inkscape:label="Layer 1"
    inkscape:groupmode="layer"
-   transform="translate(-4294267.4,-4118216)">
+   transform="translate(-4416561,-3319643)">
   <metadata
    id="CorelCorpID_0Corel-Layer" />
   <g
-   id="_2939915491696"
-   transform="matrix(0.400636,0,0,0.400636,2573829.3,2468310.4)">
+   id="_2057161595984"
+   transform="matrix(0.38523275,0,0,0.38523275,2715157.1,2040807.8)">
    <g
-   id="g140">
+   id="g17">
     <path
    class="fil0"
-   d="m 8885597,5203813 c 0,599519 -485960,1085597 -1085597,1085597 -599519,0 -1085479,-486078 -1085479,-1085597 0,-599519 485960,-1085597 1085479,-1085597 599637,0 1085597,486078 1085597,1085597 z m -656712,-428885 c -109550,-109550 -261435,-177474 -428885,-177474 -167450,0 -319217,67924 -428767,177474 -109550,109550 -177474,261435 -177474,428885 0,167450 67924,319335 177474,428885 109550,109550 261317,177474 428767,177474 167450,0 319335,-67924 428885,-177474 109550,-109550 177474,-261435 177474,-428885 0,-167450 -67924,-319335 -177474,-428885 z"
-   id="path138" />
+   d="m 4416561,3319761 h 6766643 v 6766407 H 4416561 Z"
+   id="path14" />
+    <path
+   id="1"
+   class="fil1"
+   d="m 4416561,3319761 h 6766643 v 6766407 H 4416561 Z m 6428322,338320 H 4754881 v 6089767 h 6090002 z" />
    </g>
    <g
-   id="g144">
+   id="g23">
     <path
    class="fil0"
-   d="M 11305843,11606310 H 4297105 c -163913,-5595788 6827255,-6475255 7008738,0 z m -6526552,-480771 h 6020192 C 10638283,9344198 9891478,8270158 8973095,7813679 8590436,7623352 8176174,7539155 7763562,7554839 c -414617,15801 -831002,133842 -1216137,347400 -944326,523813 -1687593,1626155 -1768134,3223300 z"
-   id="path142" />
+   d="m 4416561,3319643 5920665,1020857 v 6766643 L 4416561,10086286 Z"
+   id="path19" />
+    <path
+   id="path21"
+   class="fil1"
+   d="m 4416561,3319643 5920665,1020857 v 6766643 L 4416561,10086286 Z m 5624679,1308117 -5328693,-918736 v 6090002 l 5328693,918736 z" />
    </g>
+   <path
+   class="fil2 str0"
+   d="m 6164176,7362271 h 1635706 v 415560 L 9435706,6946475 7799882,6115120 v 415560 H 6164176 Z m 817676,0 m 818030,207780 m 817794,-208016 m 0,-831355 m -817794,-207780 m -818030,207780 m -817676,415795"
+   id="path25" />
   </g>
  </g>
 </svg>

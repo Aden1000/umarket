@@ -1,4 +1,5 @@
 <?php
+session_cache_limiter('nocache');
 require_once('../../../Scripts/sanitize.php');
 require_once('../../../Scripts/mysql.php');
 foreach($_SERVER as $key=>$value){
@@ -42,17 +43,19 @@ if(isset($_COOKIE['PHPSESSID']) && $_SESSION['initialized']==true && $_SESSION['
    $_SESSION['BusType']=$row['BusType'];
    $_SESSION['AccountType']=$table;
    $_SESSION['Uname']=$row['Username'];
-   $_SESSION['Pwd']=$_POST['Pwd'];
+   $_SESSION['Pwd']=$row['Password'];
    $_SESSION['loginID']=$loginID;
    $_SESSION['CreationTime']=$row['CreationTime'];
+   $_SESSION['Email']=$row['Email'];
    extract($_SESSION);
    echo file_get_contents('../Pages/index.html');
-   $script="<script>
-   document.head.getElementsByTagName('title').item(0).innerHTML='Welcome back $Fname!';
-   </script>";
+   $script=<<<_END
+     <script>
+     document.head.getElementsByTagName('title').item(0).innerHTML='Welcome back $Fname!';
+     </script>
+   _END;
    echo $script;
    require_once("./profile.php");
-   die();
  }
   else{
     //the current session id has not been logged in
@@ -62,7 +65,7 @@ if(isset($_COOKIE['PHPSESSID']) && $_SESSION['initialized']==true && $_SESSION['
     echo $script;
   }
 }
-else{ 
+else{
   $script="<script>
   window.location.replace('$http://$host/Scripts/login.php');
   </script>";

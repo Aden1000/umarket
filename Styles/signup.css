@@ -161,7 +161,7 @@ input[class='Valid'],select[class='Valid']{
   font-family: "Calibri Bold";
 }
 
-form{
+#Form{
   display:-webkit-box; 
   display:-webkit-flex; 
   display:-ms-flexbox; 
@@ -173,16 +173,25 @@ form{
   width:50%;
   box-sizing: border-box;  
 }
-form[class='hidden']{
+#Form[class='hidden']{
   display: none;
 }
-form[class='shown']{
+#Form[class='shown']{
   display:-webkit-box; 
   display:-webkit-flex; 
   display:-ms-flexbox; 
   display:flex;
 }
-
+form>div:last-child{
+  display:-webkit-box; 
+  display:-webkit-flex; 
+  display:-ms-flexbox; 
+  display:flex;
+  align-items: center;
+  column-gap: 10px;
+  font-family: "Calibri Bold";
+  color:rgb(0,200,0);
+}
 legend{
   font-size:18px;
   color:rgb(0,200,0);
@@ -235,12 +244,13 @@ fieldset>div>div:nth-child(2){
 fieldset input, fieldset select{
   height:40px;
   width:100%;
-  text-align: center;
+  text-align: left;
+  padding-left:20px !important;
   color:rgb(0,200,0);
   border:1px solid rgb(0,0,0);
   padding: 0px;
   box-sizing: border-box;
-   background:white;
+  background:rgb(245,245,245);
 }
 
 .HelpTip{
@@ -280,8 +290,8 @@ fieldset input, fieldset select{
   align-self: center;
   height:30px;
 }
-#LoadingImg.hidden{
-  display: none;
+.hidden{
+  display: none !important;
 }
 @keyframes Loading{
   to{
@@ -310,7 +320,7 @@ fieldset input, fieldset select{
     justify-content: space-around;
     font-size:100%;
   }
-  form{
+  #Form{
     width:100%
   }
   fieldset{
@@ -355,7 +365,7 @@ fieldset input, fieldset select{
   #AccountType{
     width:80%
   }
-  form{
+  #Form{
     width:80%;
   }
   fieldset input, fieldset select{

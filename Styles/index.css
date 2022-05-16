@@ -40,6 +40,9 @@ h1,h2,h3,h4,h5{
   color:rgb(0,200,0);
   font-family: "Corbel Bold"
 }
+a{
+  text-decoration: none;
+}
 input{
   -moz-appearance:none;
   -webkit-appearance:none;
@@ -156,23 +159,16 @@ div{
 #UmarketBenefits,#CallToAction{
 margin-top:100px;
  }
+#AboutUmarket>div>div:nth-child(1),#UmarketBenefits>div:nth-child(1)>div:nth-child(1),#CallToAction>div:nth-child(1)>div:nth-child(1)
+{
+  width:50%;
+}
 
 #AboutUmarket>div{
   display: flex;
   flex-direction: row;
   justify-content: space-around;
   align-items: center;
-}
-#AboutUmarket>div div{
-  max-width:50%;  
-}
-
-.Green{
-  color:rgb(0,200,0);
-  font-family: "Corbel Bold"
-}
-p{
-  margin-bottom: 0px;
 }
 
 #UmarketBenefits>div{
@@ -187,9 +183,6 @@ p{
 }
 #UmarketBenefits>div:nth-child(1){
   margin-bottom: 10px;
-}
-#UmarketBenefits>div:nth-child(1) div{
- max-width:50%;
 }
 #UmarketBenefits>div:nth-child(2){
   align-items: stretch;
@@ -227,9 +220,6 @@ p{
   align-items:center; 
   width:100%;
 }
-#CallToAction>div:nth-child(1)>div:nth-child(1){
-  max-width:60%
-}
 #CallToAction div:nth-child(1) h1{
   margin:10px 0px 10px 0px;
 }
@@ -252,6 +242,14 @@ p{
   border:1px solid rgb(0,200,0);
   text-align: center;
   box-sizing: border-box;
+}
+
+.Green{
+  color:rgb(0,200,0);
+  font-family: "Corbel Bold"
+}
+p{
+  margin-bottom: 0px;
 }
 
 
@@ -303,41 +301,28 @@ p{
   #AboutUmarket,#UmarketBenefits,#CallToAction{
     position: static;
     width:100%;
-    border:1px solid rgb(0,200,0);
+    border:0px solid rgb(0,200,0);
     font-size:20px;
     padding:5px;
   }
   #UmarketBenefits,#CallToAction{
     margin-top:50px;
  }
-  #AboutUmarket>div{
+  #AboutUmarket>div div:nth-child(1),#CallToAction>div:nth-child(1)>div:nth-child(1),#UmarketBenefits>div:nth-child(1)>div:nth-child(1){
+    display:-webkit-box;    
+    display:-webkit-flex;    
+    display:-ms-flexbox;    
+    display:flex; 
+    flex-direction:column;
+    width:100%;
+  }
+  #AboutUmarket>div,#UmarketBenefits>div,#CallToAction>div{
     flex-direction: column;
     align-items:flex-start;
-    width:100%
-  }
-  #AboutUmarket>div div:nth-child(1){
-    display:-webkit-box;    
-    display:-webkit-flex;    
-    display:-ms-flexbox;    
-    display:flex; 
-    flex-direction:column;
-    max-width:100%;
-  }
-  #UmarketBenefits>div{
-    flex-direction:column;
     width:100%;
-    align-items:center;
     justify-content: space-around;
   }
-  #UmarketBenefits>div:nth-child(1) div:nth-child(1){
-    display:-webkit-box;    
-    display:-webkit-flex;    
-    display:-ms-flexbox;    
-    display:flex; 
-    flex-direction: column;
-    width:100%;
-    max-width:100%;
-  }
+  
   #UmarketBenefits>div:nth-child(1) div:nth-child(1) div{
     width:100%;
   }
@@ -345,21 +330,7 @@ p{
     margin-bottom: 10px;
     width:100%
   }
-
-  #CallToAction>div{
-    flex-direction:column;
-    align-content: stretch;
-    align-items: center;
-    justify-content: center;
-  }
-  #CallToAction>div:nth-child(1)>div:nth-child(1){
-    display:-webkit-box;   
-    display:-webkit-flex;   
-    display:-ms-flexbox;
-    display:flex; 
-    flex-direction: column;
-    max-width:100%;
-  }
+  
   #CallToAction>div:nth-child(2) {
     margin-top:20px;
     height:400px;
@@ -377,7 +348,7 @@ p{
 @media screen and (max-width:700px) and (orientation:landscape){
   img[class="Desktop"]{
     display: block;
-    width:150px;
+    width:100%;
   }
   img[class="Mobile"]{
     display: none;
@@ -391,15 +362,22 @@ p{
     width:150px
   }
   #AboutUmarket,#UmarketBenefits,#CallToAction{
-     position: relative;
-     left:2.5%;
-     width:95%;
-     font-size:20px;
-     border:0px;
-     padding: 1px;
+    position: relative;
+    left:2.5%;
+    width:95%;
+    font-size:20px;
+    border:0px;
+    padding: 1px;
   }
-  #AboutUmarket>div>div, #UmarketBenefits>div:nth-child(1)>div,#CallToAction>div:nth-child(1)>div{
-    max-width:70% !important;
+  #AboutUmarket>div:nth-child(1),#UmarketBenefits>div:nth-child(1),#CallToAction>div:nth-child(1){
+    align-items: center;
+  }
+  #AboutUmarket>div:nth-child(1)>div:nth-child(1), #UmarketBenefits>div:nth-child(1)>div:nth-child(1),#CallToAction>div:nth-child(1)>div:nth-child(1){
+    width:65%;
+    text-align: justify;
+  }
+  #AboutUmarket>div:nth-child(1)>div:nth-child(2), #UmarketBenefits>div:nth-child(1)>div:nth-child(2),#CallToAction>div:nth-child(1)>div:nth-child(2){
+    width:30%;
   }
   #AboutUmarket>div{
     flex-direction: row;

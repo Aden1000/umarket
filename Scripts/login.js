@@ -8,7 +8,12 @@ function SubmitForm(){
   if(ErrorCount==0){
     $('.error').html('');
     $('#LoginBtn').eq(0).attr('class','hidden');
-    $("#LoadingImg").eq(0).removeAttr('class');
+    var img=document.createElement("img");
+    img.src='../Images/Loading.svg';
+    img.id='LoadingImg';
+    $("#Form>div:last-child").eq(0).html(img);
+    $("#Form>div:last-child").eq(0).append("Checking information...");
+    $("#Form>div:last-child").eq(0).removeAttr('class');
     http.onreadystatechange=handleResponse();
     http.open("POST","./Scripts/login.php",true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -20,10 +25,14 @@ function SubmitForm(){
     function handleResponse(){
       if(http.readyState==4){
         if(http.status==200){
-          $('#response').eq(0).html(http.responseText);
-          $('#LoadingImg').eq(0).attr('class','hidden');
-          $('#LoginBtn').eq(0).removeClass('hidden');
-          http.abort();
+          $("#Form>div:last-child").eq(0).html(img)
+          $("#Form>div:last-child").eq(0).append('Almost done...')
+          setTimeout(function(){
+            $('#response').eq(0).html(http.response);
+            $('#Form>div:last-child').eq(0).attr('class','hidden');
+            $('#LoginBtn').eq(0).removeClass('hidden');
+            http.abort();
+          },2000);
         }
       }
       else{

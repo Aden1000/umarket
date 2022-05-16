@@ -140,10 +140,10 @@ else{
   if(!file_exists("../Users/$table/$Uname")){
     mkdir("../Users/$table/$Uname");
     mkdir("../Users/$table/$Uname/Profile");
-//  mkdir("../Users/$table/$Uname/Messages");
-//  mkdir("../Users/$table/$Uname/Orders");
-//  mkdir("../Users/$table/$Uname/Images");
-//  mkdir("../Users/$table/$Uname/Products");
+    mkdir("../Users/$table/$Uname/Messages");
+    mkdir("../Users/$table/$Uname/Orders");
+    mkdir("../Users/$table/$Uname/Images");
+    mkdir("../Users/$table/$Uname/Products");
   }
   setcookie("PHPSESSID",session_id(),time()+60*60*24*7,"/",$host,true,true);
   $_SESSION['initialized']=true;
