@@ -137,6 +137,9 @@ label{
   justify-content: space-between;
   margin-bottom: 30px;
 }
+#Form>div>div:nth-child(1){
+  min-width: 30%;
+}
 #Form>div>div:nth-child(2){
   min-width:70%;
 }
@@ -184,6 +187,9 @@ input[class='Valid'],#Form>div select[class='Valid']{
   display: block !important;
 }
 @media screen and (max-width:700px){
+  #UmarketImg{
+    width:120px;
+  }
   #Banner{
     height:100px;
   }
