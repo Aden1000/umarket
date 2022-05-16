@@ -65,6 +65,7 @@ input,select{
   appearance:none;
   -moz-appearance:none;
   -webkit-appearance:none;
+  border-radius: 0px;
 }
 #SignUpBtn{
   height:30px;
