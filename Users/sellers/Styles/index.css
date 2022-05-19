@@ -1,5 +1,4 @@
 /*for sellers index.html*/
-/*
 @font-face{
   font-family:'Calibri';
   src:
@@ -8,6 +7,7 @@
     url("../../../Fonts/Calibri.woff2") format("woff2"),
     url("../../../Fonts/Calibri.eot") format("embedded-opentype");
 }
+/*
 @font-face{
   font-family:'Calibri Bold';
   src:
@@ -84,13 +84,10 @@ div{
 #BannerTabs img{
   height:30px;
 }
-div[class='selected']{ 
-  color:rgb(0,200,0);
-}
-div[class='unselected']{
+#Footer div[class='unselected'], #BannerTabs div[class='unselected']{
   cursor: pointer;
   }
-div[class='unselected'] img{
+#Footer div[class='unselected'] img, #BannerTabs div[class='unselected'] img{
   filter:grayscale(1);
 }
 #BannerExtra{
@@ -129,10 +126,14 @@ div[class='unselected'] img{
 }
 #MainContent>div.hidden{
   opacity: 0;
+  height:0px;
+  min-width: 0px;
+  overflow: hidden;
   display: block;
 }
 #MainContent>div{
   min-width:100%;
+  height:auto;
 }
 #MainContent>#MenuPage>div{
   display: -webkit-box;
@@ -178,7 +179,7 @@ div[class='unselected'] img{
   width:150px;
 }
 #alert{
-  color:rgb(0,200,0);
+  color: rgb(100,100,100);
   font-family: "Corbel";
   transition: 1s;
   -moz-transition: 1s;
@@ -208,8 +209,17 @@ div[class='unselected'] img{
   cursor:pointer;
   float: right;
 }
-.error{
-  color:rgb(255,0,0);
+#alert>#content{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap: 10px;
+}
+#alert>#content>img{
+  height:25px;
 }
 @media screen and (max-width:700px){
   #Banner{
@@ -234,7 +244,7 @@ div[class='unselected'] img{
     top:0px;
   }
   #Footer{
-    height:50px;
+    height:57px;
     font-size:12px;
   }
   #Footer div{
@@ -242,7 +252,7 @@ div[class='unselected'] img{
     margin-right: 30px;
   }
   #FooterExtra{
-    height:50px;
+    height:57px
   }
   #alert{
     width:98%;
@@ -279,7 +289,7 @@ div[class='unselected'] img{
     flex-wrap: nowrap;
     justify-content: space-between;
     align-items: center;
-    height:45px;
+    height:50px;
     font-size: 12px;
     overflow-x: scroll;
     overflow-y: hidden
@@ -289,7 +299,7 @@ div[class='unselected'] img{
     margin-left:10px;
   }
   #FooterExtra{
-    height:45px;
+    height:50px;
   }
 }
 @media screen and (min-width:700px) and (max-width:999px){
@@ -332,7 +342,7 @@ div[class='unselected'] img{
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height:50px;
+    height:57px;
     width: 100% !important;
     left:0px !important;
   }
@@ -349,7 +359,7 @@ div[class='unselected'] img{
     margin-left:10px;
   }
   #FooterExtra{
-    height:50px;
+    height:57px;
   }
 }
 @media screen and (max-width:999px){
@@ -393,4 +403,4 @@ div[class='unselected'] img{
   #UmarketImg{
     width:120px
   }
-}
+} 

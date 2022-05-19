@@ -7,38 +7,38 @@
       <div>
         <div class='ProfilePic' title='View profile picture'>
         </div>
-        <div id='EditProfilePic' onclick='showProfilePicOptions()'>
+        <div class='EditProfilePic' onclick='showProfilePicOptions(this.parentElement.parentElement)'>
         <div class='EditBtn' title='Edit profile picture.'>
           <img src='../../../Images/Camera.svg'>
         </div>
-        <input id='NewProfilePic' type='file' onchange='updateProfilePic(this)'>
+        <input id='NewProfilePic' type='file' onchange='updateProfilePic(this,this.parentElement.parentElement.parentElement)'>
         </div>
       </div>
-      <div id='ProfilePicOptions' class='hidden'>
-        <div onclick='closeProfilePicOptions()'>
+      <div class='ProfilePicOptions hidden'>
+        <div onclick='closeProfilePicOptions(this.parentElement.parentElement)'>
           <img src='../../../Images/Close.svg'>
         </div>
-        <label for='NewProfilePic' onclick='closeProfilePicOptions()'>
+        <label for='NewProfilePic'>
           <img src='../../../Images/Upload.svg'>
           Upload new picture
         </label>
-        <label onclick='adjustProfilePic(false)'>
+        <label onclick='adjustProfilePic(false,this.parentElement.parentElement)'>
           <img src='../../../Images/Edit.svg'>
           Edit picture
         </label>
-        <label onclick='deleteProfilePic()'>
+        <label onclick='deleteProfilePic(this.parentElement.parentElement)'>
           <img src='../../../Images/Delete.svg'>
           Delete picture
         </label>
       </div>
-      <div id='AdjustPic' class='hidden'>
-        <div id='Pic'></div>
+      <div class='AdjustPic hidden'>
+        <div class='Pic'></div>
         <div>
             Shift the picture to adjust it's position.
           </div>
         <div>
-          <input type='button' value='Cancel' onclick='adjustProfilePic(null)'>
-          <input type='button' value='Upload' onclick='adjustProfilePic(true)'>
+          <input type='button' value='Cancel' onclick='adjustProfilePic(null,this.parentElement.parentElement.parentElement)'>
+          <input type='button' value='Upload' onclick='adjustProfilePic(true,this.parentElement.parentElement.parentElement)'>
         </div>
       </div>
       <div>
@@ -50,16 +50,17 @@
     <div id='BusDescription'>
       <div>
         <h2>About Business</h2>
-        <div class='EditBtn' onclick='editAboutBus(false)'>
+        <div class='EditBtn' onclick='editAbout(false,this.parentElement.parentElement)'>
         <img src='../../../Images/Edit.svg'>
         </div>
       </div>
       <div></div>
       <div class='hidden'>
-        <textarea maxlength=1000 wrap='hard' placeholder='Write a description of your business. For example, you can tell what kind of goods or services you offer to customers and where you can deliver them.' onkeyup='enableEditAboutBus(this)'></textarea>
+        <textarea maxlength=1000 wrap='hard' placeholder='Write a description of your business. For example, you can tell what kind of goods or services you offer to customers and where you can deliver them.' onkeyup='enableEditAbout(this,this.parentElement.parentElement)'></textarea>
         <br>
-        <input type='button' value='Cancel' onclick='editAboutBus(null)'>
-        <input type='button' value='Save' onclick='editAboutBus(true)' class='locked'>
+        <div class='WordCount'></div>
+        <input type='button' value='Cancel' onclick='editAbout(null,this.parentElement.parentElement)'>
+        <input type='button' value='Save' onclick='editAbout(true,this.parentElement.parentElement)' class='locked'>
       </div>
     </div>
     <div id='Products_Services'>
@@ -77,24 +78,63 @@
     </div>
     <div id='AboutOwner'>
       <div>
-        <h2>About you</h2>
-        <div class='EditBtn'>
-          <img src='../../../Images/Edit.svg'>
-        </div>
+        <h2>Business' Owner</h2>  
       </div>
       <div>
-        <div class='ProfilePic'>
+        <div class='ProfilePic' title='View profile picture.'>
         </div>
-         <div id='EditProfilePic' onclick='showProfilePicOptions()'>
-        <div class='EditBtn' title='Edit profile picture.'>
-          <img src='../../../Images/Camera.svg'>
+        <div class='EditProfilePic' onclick='showProfilePicOptions(this.parentElement.parentElement)'>
+           <div class='EditBtn' title='Edit profile picture.'>
+             <img src='../../../Images/Camera.svg'>
+           </div>
+           <input id='OwnerNewProfilePic' type='file' onchange='updateProfilePic(this,this.parentElement.parentElement.parentElement)'>
+        </div>  
+      </div>
+      <div class='ProfilePicOptions hidden'>
+        <div onclick='closeProfilePicOptions(this.parentElement.parentElement)'>
+          <img src='../../../Images/Close.svg'>
         </div>
-        <input id='NewProfilePic' type='file' onchange='updateProfilePic(this)'>
+        <label for='OwnerNewProfilePic'>
+          <img src='../../../Images/Upload.svg'>
+          Upload new picture
+        </label>
+        <label onclick='adjustProfilePic(false,this.parentElement.parentElement)'>
+          <img src='../../../Images/Edit.svg'>
+          Edit picture
+        </label>
+        <label onclick='deleteProfilePic(this.parentElement.parentElement)'>
+          <img src='../../../Images/Delete.svg'>
+          Delete picture
+        </label>
+      </div>
+      <div class='AdjustPic hidden'>
+        <div class='Pic'></div>
+        <div>
+            Shift the picture to adjust it's position.
+          </div>
+        <div>
+          <input type='button' value='Cancel' onclick='adjustProfilePic(null,this.parentElement.parentElement.parentElement)'>
+          <input type='button' value='Upload' onclick='adjustProfilePic(true,this.parentElement.parentElement.parentElement)'>
         </div>
       </div>
       <div>
         <div id='Fullname'></div>
         <div id='email'></div>
+      </div>
+      <div>
+        <h3>About you</h3>
+        <div class='EditBtn' onclick='editAbout(false,this.parentElement.parentElement)'>
+          <img src='../../../Images/Edit.svg'>
+        </div>
+      </div>
+      <div></div>
+      <div class='hidden'>
+        <textarea maxlength=100 wrap='hard' placeholder='Tell your customers who you are.' onkeyup='enableEditAbout(this,this.parentElement.parentElement)'></textarea>
+        <br>
+        <input type='button' value='Cancel' onclick='editAbout(null,this.parentElement.parentElement)'>
+        <input type='button' value='Save' onclick='editAbout(true,this.parentElement.parentElement)' class='locked'>
+        <br>
+        <div class='WordCount'></div>
       </div>
     </div>
   </body>

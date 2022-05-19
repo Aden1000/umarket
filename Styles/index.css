@@ -374,7 +374,7 @@ p{
   }
   #AboutUmarket>div:nth-child(1)>div:nth-child(1), #UmarketBenefits>div:nth-child(1)>div:nth-child(1),#CallToAction>div:nth-child(1)>div:nth-child(1){
     width:65%;
-    text-align: justify;
+    text-align: left;
   }
   #AboutUmarket>div:nth-child(1)>div:nth-child(2), #UmarketBenefits>div:nth-child(1)>div:nth-child(2),#CallToAction>div:nth-child(1)>div:nth-child(2){
     width:30%;

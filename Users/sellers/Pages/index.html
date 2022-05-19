@@ -6,7 +6,7 @@
     <link rel="icon" href="../../../Images/Umarket.ico"/>
     <link rel="stylesheet" href="../Styles/index.css" media="all"/>
   </head>
-  <body onresize='ResizePage()'>
+  <body onresize='ResizePage()' onscroll="PageScroll()">
     <div id="Banner">
       <a href='../../../index.html'>
          <img  id="UmarketImg" src="../../../Images/Umarket.svg">
@@ -76,7 +76,8 @@
       <div>
         <img src='../../../Images/Close.svg' onclick="CloseAlert(this)">
       </div>
-      <div id='content'></div>
+      <div id='content'>
+      </div>
     </div>
     <script  src='../Scripts/index.js'></script>
     <script  src='../Scripts/profile.js'></script>

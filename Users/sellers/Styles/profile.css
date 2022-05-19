@@ -5,10 +5,6 @@ div{
   margin-bottom: 0px;
 }
 .ProfilePic{
-  border:3px solid rgb(0,200,0);
-  width:120px;
-  height:120px;
-  border-radius:60px;
   display: -webkit-box;
   display:-webkit-flex;
   display: -ms-flexbox;
@@ -16,9 +12,17 @@ div{
   align-items: center;
   flex-direction: column;
   justify-content: center;
-  font-size: 15px;
   font-family:"Corbel";
   overflow: hidden;
+  cursor:pointer;
+  background:white;
+}
+#ProfileHead .ProfilePic{
+  border:3px solid rgb(0,200,0);
+  width:120px;
+  height:120px;
+  border-radius:60px;
+  font-size: 15px;
 }
 .ProfilePic img{
   width:100%;
@@ -62,10 +66,12 @@ div{
   display: flex;
   flex-direction: column;
 }
-#ProfileHead #NewProfilePic{
+
+input[type='file']{
   display: none;
 }
-#ProfileHead #ProfilePicOptions{
+
+#ProfilePage .ProfilePicOptions{
   margin-top:5px;
   border:1px solid rgb(0,200,0);
   display: -webkit-box;
@@ -83,7 +89,7 @@ div{
   height: 200px;
   width:70%;
 }
-#ProfileHead #ProfilePicOptions.hidden{
+#ProfilePage .ProfilePicOptions.hidden{
   height:0px;
   margin: 0px;
   opacity: 0;
@@ -91,20 +97,20 @@ div{
   padding:0px;
   overflow: hidden;
 }
-#ProfileHead #ProfilePicOptions label{
+#ProfilePage .ProfilePicOptions label{
   height:40px;
   padding:5px;
   border:1px solid rgb(150,150,150);
   margin-top:5px;
 }
-#ProfileHead #ProfilePicOptions div:nth-child(1){
+#ProfilePage .ProfilePicOptions div:nth-child(1){
   cursor: pointer;
 }
-#ProfileHead #ProfilePicOptions div:nth-child(1) img{
+#ProfilePage .ProfilePicOptions div:nth-child(1) img{
   height:20px;
   float: right;
 }
-#ProfileHead #ProfilePicOptions label{
+#ProfilePage .ProfilePicOptions label{
   display: -webkit-box;
   display:-webkit-flex;
   display: -ms-flexbox;
@@ -112,12 +118,19 @@ div{
   align-items: center;
   cursor:pointer;
 }
-#ProfileHead #ProfilePicOptions label img{
+#ProfilePage .ProfilePicOptions label img{
   height:20px;
   width:20px;
   margin-right: 10px;
 }
-
+#ProfilePage>div{
+  margin-bottom: 10px;
+  padding: 5px;
+  background:rgb(248,248,248);
+}
+#ProfilePage>div h2:first-of-type{
+  margin: 0px;
+}
 .locked{
   filter: grayscale(1);
   opacity: 0.7;
@@ -129,14 +142,16 @@ div{
   flex-direction:row;
   align-items: flex-end;
 }
-#ProfileHead>div:nth-child(1)>.ProfilePic{
-  display: inherit;
+#ProfilePage .ProfilePic{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   flex-direction: column;
 }
-#ProfileHead>div:nth-child(1)>div#EditProfilePic{
+#ProfileHead .EditProfilePic{
   position: relative;
   right:40px;
-  top:5px;
 }
 #ProfileHead>label:first-of-type{
   position: relative;
@@ -144,7 +159,7 @@ div{
   left:95px;
 }
 
-#ProfileHead>#AdjustPic{
+.AdjustPic{
   width:40%;
   height:50%;
   border:2px solid rgb(0,200,0);
@@ -165,11 +180,11 @@ div{
   -webkit-transition:0.5s;
   -ms-transition:0.5s;
 }
-#ProfileHead>#AdjustPic.hidden{
-  top:-100%;
+.AdjustPic.hidden{
+  top:-100% !important;
 }
-#ProfileHead>#AdjustPic input{
-  height:40px;
+.AdjustPic input{
+  height:40px !important;
   width:100px;
   color:rgb(0,200,0);
   background: white;
@@ -178,11 +193,11 @@ div{
   font-size:100%;
   cursor: pointer;
 }
-#ProfileHead>#AdjustPic input:hover{
+.AdjustPic input:hover{
   background: rgb(0,200,0);
   color:white;
 }
-#ProfileHead>#AdjustPic div:nth-child(2){
+.AdjustPic div:nth-child(2){
   display: -webkit-box;
   display:-webkit-flex;
   display: -ms-flexbox;
@@ -190,7 +205,7 @@ div{
   align-items: center;
   column-gap:5px;
 }
-#ProfileHead>#AdjustPic #Pic{
+.AdjustPic .Pic{
   width:240px;
   height:240px;
   border:3px solid rgb(0,200,0);
@@ -205,16 +220,16 @@ div{
   justify-content: center;
   font-size: 20px;
 }
-#ProfileHead>#AdjustPic #Pic .LoadingImg{
+.AdjustPic .Pic .LoadingImg{
   height:50px;
 }
-#ProfileHead>#AdjustPic #Pic img{
+.AdjustPic .Pic img{
   width:100%;
 }
-#ProfileHead>#AdjustPic #Pic::-webkit-scrollbar{
+.AdjustPic .Pic::-webkit-scrollbar{
   display: none;
 }
-#ProfileHead>#AdjustPic #Pic::scrollbar{
+.AdjustPic .Pic::scrollbar{
   display: none;
 }
 
@@ -229,6 +244,7 @@ div{
   appearance:none;
   -moz-appearance:none;
   -webkit-appearance:none;
+  margin-top:5px;
 }
 #ProfilePage textarea:focus{
   border:1px solid rgb(0,200,0);
@@ -278,16 +294,103 @@ div{
   white-space: pre-wrap;
 }
 
+.WordCount{
+  font-family: "Calibri"
+}
+
+#AboutOwner>div{
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  -ms-transition: 0.5s;
+}
+#AboutOwner>div:nth-child(2){
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: flex-end;
+  flex-direction: row;
+}
 #AboutOwner .ProfilePic{
   height:60px;
   width:60px;
   border:2px solid rgb(0,200,0);
+  border-radius:30px;
+  font-size: 100%;
 }
-#AboutOwner .ProfilePic>.AvatarSvg{
-  height:30px;
+#AboutOwner .ProfilePic .LoadingImg{
+  height:20px;
 }
-#AboutOwner h2,#AboutOwner h3{
+#AboutOwner .EditProfilePic{
+  position: relative;
+  right:20px;
+}
+#AboutOwner .EditProfilePic .EditBtn{
+  height: 30px;
+  width:30px;
+}
+#AboutOwner .EditProfilePic .EditBtn img{
+  height:15px
+}
+#AboutOwner #fullname>h3, #AboutOwner #email>h3{
   margin: 0px
+}
+#AboutOwner>div:nth-child(6){
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap:5px;
+  margin-top:15px;
+}
+#AboutOwner>div:nth-child(6) h3{
+  margin: 0px;
+}
+#AboutOwner>div:nth-child(6) .EditBtn{
+  height:30px;
+  width:30px;
+}
+#AboutOwner>div:nth-child(6) .EditBtn img{
+  height:15px;
+}
+#AboutOwner>div:nth-child(7){
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  column-gap: 5px;
+}
+#AboutOwner>div:nth-child(8){
+  height:260px;
+  overflow: hidden;
+}
+#AboutOwner>.hidden{
+  height:0px !important;
+  overflow: hidden;
+  display: block;
+}
+#AboutOwner input{
+  height:30px;
+  margin-top:5px;
+  font-family: "Corbel Bold";
+  color:rgb(0,200,0);
+  background:white;
+  border:1px solid rgb(0,200,0);
+}
+#AboutOwner input:hover{
+  cursor: pointer;
+  color:white;
+  background:rgb(0,200,0);
+}
+#AboutOwner input.locked{
+  cursor: not-allowed;
+  background:white;
+  color:rgb(0,200,0);
 }
 #Uname,#CreationTime,#email{
   color:rgb(150,150,150)
@@ -312,10 +415,10 @@ div{
     width:100%;
     justify-content: space-between;
   }
-  #ProfileHead #ProfilePicOptions{
+  #ProfilePage .ProfilePicOptions{
     width:100%;
   }
-  #ProfileHead #AdjustPic{
+  .AdjustPic{
     width:98%;
     height:70%;
     left:1%;
@@ -326,22 +429,22 @@ div{
   #ProfileHead{
     width:100%;
   }
-  #ProfileHead #ProfilePicOptions{
+  #ProfilePage .ProfilePicOptions{
     width:80%;
   }
-  #ProfileHead #AdjustPic{
+  .AdjustPic{
     width:70%;
     height:75%;
     left:15%;
     top:20%
   }
-  #ProfileHead #AdjustPic #Pic{
+  .AdjustPic .Pic{
     width:150px;
     height:150px;
   }
 }
 @media screen and (min-width:700px) and (max-width:999px){
-  #ProfileHead #AdjustPic{
+  .AdjustPic{
     width:50%;
     height:90%;
     top:5%;
@@ -349,7 +452,7 @@ div{
   }
 }
 @media screen and (min-width:700px) and (max-width:999px) and (min-height:700px){
-  #ProfileHead #AdjustPic{
+  .AdjustPic{
     height:50%;
     width:60%;
     top:20%;

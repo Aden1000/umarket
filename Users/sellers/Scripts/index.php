@@ -47,6 +47,7 @@ if(isset($_COOKIE['PHPSESSID']) && $_SESSION['initialized']==true && $_SESSION['
    $_SESSION['loginID']=$loginID;
    $_SESSION['CreationTime']=$row['CreationTime'];
    $_SESSION['Email']=$row['Email'];
+   $_SESSION['Title']=$row['Title'];
    extract($_SESSION);
    echo file_get_contents('../Pages/index.html');
    $script=<<<_END
