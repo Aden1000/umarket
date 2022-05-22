@@ -16,7 +16,7 @@
       </div>
       <div class='ProfilePicOptions hidden'>
         <div onclick='closeProfilePicOptions(this.parentElement.parentElement)'>
-          <img src='../../../Images/Close.svg'>
+          <img src='../../../Images/Close.svg' class='close'>
         </div>
         <label for='NewProfilePic'>
           <img src='../../../Images/Upload.svg'>
@@ -66,15 +66,30 @@
     <div id='Products_Services'>
       <div>
         <h2>Products | Services</h2>
-        <div class='AddBtn'>
+        <div class='AddBtn' onclick='showProducts_ServicesOptions()'>
           <img src='../../../Images/Add.svg'>
+        </div>
+      </div>
+      <div id='Products_ServicesOptions' class='hidden'>
+        <div onclick='closeProducts_ServicesOptions()'>
+          <img src='../../../Images/Close.svg' class='close'>
+        </div>
+        Choose what you want to add:
+        <div id='Products'>
+          <img src='../../../Images/Product.svg'>
+          Products
+        </div>
+        <div id='Services'>
+          <img src='../../../Images/Service.svg'>
+          Services
         </div>
       </div>
     </div>
     <div id='Ratings'>
       <div>
         <h2>Ratings</h2>
-      </div>  
+      </div>
+      <div></div>
     </div>
     <div id='AboutOwner'>
       <div>
@@ -92,7 +107,7 @@
       </div>
       <div class='ProfilePicOptions hidden'>
         <div onclick='closeProfilePicOptions(this.parentElement.parentElement)'>
-          <img src='../../../Images/Close.svg'>
+          <img src='../../../Images/Close.svg' class='close'>
         </div>
         <label for='OwnerNewProfilePic'>
           <img src='../../../Images/Upload.svg'>

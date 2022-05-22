@@ -37,8 +37,8 @@ div{
 }
 .EditBtn,.AddBtn{
   border:2px solid rgb(0,200,0);
-  width:40px;
-  height:40px;
+  width:35px;
+  height:35px;
   border-radius: 100%;
   background: white;
   display: -webkit-box;
@@ -51,10 +51,10 @@ div{
   filter: grayscale(1);
 }
 .EditBtn img{
-  height:20px;
+  height:17px;
 }
 .AddBtn img{
-  height:25px;
+  height:20px;
 }
 .EditBtn:hover,.AddBtn:hover{
   filter: grayscale(0);
@@ -124,9 +124,9 @@ input[type='file']{
   margin-right: 10px;
 }
 #ProfilePage>div{
-  margin-bottom: 10px;
-  padding: 5px;
-  background:rgb(248,248,248);
+  margin-bottom: 15px;
+  padding: 10px;
+  border:1px solid rgb(200,200,200);
 }
 #ProfilePage>div h2:first-of-type{
   margin: 0px;
@@ -274,7 +274,7 @@ input[type='file']{
   -webkit-transition: 0.5s;
 }
 #BusDescription>div:nth-child(3){
-  height:250px;
+  height:260px;
 }
 #BusDescription>.hidden{
   height:0px !important;
@@ -296,6 +296,57 @@ input[type='file']{
 
 .WordCount{
   font-family: "Calibri"
+}
+
+.close{
+  cursor: pointer;
+}
+#Products_Services>div:nth-child(2){
+  margin-top: 10px;
+  padding: 10px;
+  border:1px solid rgb(0,200,0);
+  color:rgb(0,200,0);
+  transition: 0.5s;
+  -moz-transition: 0.5s;
+  -ms-transition: 0.5s;
+  -webkit-transition: 0.5s;
+  transition-property: height;
+  height: 180px;
+  width:70%;
+  overflow: hidden;
+}
+#Products_Services>div:nth-child(2).hidden{
+  height:0px;
+  opacity: 0;
+  margin: 0px;
+  padding: 0px;
+  display: block;
+}
+#Products_Services>div:nth-child(2)>div{
+  height:50px;
+}
+#Products_Services>div:nth-child(2)>div:nth-child(1){
+  height:25px;
+}
+#Products_Services>div:nth-child(2)>div:nth-child(1) img{
+  float: right;
+  height:20px;
+}
+#Products_Services #Products,#Products_Services #Services{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  border:1px solid rgb(150,150,150);
+  padding:5px;
+  margin-bottom: 10px;
+  column-gap: 5px;
+  cursor: pointer;
+}
+#Products_Services #Products img, #Products_Services #Services img{
+  width:30px;
 }
 
 #AboutOwner>div{
@@ -369,10 +420,12 @@ input[type='file']{
   height:260px;
   overflow: hidden;
 }
+#AboutOwner>div:nth-child(8).hidden{
+  display: block;
+}
 #AboutOwner>.hidden{
   height:0px !important;
   overflow: hidden;
-  display: block;
 }
 #AboutOwner input{
   height:30px;
@@ -423,6 +476,9 @@ input[type='file']{
     height:70%;
     left:1%;
     top:20%
+  }
+  #Products_Services>div:nth-child(2){
+    width:100%;
   }
 }
 @media screen and (max-width:700px) and (orientation:landscape){

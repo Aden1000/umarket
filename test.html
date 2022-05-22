@@ -4,14 +4,8 @@
    <link rel='stylesheet' href='./Styles/test.css'>
  </head>
  <body>
-   <center>
-     <div id='box'>
-       <center>
-         <img src='./Images/Adriel.JPG' draggable="true" ondragend="drag(event,this)"
-          ondrag="drag(event,this)" >
-       </center>
-     </div>
-   </center>
+   <input type='file' onchange='uploadImage(this)'>
+   <div id='response'></div>
   </body>
   <script src='./Scripts/test.js'></script>
   <script src='./Scripts/jquery-3.6.0.js'></script>

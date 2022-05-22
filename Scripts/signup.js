@@ -93,6 +93,8 @@ function EvaluateForm(event,Form){
     $("#Form>div:last-child").attr('class','');
     $("#Form>div:last-child").html(img);
     $("#Form>div:last-child").append("Uploading information...");
+    $("#AccountType>div").attr('onclick','');
+    $("#AccountType>div").addClass('locked');
     var stamp=document.getElementById('txtDOB').valueAsDate.getTime();
     http.onreadystatechange=handleResponse();
     http.open("POST",'Scripts/signup.php',true);
@@ -134,6 +136,8 @@ function EvaluateForm(event,Form){
             $("#Form>div:last-child").append("Verifying data...");
             setTimeout(function(){
               $("#response").html(http.responseText);
+              $("#AccountType>div").attr('onclick','DisplayForm(this)');
+              $("#AccountType>div").removeClass('locked');
               $("#SubmitBtn").attr("class","");
               $("#Form>div:last-child").attr("class","hidden");
             http.abort();

@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: CorelDRAW X7 -->
+
+<svg
+   xml:space="preserve"
+   width="8.4667006mm"
+   height="6.6792002mm"
+   version="1.0"
+   style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+   viewBox="0 0 846670.05 667920.01"
+   id="svg681"
+   sodipodi:docname="Service.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   id="namedview683"
+   pagecolor="#ffffff"
+   bordercolor="#999999"
+   borderopacity="1"
+   inkscape:pageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   inkscape:document-units="mm"
+   showgrid="false"
+   inkscape:zoom="11.240142"
+   inkscape:cx="15.346782"
+   inkscape:cy="12.366392"
+   inkscape:window-width="1366"
+   inkscape:window-height="745"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg681" />
+ <defs
+   id="defs668">
+  <style
+   type="text/css"
+   id="style666">
+   <![CDATA[
+    .fil0 {fill:#00C800}
+    .fil1 {fill:#00C800;fill-rule:nonzero}
+   ]]>
+  </style>
+ </defs>
+ <g
+   id="Layer_x0020_1"
+   inkscape:label="Layer 1"
+   inkscape:groupmode="layer"
+   transform="translate(-254000,-333500)">
+  <metadata
+   id="CorelCorpID_0Corel-Layer" />
+  <g
+   id="_1980064426416">
+   <g
+   id="g673">
+    <path
+   class="fil0"
+   d="m 254000,480430 h 846670 v 520990 H 254000 Z m 771430,80020 H 329240 v 360950 h 696190 z"
+   id="path671" />
+   </g>
+   <g
+   id="g677">
+    <path
+   class="fil1"
+   d="M 833640,399340 H 521040 v -65840 h 312600 l 40050,23820 z m 0,-65840 h 31380 l 8670,23820 z m 12040,185170 -52090,-143150 80100,-18200 52090,143150 -40050,42020 z m 80100,-18200 15290,42020 H 885730 Z M 468940,476650 h 416790 v 65840 H 468940 l -40050,-42020 z m 0,65840 h -55340 l 15290,-42020 z m 92150,-166970 -52100,143150 -80100,-18200 52100,-143150 40050,-23820 z m -80100,-18200 8670,-23820 h 31380 z"
+   id="path675" />
+   </g>
+  </g>
+ </g>
+</svg>

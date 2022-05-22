@@ -145,14 +145,18 @@ input[class='Valid'],select[class='Valid']{
   -ms-transition:0.5s;
   font-size: 120%
 }
+#AccountType>div.locked{
+  cursor: not-allowed !important;
+  opacity: 0.5;
+}
 #AccountType>div:hover{
   cursor:pointer;
 }
-#AccountType>div[class='selected']{
-  background:rgb(0,200,0);
+#AccountType>div.selected{
+  background:rgb(0,200,0) !important;
   color:rgb(255,255,255);
 }
-#AccountType>div[class='unselected']{
+#AccountType>div.unselected {
   background: white;
   color:rgb(0,200,0);
 }

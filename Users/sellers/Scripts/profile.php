@@ -62,6 +62,9 @@ else{
   $aboutYou=str_replace("\r","<br>",$aboutYou);
   $aboutYou=str_replace("\n","<br>",$aboutYou);
 }
+if(!file_exists("../$Uname/Profile/ratings.json")){
+  $ratings="N/A";
+}
 $script=<<<_END
   <script>
   $("#ProfilePage").html("$profile");
@@ -71,6 +74,7 @@ $script=<<<_END
   $("#ProfilePage #Uname").html("@$Uname");
   $("#ProfilePage #CreationTime").html("Joined $CreationTime");
   $("#BusDescription>div:nth-child(2)").html("$aboutBusiness");
+  $("#Ratings>div:nth-child(2)").html("$ratings");
   $("#AboutOwner .ProfilePic").html("$ownerProfilePic");
   $("#AboutOwner .ProfilePic img").css("bottom",$top2);
   $("#AboutOwner #Fullname").html("<h3>$Title $Fname $Lname</h3>");
@@ -157,6 +161,15 @@ function NewProfilePic($Type){
       if($("#ProfileHead .ProfilePic img").eq(0).height()>120){
       $("#ProfileHead .ProfilePic").css('justify-content','flex-start');}
       $("#ProfileHead .ProfilePic img").eq(0).css('opacity','1');
+      $("#alert>div:nth-child(1)>img").css('display','none');
+      $("#alert #content").html("<img src='../../../Images/Success.svg'><div>Upload successful!</div>");
+      $("#alert").attr('class','shown');
+      setTimeout(function(){
+        $("#alert").attr('class','hidden');
+        setTimeout(function(){
+        $("#alert>div:nth-child(1)>img").css('display','block'); 
+        },500)
+      },2500);
       },2000);
       $("#ProfileHead .ProfilePicOptions label:nth-child(3)").attr('class','');
       $("#ProfileHead .ProfilePicOptions label:nth-child(3)").attr('onclick','adjustProfilePic(false,this.parentElement.parentElement)');
@@ -187,6 +200,15 @@ function NewProfilePic($Type){
       if($("#AboutOwner .ProfilePic img").eq(0).height()>60){
       $("#AboutOwner .ProfilePic").css('justify-content','flex-start');}
       $("#AboutOwner .ProfilePic img").eq(0).css('opacity','1');
+      $("#alert>div:nth-child(1)>img").css('display','none');
+      $("#alert #content").html("<img src='../../../Images/Success.svg'><div>Upload successful!</div>");
+      $("#alert").attr('class','shown');
+      setTimeout(function(){
+        $("#alert").attr('class','hidden');
+        setTimeout(function(){
+        $("#alert>div:nth-child(1)>img").css('display','block'); 
+        },500)
+      },2500);
       },2000);
       $("#AboutOwner .ProfilePicOptions label:nth-child(3)").attr('class','');
       $("#AboutOwner .ProfilePicOptions label:nth-child(3)").attr('onclick','adjustProfilePic(false,this.parentElement.parentElement)');
@@ -209,9 +231,15 @@ function AdjustProfilePic($Type){
       echo <<<_END
       <script>
       $("#ProfileHead .ProfilePic img").css('bottom',$top);
-      if($("#ProfilePage .ProfilePic img").eq(0).height()>120){
-        $("#ProfilePage .ProfilePic").css("justify-content","flex-start");
-      }
+      $("#alert>div:nth-child(1)>img").css('display','none');
+      $("#alert #content").html("<img src='../../../Images/Success.svg'><div>Editing successful!</div>");
+      $("#alert").attr('class','shown');
+      setTimeout(function(){
+        $("#alert").attr('class','hidden');
+        setTimeout(function(){
+        $("#alert>div:nth-child(1)>img").css('display','block'); 
+        },500)
+      },2500);
       $("#ProfileHead .AdjustPic").addClass('hidden');
       </script>
       _END;
@@ -230,13 +258,13 @@ function AdjustProfilePic($Type){
       }
       $("#AboutOwner .AdjustPic").addClass('hidden');
       $("#alert>div:nth-child(1)>img").css('display','none');
-      $("#alert #content").html("<img src='../../../Images/Success.svg'><div>Adjustment sucessful!</div>")
+      $("#alert #content").html("<img src='../../../Images/Success.svg'><div>Editing successful!</div>");
       $("#alert").attr('class','shown');
       setTimeout(function(){
-      $("#alert").attr('class','hidden');
-      setTimeout(function(){
-      $("#alert>div:nth-child(1)>img").css('display','block');
-      },700)
+        $("#alert").attr('class','hidden');
+        setTimeout(function(){
+        $("#alert>div:nth-child(1)>img").css('display','block'); 
+        },500)
       },2500);
       </script>
       _END;

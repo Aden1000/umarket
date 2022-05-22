@@ -100,13 +100,6 @@ function updateProfilePic(Obj,Parent){
           $(Parent).append(inputFile);
           break;
       }
-      $("#alert>div:nth-child(1)>img").css('display','none');
-      $("#alert #content").html("<img src='../../../Images/Success.svg'><div>Upload sucessful!</div>");
-      $("#alert").attr('class','shown');
-      setTimeout(function(){
-        $("#alert").attr('class','hidden');
-        $("#alert>div:nth-child(1)>img").css('display','block'); 
-      },2500);
       http.abort();
     }
     else{
@@ -179,7 +172,6 @@ function adjustProfilePic(edited,Parent){
           var top=$("#AboutOwner .AdjustPic .Pic").scrollTop();
           var height=$("#AboutOwner .AdjustPic .Pic").height();
           top=(60/height)*top;
-          alert(top);
           http.open("POST","profile.php",true);
           http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
           http.onreadystatechange=handleAdjustRequest();
@@ -454,4 +446,10 @@ function enableEditAbout(Obj,Parent){
       }
       break;
   }
+}
+function showProducts_ServicesOptions(){
+  $("#Products_Services>#Products_ServicesOptions").attr('class','');
+}
+function closeProducts_ServicesOptions(){
+  $("#Products_Services>#Products_ServicesOptions").attr('class','hidden');
 }
