@@ -97,6 +97,8 @@ function EvaluateForm(event,Form){
     $("#AccountType>div").addClass('locked');
     $("#Form input:not(#SubmitBtn)").addClass('locked');
     $("#Form input:not(#SubmitBtn)").attr('disabled',true);
+    $("#Form select").addClass('locked');
+    $("#Form select").attr('disabled',true);
     var stamp=document.getElementById('txtDOB').valueAsDate.getTime();
     http.onreadystatechange=handleResponse();
     http.open("POST",'Scripts/signup.php',true);
@@ -142,6 +144,8 @@ function EvaluateForm(event,Form){
               $("#AccountType>div").removeClass('locked');
               $("#Form input:not(#SubmitBtn)").removeClass('locked');
               $("#Form input:not(#SubmitBtn)").removeAttr('disabled');
+              $("#Form select").removeClass('locked');
+              $("#Form select").removeAttr('disabled');
               $("#SubmitBtn").attr("class","");
               $("#Form>div:last-child").attr("class","hidden");
             http.abort();
