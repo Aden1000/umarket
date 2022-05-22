@@ -324,8 +324,8 @@ function checkDOB($input,$stamp){
     echo $script;
     return false;
   }
-  elseif(($year-date("Y",$stamp))<18){
-    echo mktime("0","0","0","07","04","2004");
+  else{
+    if(($year-date("Y",$stamp))<18){
     $Error="You must be at least 18 years old to create an account.";
     $script="<script>
 $('#txtDOB').siblings().eq(0).html(\"$Error\");
@@ -334,7 +334,7 @@ $('#txtDOB').attr('class','Invalid');
     echo $script;
     return false;
   }
-  elseif($month<(date("m",$stamp)-1)){
+    elseif($month<(date("m",$stamp)-1)){
      $Error="You must be at least 18 years old to create an account.";
     $script="<script>
     $('#txtDOB').siblings().eq(0).html(\"$Error\");
@@ -343,7 +343,7 @@ $('#txtDOB').attr('class','Invalid');
     echo $script;
     return false;
   }
-  elseif($day<(date("d",$stamp)+1)){
+    elseif($day<(date("d",$stamp)+1)){
      $Error="You must be at least 18 years old to create an account.";
     $script="<script>
     $('#txtDOB').siblings().eq(0).html(\"$Error\");
@@ -352,8 +352,9 @@ $('#txtDOB').attr('class','Invalid');
     echo $script;
     return false;
   }
-  else{
-    return true;
+    else{
+      return true;
+    }
   }
 }
 function checkUname($input,$table){
