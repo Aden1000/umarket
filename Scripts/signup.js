@@ -82,10 +82,7 @@ function EvaluateForm(event,Form){
       ErrorCount++
     } 
   }
-  if(ErrorCount>0){
-      return false
-    }
-  else{
+  if(ErrorCount==0){
     var img=document.createElement("img");
     img.src='../Images/Loading.svg';
     img.id='LoadingImg';

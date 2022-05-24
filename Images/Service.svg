@@ -4,18 +4,18 @@
 <svg
    xml:space="preserve"
    width="8.4667006mm"
-   height="6.6792002mm"
+   height="6.6176mm"
    version="1.0"
    style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   viewBox="0 0 846670.05 667920.01"
-   id="svg681"
+   viewBox="0 0 846670.05 661759.99"
+   id="svg1060"
    sodipodi:docname="Service.svg"
    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
-   id="namedview683"
+   id="namedview1062"
    pagecolor="#ffffff"
    bordercolor="#999999"
    borderopacity="1"
@@ -26,18 +26,18 @@
    showgrid="false"
    inkscape:zoom="11.240142"
    inkscape:cx="15.346782"
-   inkscape:cy="12.366392"
+   inkscape:cy="12.188459"
    inkscape:window-width="1366"
    inkscape:window-height="745"
    inkscape:window-x="-8"
    inkscape:window-y="-8"
    inkscape:window-maximized="1"
-   inkscape:current-layer="svg681" />
+   inkscape:current-layer="svg1060" />
  <defs
-   id="defs668">
+   id="defs1047">
   <style
    type="text/css"
-   id="style666">
+   id="style1045">
    <![CDATA[
     .fil0 {fill:#00C800}
     .fil1 {fill:#00C800;fill-rule:nonzero}
@@ -48,24 +48,24 @@
    id="Layer_x0020_1"
    inkscape:label="Layer 1"
    inkscape:groupmode="layer"
-   transform="translate(-254000,-333500)">
+   transform="translate(-254000,-339660)">
   <metadata
    id="CorelCorpID_0Corel-Layer" />
   <g
-   id="_1980064426416">
+   id="_1644228848896">
    <g
-   id="g673">
+   id="g1052">
     <path
    class="fil0"
-   d="m 254000,480430 h 846670 v 520990 H 254000 Z m 771430,80020 H 329240 v 360950 h 696190 z"
-   id="path671" />
+   d="m 254000,480430 h 846670 v 520990 H 254000 Z m 782990,67730 H 317680 v 385530 h 719310 z"
+   id="path1050" />
    </g>
    <g
-   id="g677">
+   id="g1056">
     <path
    class="fil1"
-   d="M 833640,399340 H 521040 v -65840 h 312600 l 40050,23820 z m 0,-65840 h 31380 l 8670,23820 z m 12040,185170 -52090,-143150 80100,-18200 52090,143150 -40050,42020 z m 80100,-18200 15290,42020 H 885730 Z M 468940,476650 h 416790 v 65840 H 468940 l -40050,-42020 z m 0,65840 h -55340 l 15290,-42020 z m 92150,-166970 -52100,143150 -80100,-18200 52100,-143150 40050,-23820 z m -80100,-18200 8670,-23820 h 31380 z"
-   id="path675" />
+   d="M 833640,393180 H 521040 v -53520 h 312600 l 32550,19370 z m 0,-53520 h 25500 l 7050,19370 z m 19540,177300 -52090,-143150 65100,-14780 52090,143150 -32550,34150 z m 65100,-14780 12430,34150 H 885730 Z M 468940,482810 h 416790 v 53520 H 468940 l -32550,-34150 z m 0,53520 h -44980 l 12430,-34150 z m 84650,-162520 -52100,143150 -65100,-14780 52100,-143150 32550,-19370 z m -65100,-14780 7050,-19370 h 25500 z"
+   id="path1054" />
    </g>
   </g>
  </g>

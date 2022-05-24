@@ -15,9 +15,7 @@
         </div>
       </div>
       <div class='ProfilePicOptions hidden'>
-        <div onclick='closeProfilePicOptions(this.parentElement.parentElement)'>
-          <img src='../../../Images/Close.svg' class='close'>
-        </div>
+          <img src='../../../Images/Close.svg' class='close' onclick='closeProfilePicOptions(this.parentElement.parentElement)'>
         <label for='NewProfilePic'>
           <img src='../../../Images/Upload.svg'>
           Upload new picture
@@ -70,18 +68,40 @@
           <img src='../../../Images/Add.svg'>
         </div>
       </div>
+      <div>
+        <div>
+          <h4>Products</h4>
+        </div>
+      </div>
+      <div>
+        <div>
+          <h4>Services</h4>
+        </div>
+      </div>
       <div id='Products_ServicesOptions' class='hidden'>
-        <div onclick='closeProducts_ServicesOptions()'>
-          <img src='../../../Images/Close.svg' class='close'>
+        <div>
+          <img src='../../../Images/Close.svg' class='close' onclick='closeProducts_ServicesOptions()'>
         </div>
         Choose what you want to add:
-        <div id='Products'>
+        <div onclick=showAddProduct()>
           <img src='../../../Images/Product.svg'>
           Products
         </div>
-        <div id='Services'>
+        <div>
           <img src='../../../Images/Service.svg'>
           Services
+        </div>
+      </div>
+      <div id='AddProduct' class='hidden'>
+        <img src='../../../Images/Close.svg' onclick='closeAddProduct()' class='close'>
+        <h3>Add a new product</h3>
+        <div class='ProductPic'>
+        </div>
+        <input type='text'  maxlength='70' placeholder='Enter product name'>
+      </div>
+      <div id='AddService' class='hidden'>
+        <h3>Add a new service</h3>
+        <div class='ServicePic'>
         </div>
       </div>
     </div>
@@ -93,7 +113,7 @@
     </div>
     <div id='AboutOwner'>
       <div>
-        <h2>Business' Owner</h2>  
+        <h2>Owner</h2>  
       </div>
       <div>
         <div class='ProfilePic' title='View profile picture.'>

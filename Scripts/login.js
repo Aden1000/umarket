@@ -14,6 +14,8 @@ function SubmitForm(){
     $("#Form>div:last-child").eq(0).html(img);
     $("#Form>div:last-child").eq(0).append("Checking information...");
     $("#Form>div:last-child").eq(0).removeAttr('class');
+    $("#Form input:not(#LoginBtn), #Form select").addClass('locked');
+    $("#Form input:not(#LoginBtn), #Form select").attr('disabled',true);
     http.onreadystatechange=handleResponse();
     http.open("POST","./Scripts/login.php",true);
     http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
@@ -31,6 +33,8 @@ function SubmitForm(){
             $('#response').eq(0).html(http.response);
             $('#Form>div:last-child').eq(0).attr('class','hidden');
             $('#LoginBtn').eq(0).removeClass('hidden');
+                $("#Form input:not(#LoginBtn), #Form select").removeClass('locked');
+    $("#Form input:not(#LoginBtn), #Form select").removeAttr('disabled');
             http.abort();
           },2000);
         }

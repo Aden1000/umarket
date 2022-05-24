@@ -15,7 +15,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#ProfilePage").attr('class','');
           $("#MainContent").scrollLeft(0);
-          document.body.scrollTo(0,ProfileScroll);
+          document.body.scrollIntoView(0,ProfileScroll);
           $("#MainContent").children("div[id!='ProfilePage']").attr('class','hidden');
           $("#Footer div[id!='Profile']").attr('class','unselected');
           $("#BannerTabs div[id!='Profile']").attr('class','unselected');
@@ -27,7 +27,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#OrdersPage").attr('class','');
           $("#MainContent").scrollLeft(width);         
-          document.body.scrollTo(0,OrderScroll);
+          document.body.scrollIntoView(0,OrderScroll);
 
           $("#MainContent").children("div[id!='OrdersPage']").attr('class','hidden');
           $("#Footer div[id!='Orders']").attr('class','unselected');
@@ -40,7 +40,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#RevenuePage").attr('class','');
           $("#MainContent").scrollLeft(width*2);
-          document.body.scrollTo(0,RevenueScroll);
+          document.body.scrollIntoView(0,RevenueScroll);
           $("#MainContent").children("div[id!='RevenuePage']").attr('class','hidden');
           $("#Footer div[id!='Revenue']").attr('class','unselected');
           $("#BannerTabs div[id!='Revenue']").attr('class','unselected');
@@ -52,7 +52,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#MessagesPage").attr('class','');
           $("#MainContent").scrollLeft(width*3);  
-          document.body.scrollTo(0,MessageScroll);
+          document.body.scrollIntoView(0,MessageScroll);
           $("#MainContent").children("div[id!='MessagesPage']").attr('class','hidden');
           $("#Footer div[id!='Messages']").attr('class','unselected');
           $("#BannerTabs div[id!='Messages']").attr('class','unselected');
@@ -64,7 +64,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#NotificationsPage").attr('class','');
           $("#MainContent").scrollLeft(width*4);
-          document.body.scrollTo(0,NotificationScroll);
+          document.body.scrollIntoView(0,NotificationScroll);
           $("#MainContent").children("div[id!='NotificationsPage']").attr('class','hidden');
           $("#Footer div[id!='Notifications']").attr('class','unselected');
           $("#BannerTabs div[id!='Notifications']").attr('class','unselected');
@@ -76,7 +76,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#MenuPage").attr('class','');
           $("#MainContent").scrollLeft(width*5);
-          document.body.scrollTo(0,MenuScroll);
+          document.body.scrollIntoView(0,MenuScroll);
           $("#MainContent").children("div[id!='MenuPage']").attr('class','hidden');
           $("#Footer div[id!='Menu']").attr('class','unselected');
           $("#BannerTabs div[id!='Menu']").attr('class','unselected');
@@ -92,7 +92,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#ProfilePage").attr('class','');
           $("#MainContent").scrollLeft(0);
-          document.body.scrollTo(0,ProfileScroll);
+          document.body.scrollIntoView(0,ProfileScroll);
           $("#MainContent").children("div[id!='ProfilePage']").attr('class','hidden');
           $("#BannerTabs div[id!='Profile']").attr('class','unselected');
           $("#Footer div[id!='Profile']").attr('class','unselected');
@@ -104,7 +104,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#OrdersPage").attr('class','');
           $("#MainContent").scrollLeft(width);
-          document.body.scrollTo(0,OrderScroll);
+          document.body.scrollIntoView(0,OrderScroll);
           $("#MainContent").children("div[id!='OrdersPage']").attr('class','hidden');
           $("#BannerTabs div[id!='Orders']").attr('class','unselected');
           $("#Footer div[id!='Orders']").attr('class','unselected');
@@ -116,7 +116,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#RevenuePage").attr('class','');
           $("#MainContent").scrollLeft(width*2);
-          document.body.scrollTo(0,RevenueScroll);
+          document.body.scrollIntoView(0,RevenueScroll);
           $("#MainContent").children("div[id!='RevenuePage']").attr('class','hidden');
           $("#BannerTabs div[id!='Revenue']").attr('class','unselected');
           $("#Footer div[id!='Revenue']").attr('class','unselected');
@@ -128,7 +128,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#MessagesPage").attr('class','');
           $("#MainContent").scrollLeft(width*3);
-          document.body.scrollTo(0,MessageScroll);
+          document.body.scrollIntoView(0,MessageScroll);
           $("#MainContent").children("div[id!='MessagesPage']").attr('class','hidden');
           $("#BannerTabs div[id!='Messages']").attr('class','unselected');
           $("#Footer div[id!='Messages']").attr('class','unselected');
@@ -140,7 +140,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#NotificationsPage").attr('class','');
           $("#MainContent").scrollLeft(width*4);
-          document.body.scrollTo(0,NotificationScroll);
+          document.body.scrollIntoView(0,NotificationScroll);
           $("#MainContent").children("div[id!='NotificationsPage']").attr('class','hidden');
           $("#BannerTabs div[id!='Notifications']").attr('class','unselected');
           $("#Footer div[id!='Notifications']").attr('class','unselected');
@@ -152,7 +152,7 @@ function ChangePage(Icon){
           $(Icon).attr('class','selected');
           $("#MenuPage").attr('class','');
           $("#MainContent").scrollLeft(width*5);
-          document.body.scrollTo(0,MenuScroll);
+          document.body.scrollIntoView(0,MenuScroll);
           $("#MainContent").children("div[id!='MenuPage']").attr('class','hidden');
           $("#BannerTabs div[id!='Menu']").attr('class','unselected');
           $("#Footer div[id!='Menu']").attr('class','unselected');

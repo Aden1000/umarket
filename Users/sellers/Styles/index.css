@@ -33,7 +33,7 @@
   src:
     url('../../../Fonts/Corbel Bold.ttf') format('truetype');
 }
-h1,h2,h3{
+h1,h2,h3,h4{
   font-family: "Corbel Bold";
   color: rgb(0,200,0);
 }
@@ -86,10 +86,8 @@ div{
 }
 #Footer div[class='unselected'], #BannerTabs div[class='unselected']{
   cursor: pointer;
+    filter:grayscale(1);
   }
-#Footer div[class='unselected'] img, #BannerTabs div[class='unselected'] img{
-  filter:grayscale(1);
-}
 #BannerExtra{
   height:120px;
   width:100%;
@@ -248,8 +246,7 @@ div{
     font-size:12px;
   }
   #Footer div{
-    margin-left: 30px;
-    margin-right: 30px;
+/*    margin-right: 20px;*/
   }
   #FooterExtra{
     height:57px
@@ -391,10 +388,9 @@ div{
     flex-direction: column;
     align-items: center;
     align-content: center;
-    font-family: "Corbel Bold";
   }
   #Footer img{
-    height:30px;
+    height:25px;
   }
   #FooterExtra{
     width:100%;

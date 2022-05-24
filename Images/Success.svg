@@ -1,68 +1,22 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/REC-SVG-20010904/DTD/svg10.dtd">
 <!-- Creator: CorelDRAW X7 -->
-
-<svg
-   xml:space="preserve"
-   width="6.3499999mm"
-   height="6.3499999mm"
-   version="1.0"
-   style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   viewBox="0 0 634999.99 634999.99"
-   id="svg211"
-   sodipodi:docname="Success.svg"
-   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
-   id="namedview213"
-   pagecolor="#ffffff"
-   bordercolor="#999999"
-   borderopacity="1"
-   inkscape:pageshadow="0"
-   inkscape:pageopacity="0"
-   inkscape:pagecheckerboard="0"
-   inkscape:document-units="mm"
-   showgrid="false"
-   inkscape:zoom="11.240142"
-   inkscape:cx="11.966041"
-   inkscape:cy="11.832591"
-   inkscape:window-width="1366"
-   inkscape:window-height="745"
-   inkscape:window-x="-8"
-   inkscape:window-y="-8"
-   inkscape:window-maximized="1"
-   inkscape:current-layer="svg211" />
- <defs
-   id="defs202">
-  <style
-   type="text/css"
-   id="style200">
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="6.35mm" height="6.35mm" version="1.0" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 635000 635000"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
    <![CDATA[
     .fil0 {fill:#00C800}
     .fil1 {fill:white}
    ]]>
   </style>
  </defs>
- <g
-   id="Layer_x0020_1"
-   inkscape:label="Layer 1"
-   inkscape:groupmode="layer"
-   transform="translate(-343950,-349230)">
-  <metadata
-   id="CorelCorpID_0Corel-Layer" />
-  <g
-   id="_2588989111968">
-   <circle
-   class="fil0"
-   cx="661450"
-   cy="666730"
-   r="317500"
-   id="circle205" />
-   <path
-   class="fil1"
-   d="m 521010,631660 105780,92010 173280,-180610 c 10470,-10910 28000,-11250 38940,-770 v 0 c 10880,10450 11260,27980 800,38890 L 649260,779790 c -5370,5590 -12600,8410 -19830,8420 h -20 -90 c -7020,470 -14200,-1700 -19860,-6630 L 484870,673200 c -11370,-9890 -12590,-27410 -2650,-38840 v 0 c 9900,-11380 27420,-12600 38790,-2700 z"
-   id="path207" />
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_1609756550560">
+   <circle class="fil0" cx="317500" cy="317500" r="317500"/>
+   <path class="fil1" d="M160690 279140l119450 90020 195680 -190070 39310 48600 -232010 228230 -163240 -129870 40810 -46910z"/>
   </g>
  </g>
 </svg>

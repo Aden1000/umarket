@@ -3,19 +3,19 @@
 
 <svg
    xml:space="preserve"
-   width="9.0894384mm"
-   height="6.3499999mm"
+   width="9.1438999mm"
+   height="7.0256mm"
    version="1.0"
    style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
-   viewBox="0 0 908943.71 634999.99"
-   id="svg21"
+   viewBox="0 0 914389.99 702559.99"
+   id="svg1261"
    sodipodi:docname="Product.svg"
    inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
    xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
    xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
    xmlns="http://www.w3.org/2000/svg"
    xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
-   id="namedview23"
+   id="namedview1263"
    pagecolor="#ffffff"
    bordercolor="#999999"
    borderopacity="1"
@@ -24,20 +24,20 @@
    inkscape:pagecheckerboard="0"
    inkscape:document-units="mm"
    showgrid="false"
-   inkscape:zoom="11.700147"
-   inkscape:cx="19.102324"
-   inkscape:cy="13.076758"
+   inkscape:zoom="11.240142"
+   inkscape:cx="17.481986"
+   inkscape:cy="13.167094"
    inkscape:window-width="1366"
    inkscape:window-height="745"
    inkscape:window-x="-8"
    inkscape:window-y="-8"
    inkscape:window-maximized="1"
-   inkscape:current-layer="Layer_x0020_1" />
+   inkscape:current-layer="svg1261" />
  <defs
-   id="defs4">
+   id="defs1244">
   <style
    type="text/css"
-   id="style2">
+   id="style1242">
    <![CDATA[
     .fil0 {fill:#00C800;fill-rule:nonzero}
    ]]>
@@ -47,23 +47,22 @@
    id="Layer_x0020_1"
    inkscape:label="Layer 1"
    inkscape:groupmode="layer"
-   transform="translate(-155680,-314570)">
+   transform="translate(-198850,-312860)">
   <metadata
    id="CorelCorpID_0Corel-Layer" />
   <g
-   id="_1693229429904"
-   transform="matrix(0.90827165,0,0,0.90827165,14280.27,28854.988)">
+   id="_1644228813536">
    <g
-   id="g9">
+   id="g1249">
     <path
    class="fil0"
-   d="M 1111760,415830 H 200340 V 314570 h 911420 l 44660,50630 z m 0,-101260 h 44660 v 50630 z m -44660,648500 V 365200 h 89320 v 597870 l -44660,50630 z m 89320,0 v 50630 h -44660 z M 200340,912440 h 911420 v 101260 H 200340 l -44660,-50630 z m 0,101260 H 155680 V 963070 Z M 245000,365200 V 963070 H 155680 V 365200 l 44660,-50630 z m -89320,0 v -50630 h 44660 z"
-   id="path7" />
+   d="M 1079380,380420 H 232710 v -67560 h 846670 l 33860,33780 z m 0,-67560 h 33860 v 33780 z m -33860,668780 V 346640 h 67720 v 635000 l -33860,33780 z m 67720,0 v 33780 h -33860 z M 232710,947860 h 846670 v 67560 H 232710 l -33860,-33780 z m 0,67560 H 198850 V 981640 Z M 266570,346640 V 981640 H 198850 V 346640 l 33860,-33780 z m -67720,0 v -33780 h 33860 z"
+   id="path1247" />
    </g>
    <path
    class="fil0"
    d="m 560630,510820 c 0,2260 -70,4140 -260,5670 -200,1540 -500,2770 -930,3690 -420,880 -880,1570 -1380,1990 -530,460 -1150,690 -1800,690 h -47640 v 39130 h 44690 c 690,0 1300,190 1800,570 540,350 1000,1000 1420,1880 420,920 690,2110 880,3610 190,1490 310,3370 310,5640 0,2220 -120,4100 -310,5600 -190,1490 -460,2720 -880,3720 -420,960 -880,1650 -1420,2070 -500,420 -1110,610 -1800,610 h -44690 v 54200 c 0,810 -230,1540 -690,2150 -420,580 -1230,1070 -2420,1500 -1150,420 -2680,730 -4520,960 -1880,230 -4300,340 -7210,340 -2840,0 -5220,-110 -7140,-340 -1920,-230 -3450,-540 -4560,-960 -1120,-390 -1920,-920 -2420,-1500 -500,-610 -730,-1340 -730,-2150 V 508020 c 0,-3300 840,-5680 2530,-7140 1690,-1460 3760,-2180 6250,-2180 h 68550 c 650,0 1270,190 1800,610 500,420 960,1070 1380,2030 430,920 730,2190 930,3760 190,1570 260,3490 260,5720 z"
-   id="path11" />
+   id="path1251" />
    <path
    id="1"
    class="fil0"

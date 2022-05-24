@@ -290,8 +290,12 @@ function editAbout(edited,Parent){
         $("#ProfilePage #BusDescription>div:nth-child(2)").attr('class','');
       $("#ProfilePage #BusDescription>div:nth-child(3)").attr('class','hidden');
         var text=$("#ProfilePage #BusDescription textarea").val();
-        text=text.replaceAll("&","%26");
-        text=text.replaceAll("+","%2B");
+        var count=text.length;
+        var j;
+        for(j=0;j<count;j++){
+          text=text.replace("&","%26");
+          text=text.replace("+","%2B");
+        }
         http.open("POST",'profile.php',true);
         http.setRequestHeader("Content-type","application/x-www-form-urlencoded")
         http.onreadystatechange=handleEditRequest();
@@ -328,12 +332,16 @@ function editAbout(edited,Parent){
           }
       else{
         var text=$("#ProfilePage #BusDescription>div:nth-child(2)").html();
-        text=text.replaceAll("<br>","\n");
-        text=text.replaceAll("&lt;","<");
-        text=text.replaceAll("&gt;",">");
-        text=text.replaceAll("&amp;","&");
-        $("#ProfilePage #BusDescription textarea").val(text);
         var count=text.length;
+        var j;
+        for(j=0;j<count;j++){
+          text=text.replace("<br>","\n");
+          text=text.replace("&lt;","<");
+          text=text.replace("&gt;",">");
+          text=text.replace("&amp;","&");
+        }
+        $("#ProfilePage #BusDescription textarea").val(text);
+        count=text.length;
         $("#ProfilePage #BusDescription>div:nth-child(3) .WordCount").html(count+"/1000 words used");
       }
       $("#ProfilePage #BusDescription>div:nth-child(2)").attr('class','hidden');
@@ -356,8 +364,12 @@ function editAbout(edited,Parent){
         $("#ProfilePage #AboutOwner>div:nth-child(7)").attr('class','');
         $("#ProfilePage #AboutOwner>div:nth-child(8)").attr('class','hidden');
         var text=$("#ProfilePage #AboutOwner textarea").val();
-        text=text.replaceAll("&","%26");
-        text=text.replaceAll("+","%2B");
+        var count=text.length;
+        var j;
+        for(j=0;j<count;j++){
+          text=text.replace("&","%26");
+          text=text.replace("+","%2B");
+        }
         http.open("POST",'profile.php',true);
         http.setRequestHeader("Content-type","application/x-www-form-urlencoded")
         http.onreadystatechange=handleEditRequest();
@@ -395,12 +407,16 @@ function editAbout(edited,Parent){
          }
       else{
         var text=$("#ProfilePage #AboutOwner>div:nth-child(7)").html();
-        text=text.replaceAll("<br>","\n");
-        text=text.replaceAll("&lt;","<");
-        text=text.replaceAll("&gt;",">");
-        text=text.replaceAll("&amp;","&");
-        $("#ProfilePage #AboutOwner textarea").val(text);
         var count=text.length;
+        var j;
+        for(j=0;j<count;j++){
+        text=text.replace("<br>","\n");
+        text=text.replace("&lt;","<");
+        text=text.replace("&gt;",">");
+        text=text.replace("&amp;","&");
+        }
+        $("#ProfilePage #AboutOwner textarea").val(text);
+        count=text.length;
         $("#ProfilePage #AboutOwner>div:nth-child(8) .WordCount").html(count+"/1000 words used");
       }
       $("#ProfilePage #AboutOwner>div:nth-child(7)").attr('class','hidden');
@@ -448,8 +464,28 @@ function enableEditAbout(Obj,Parent){
   }
 }
 function showProducts_ServicesOptions(){
-  $("#Products_Services>#Products_ServicesOptions").attr('class','');
+  $("#Products_Services>div:nth-child(2),#Products_Services>div:nth-child(3)").addClass('hidden');
+  setTimeout(function(){
+  $("#Products_Services>#Products_ServicesOptions").removeClass('hidden');
+  },500)
 }
 function closeProducts_ServicesOptions(){
-  $("#Products_Services>#Products_ServicesOptions").attr('class','hidden');
+  $("#Products_Services>#Products_ServicesOptions").addClass('hidden');
+  setTimeout(function(){
+  $("#Products_Services>div:nth-child(2),#Products_Services>div:nth-child(3)").removeClass('hidden');
+  },500)
+}
+function showAddProduct(){
+  $("#Products_Services>#Products_ServicesOptions").addClass('hidden');
+  $("#Products_Services>div:nth-child(1)>.AddBtn").removeAttr('onclick');
+  setTimeout(function(){
+  $("#Products_Services>div:nth-child(5)").removeClass("hidden");
+  },500);
+}
+function closeAddProduct(){
+  $("#Products_Services>div:nth-child(5)").addClass("hidden");  
+  $("#Products_Services>div:nth-child(1)>.AddBtn").attr('onclick','showProducts_ServicesOptions()');
+  setTimeout(function(){
+  $("#Products_Services>div:nth-child(2),#Products_Services>div:nth-child(3)").removeClass('hidden');
+  },500);
 }

@@ -36,6 +36,17 @@ else{
   $profilePic="<img src='../$Uname/Profile/$filename'>";
   $top=file_get_contents("../$Uname/Profile/business_profile_position.txt");
 }
+$productJson=file_get_contents("../$Uname/Products/product.json");
+$productJson=json_decode($productJson,true);
+$maxProduct=$productJson['maxProducts'];
+$numberProduct=$productJson['numberProducts'];
+$maxProductPic=$productJson['maxPics'];
+
+$serviceJson=file_get_contents("../$Uname/Services/service.json");
+$serviceJson=json_decode($serviceJson,true);
+$maxService=$serviceJson['maxServices'];
+$numberService=$serviceJson['numberServices'];
+$maxServicePic=$serviceJson['maxPics'];
 if(!file_exists("../$Uname/Profile/owner_profile.txt") && !file_exists("../$Uname/Profile/owner_profile_position.txt")){
   $ownerProfilePic="<img src='../Images/Avatar.svg' class='AvatarSvg'>";
 }
@@ -44,6 +55,7 @@ else{
   $ownerProfilePic="<img src='../$Uname/Profile/$filename'>";
   $top2=file_get_contents("../$Uname/Profile/owner_profile_position.txt");
 }
+
 if(!file_exists("../$Uname/Profile/about_business.txt")){
   $aboutBusiness="N/A";
 }
@@ -53,6 +65,11 @@ else{
   $aboutBusiness=str_replace("\r","<br>",$aboutBusiness);
   $aboutBusiness=str_replace("\n","<br>",$aboutBusiness);
 }
+
+if(!file_exists("../$Uname/Profile/ratings.json")){
+  $ratings="N/A";
+}
+
 if(!file_exists("../$Uname/Profile/about_owner.txt")){
   $aboutYou="N/A";
 }
@@ -61,9 +78,6 @@ else{
   $aboutYou=htmlentities($aboutYou);
   $aboutYou=str_replace("\r","<br>",$aboutYou);
   $aboutYou=str_replace("\n","<br>",$aboutYou);
-}
-if(!file_exists("../$Uname/Profile/ratings.json")){
-  $ratings="N/A";
 }
 $script=<<<_END
   <script>
@@ -74,6 +88,15 @@ $script=<<<_END
   $("#ProfilePage #Uname").html("@$Uname");
   $("#ProfilePage #CreationTime").html("Joined $CreationTime");
   $("#BusDescription>div:nth-child(2)").html("$aboutBusiness");
+  $("#ProfilePage>#Products_Services>div:nth-child(2)>div:nth-child(1)>h4").after("($numberProduct/$maxProduct)");
+  $("#ProfilePage>#Products_Services>div:nth-child(3)>div:nth-child(1)>h4").after("($numberService/$maxService)");
+  var j;
+  for(j=0;j<$maxProductPic;j++){
+    $("#ProfilePage>#Products_Services>#AddProduct>.ProductPic").append("<div>Click to add product image<div class='AddBtn'><img src='../../../Images/Add.svg'></div>")
+  }
+  for(j=0;j<$maxServicePic;j++){
+    $("#ProfilePage>#Products_Services>#AddService>.ServicePic").append("<div>Click to add service image<div class='AddBtn'><img src='../../../Images/Add.svg'></div>")
+  }
   $("#Ratings>div:nth-child(2)").html("$ratings");
   $("#AboutOwner .ProfilePic").html("$ownerProfilePic");
   $("#AboutOwner .ProfilePic img").css("bottom",$top2);
@@ -89,7 +112,10 @@ $script=<<<_END
       $("#AboutOwner .ProfilePic").css("justify-content","flex-start");
     }
     $("#ProfilePage").attr('class','');
-  },3000)
+    $("#Footer>div").attr('onclick','ChangePage(this)' )
+    $("#BannerTabs>div").attr('onclick','ChangePage(this)' )
+  },3000);
+  $("#response").html("");
   </script>
   _END;
 if($profilePic=="<img src='../Images/avatar.svg' class='AvatarSvg'>"){
@@ -99,6 +125,7 @@ if($profilePic=="<img src='../Images/avatar.svg' class='AvatarSvg'>"){
     $("#ProfileHead .ProfilePicOptions label:nth-child(3)").attr('onclick','');
     $("#ProfileHead .ProfilePicOptions label:nth-child(4)").attr('class','locked');
     $("#ProfileHead .ProfilePicOptions label:nth-child(4)").attr('onclick','');
+    $("#response").html("");
     </script>
     _END;
 }
@@ -109,6 +136,7 @@ if($ownerProfilePic=="<img src='../Images/Avatar.svg' class='AvatarSvg'>"){
     $("#AboutOwner .ProfilePicOptions label:nth-child(3)").attr('onclick','');
     $("#AboutOwner .ProfilePicOptions label:nth-child(4)").attr('class','locked');
     $("#AboutOwner .ProfilePicOptions label:nth-child(4)").attr('onclick','');
+    $("#response").html("");
     </script>
     _END;
 }

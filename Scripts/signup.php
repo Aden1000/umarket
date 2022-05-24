@@ -1,5 +1,4 @@
 <?php
-//global $Error,$ErrorCount,$script,$string,$referer,$host;
 require_once('./mysql.php');             
 require_once('./sanitize.php');
 $ErrorCount=0;
@@ -115,10 +114,7 @@ if(checkUname($Uname,$table)==false) $ErrorCount++;
 if(checkEmail($Email,$table)==false) $ErrorCount++;
 if(checkPwd($Pwd)==false) $ErrorCount++;
 if(checkConfirmPwd($ConfirmPwd,$Pwd)==false) $ErrorCount++;
-if($ErrorCount>0) {
-  exit;
-}
-else{
+if($ErrorCount==0){
   $Pwd=password_hash($Pwd,PASSWORD_DEFAULT);
   require_once('mysql.php');
   $mysql=connect('insert');
@@ -126,25 +122,50 @@ else{
     case "Seller account":
       $query="INSERT INTO sellers  (BusName,BusType,Email,Title,Firstname,Lastname,DOB,Username,Password) VALUES (\"$BusName\",\"$BusType\",\"$Email\",\"$Title\",\"$Fname\",\"$Lname\",\"$DOB\",\"$Uname\",\"$Pwd\")";
       $mysql->query($query);
+      if(!file_exists("../Users/sellers/$Uname")){
+        mkdir("../Users/sellers/$Uname");
+        mkdir("../Users/sellers/$Uname/Profile");
+        mkdir("../Users/sellers/$Uname/Products");
+        $productJson=fopen("../Users/sellers/$Uname/Products/product.json","w");
+        $string=<<<_END
+        {
+          "maxProducts":3,
+          "maxPics":3,
+          "numberProducts":0,
+            "Products":{}
+        }
+        _END;
+        fwrite($productJson,$string);
+        fclose($productJson); 
+        mkdir("../Users/sellers/$Uname/Services");
+        $serviceJson=fopen("../Users/sellers/$Uname/Services/service.json","w");
+        $string=<<<_END
+        {
+          "maxServices":3,
+          "maxPics":3,
+          "numberServices":0,
+            "Services":{}
+        }
+        _END;
+        fwrite($serviceJson,$string);
+        fclose($serviceJson);
+        mkdir("../Users/sellers/$Uname/Messages");
+        mkdir("../Users/sellers/$Uname/Orders");
+        mkdir("../Users/sellers/$Uname/Images");
+      }
       break;
+      
     case "Buyer account":
       $query="INSERT INTO buyers  (Title,Firstname,Lastname,DOB,Username,Email,Password) VALUES (\"$Title\",\"$Fname\",\"$Lname\",\"$DOB\",\"$Uname\",\"$Email\",\"$Pwd\")";
       $mysql->query($query);
       break;
+      
     case "Delivery Agent account":
       $query="INSERT INTO delivery_agents  (BusName,BusType,Email,Title,Firstname,Lastname,DOB,Username,Password) VALUES (\"$BusName\",\"$BusType\",\"$Email\",\"$Title\",\"$Fname\",\"$Lname\",\"$DOB\",\"$Uname\",\"$Pwd\")";
       $mysql->query($query);
       break;
   }
   $mysql=disconnect();
-  if(!file_exists("../Users/$table/$Uname")){
-    mkdir("../Users/$table/$Uname");
-    mkdir("../Users/$table/$Uname/Profile");
-    mkdir("../Users/$table/$Uname/Messages");
-    mkdir("../Users/$table/$Uname/Orders");
-    mkdir("../Users/$table/$Uname/Images");
-    mkdir("../Users/$table/$Uname/Products");
-  }
   setcookie("PHPSESSID",session_id(),time()+60*60*24*7,"/",$host,true,true);
   $_SESSION['initialized']=true;
   $_SESSION['logged_in']=true;

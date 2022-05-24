@@ -70,7 +70,6 @@ div{
 input[type='file']{
   display: none;
 }
-
 #ProfilePage .ProfilePicOptions{
   margin-top:5px;
   border:1px solid rgb(0,200,0);
@@ -87,7 +86,7 @@ input[type='file']{
   -webkit-transition: 0.5s;
   transition-property: height;
   height: 200px;
-  width:70%;
+  width:100%;
 }
 #ProfilePage .ProfilePicOptions.hidden{
   height:0px;
@@ -102,9 +101,6 @@ input[type='file']{
   padding:5px;
   border:1px solid rgb(150,150,150);
   margin-top:5px;
-}
-#ProfilePage .ProfilePicOptions div:nth-child(1){
-  cursor: pointer;
 }
 #ProfilePage .ProfilePicOptions div:nth-child(1) img{
   height:20px;
@@ -300,39 +296,75 @@ input[type='file']{
 
 .close{
   cursor: pointer;
+  height:25px;
+  width:25px;
+  float:right;
+  clear: both;
+  align-self: flex-end;
 }
-#Products_Services>div:nth-child(2){
-  margin-top: 10px;
-  padding: 10px;
+#Products_Services input[type='text']{
+  height:40px;
+  border-radius: 0px;
   border:1px solid rgb(0,200,0);
-  color:rgb(0,200,0);
+  padding:10px;
+  font-size:17px;
+  font-family:"Corbel";
+  width:100%;
+}
+#Products_Services h4{
+  margin:0px;
+}
+#Products_Services>div{
+  margin-top:10px;
   transition: 0.5s;
   -moz-transition: 0.5s;
   -ms-transition: 0.5s;
   -webkit-transition: 0.5s;
-  transition-property: height;
-  height: 180px;
-  width:70%;
+  transition-property: all;
+}
+#Products_Services>div.hidden{
+  height:0px !important;
+  opacity: 0;
+  margin: 0px !important;
+  padding: 0px !important;
+  display: block;
   overflow: hidden;
 }
-#Products_Services>div:nth-child(2).hidden{
-  height:0px;
-  opacity: 0;
-  margin: 0px;
-  padding: 0px;
-  display: block;
+#Products_Services>div:nth-child(1){
+  font-family: "Calibri";
+  color:rgb(140,140,140);
 }
-#Products_Services>div:nth-child(2)>div{
+#Products_Services>div:nth-child(2)>div:nth-child(1),#Products_Services>div:nth-child(3)>div:nth-child(1){
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  column-gap:5px;
+  font-family: "Calibri";
+  border:1px solid rgb(0,200,0);
+  padding: 10px;
+}
+#Products_Services>#Products_ServicesOptions{
+  padding: 10px;
+  border:1px solid rgb(0,200,0);
+  color:rgb(0,200,0);
+  height: 180px;
+  width:100%;
+  overflow: hidden;
+}
+#Products_Services>#Products_ServicesOptions>div{
   height:50px;
 }
-#Products_Services>div:nth-child(2)>div:nth-child(1){
+#Products_Services>#Products_ServicesOptions>div:nth-child(1){
   height:25px;
 }
-#Products_Services>div:nth-child(2)>div:nth-child(1) img{
+#Products_Services>#Products_ServicesOptions>div:nth-child(1) img{
   float: right;
   height:20px;
 }
-#Products_Services #Products,#Products_Services #Services{
+#Products_Services>#Products_ServicesOptions>div~div{
   display: -webkit-box;
   display:-webkit-flex;
   display: -ms-flexbox;
@@ -345,8 +377,41 @@ input[type='file']{
   column-gap: 5px;
   cursor: pointer;
 }
-#Products_Services #Products img, #Products_Services #Services img{
-  width:30px;
+#Products_Services>#Products_ServicesOptions>div~div img{
+  width:25px;
+}
+#Products_Services #AddProduct, #Products_Services #AddService{
+  border:1px solid rgb(0,200,0);
+  padding:10px;
+  width:100%;
+}
+#Products_Services #AddProduct .ProductPic, #Products_Services #AddService .ServicePic{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  column-gap:10px;
+}
+#Products_Services #AddProduct .ProductPic>div,#Products_Services #AddService .ServicePic>div{
+  height:120px;
+  width:120px;
+  border:2px dashed rgb(0,200,0);
+  margin-bottom: 10px;
+  cursor:pointer;
+  display: inherit;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+  text-align: center;
+}
+#Products_Services #AddProduct .ProductPic>div .AddBtn,#Products_Services #AddService .ServicePic>div .AddBtn{
+  filter: none;
+}
+#Products_Services #AddProduct .ProductPic>div:hover, #Products_Services #AddService .ServicePic>div:hover{
+  background:rgb(0,200,0);
+  color:white;
 }
 
 #AboutOwner>div{
@@ -468,28 +533,19 @@ input[type='file']{
     width:100%;
     justify-content: space-between;
   }
-  #ProfilePage .ProfilePicOptions{
-    width:100%;
-  }
   .AdjustPic{
     width:98%;
     height:70%;
     left:1%;
     top:20%
   }
-  #Products_Services>div:nth-child(2){
-    width:100%;
-  }
 }
 @media screen and (max-width:700px) and (orientation:landscape){
   #ProfileHead{
     width:100%;
   }
-  #ProfilePage .ProfilePicOptions{
-    width:80%;
-  }
   .AdjustPic{
-    width:70%;
+    width:100%;
     height:75%;
     left:15%;
     top:20%
