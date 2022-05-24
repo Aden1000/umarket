@@ -84,7 +84,7 @@ function EvaluateForm(event,Form){
   }
   if(ErrorCount==0){
     var img=document.createElement("img");
-    img.src='../Images/Loading.svg';
+    img.src='./Images/Loading.svg';
     img.id='LoadingImg';
     $("#SubmitBtn").attr('class','hidden');
     $("#Form>div:last-child").attr('class','');

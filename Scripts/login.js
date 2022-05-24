@@ -9,7 +9,7 @@ function SubmitForm(){
     $('.error').html('');
     $('#LoginBtn').eq(0).attr('class','hidden');
     var img=document.createElement("img");
-    img.src='../Images/Loading.svg';
+    img.src='./Images/Loading.svg';
     img.id='LoadingImg';
     $("#Form>div:last-child").eq(0).html(img);
     $("#Form>div:last-child").eq(0).append("Checking information...");
