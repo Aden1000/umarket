@@ -1,2 +1,3 @@
 DirectoryIndex Scripts/index.php
-DirectoryIndexRedirect permanent
+DirectoryIndexRedirect off
+FallbackResource ../sellers/

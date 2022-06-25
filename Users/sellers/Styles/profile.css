@@ -49,12 +49,13 @@ div{
   justify-content: space-around;
   cursor: pointer;
   filter: grayscale(1);
+  margin-left:5px;
 }
 .EditBtn img{
   height:17px;
 }
 .AddBtn img{
-  height:20px;
+  height:25px;
 }
 .EditBtn:hover,.AddBtn:hover{
   filter: grayscale(0);
@@ -66,9 +67,18 @@ div{
   display: flex;
   flex-direction: column;
 }
-
+input{
+  appearance:none;
+  -webkit-appearance:none;
+  -moz-appearance:none;
+  border-radius: 0px;
+  outline:0px;
+}
 input[type='file']{
   display: none;
+}
+.disabled{
+  border-color:rgb(200,200,200);
 }
 #ProfilePage .ProfilePicOptions{
   margin-top:5px;
@@ -85,8 +95,10 @@ input[type='file']{
   -ms-transition: 0.5s;
   -webkit-transition: 0.5s;
   transition-property: height;
-  height: 200px;
+  height: 180px;
   width:100%;
+  font-family: "Calibri Bold";
+  overflow: hidden;
 }
 #ProfilePage .ProfilePicOptions.hidden{
   height:0px;
@@ -94,7 +106,6 @@ input[type='file']{
   opacity: 0;
   border: 0px;
   padding:0px;
-  overflow: hidden;
 }
 #ProfilePage .ProfilePicOptions label{
   height:40px;
@@ -130,11 +141,28 @@ input[type='file']{
 .locked{
   filter: grayscale(1);
   opacity: 0.7;
-  cursor:not-allowed;
+  cursor:not-allowed !important;
 }
-
+.Tip{
+  padding:5px;
+  background:rgba(0,200,0,0.2);
+  display: block !important;
+  margin:5px 0px 10px 0px;
+  font-family: "Calibri";
+}
+.Tip.hidden{
+  display: none !important;
+}
+.Tip h3, .Tip h4{
+  margin: 0px; 
+  display:inline;
+  font-family: "Calibri Bold";
+}
 #ProfileHead>div:nth-child(1){
-  display: inherit;
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   flex-direction:row;
   align-items: flex-end;
 }
@@ -149,10 +177,8 @@ input[type='file']{
   position: relative;
   right:40px;
 }
-#ProfileHead>label:first-of-type{
-  position: relative;
-  bottom: 25px;
-  left:95px;
+#ProfileHead .EditProfilePic .EditBtn{
+  margin:0px;
 }
 
 .AdjustPic{
@@ -225,8 +251,30 @@ input[type='file']{
 .AdjustPic .Pic::-webkit-scrollbar{
   display: none;
 }
+.AdjustPic .Pic::-moz-scrollbar{
+  display: none;
+}
 .AdjustPic .Pic::scrollbar{
   display: none;
+}
+
+.SeeMore{
+  margin: 0px;
+  color:rgb(0,200,0);
+  font-family: "Corbel Bold";
+  background: white;
+  position: relative;
+  top:135px;
+  width:100%;
+  cursor: pointer;
+  z-index: 2;
+}
+.SeeMore.hidden{
+  opacity: 0;
+  display: block;
+  width:0px;
+  height:17px;
+  right:100%;
 }
 
 #ProfilePage textarea{
@@ -236,6 +284,7 @@ input[type='file']{
   font-family:"Calibri";
   font-size:17px;
   border:1px solid rgb(0,200,0);
+  outline: 0px;
   resize: none;
   appearance:none;
   -moz-appearance:none;
@@ -264,10 +313,10 @@ input[type='file']{
   color:rgb(0,200,0);
 }
 #BusDescription>div{
-  transition: 0.5s;
-  -ms-transition: 0.5s;
-  -moz-transition: 0.5s;
-  -webkit-transition: 0.5s;
+  transition: 0.3s;
+  -ms-transition: 0.3s;
+  -moz-transition: 0.3s;
+  -webkit-transition: 0.3s;
 }
 #BusDescription>div:nth-child(3){
   height:260px;
@@ -277,39 +326,52 @@ input[type='file']{
   overflow: hidden;
   display: block;
 }
-#BusDescription>div:nth-child(2) .LoadingImg{
+#BusDescriptionWrapper .LoadingImg{
   height: 30px;
 }
-#BusDescription>div:nth-child(2){
+#BusDescriptionWrapper{
   display: -webkit-box;
   display:-webkit-flex;
   display: -ms-flexbox;
   display: flex;
   align-items: center;
-  column-gap: 10px;
-  white-space: pre-wrap;
+  overflow: hidden;
+  max-height: 154px;
 }
-
+#BusDescriptionWrapper.loaded{
+  display: block;
+}
+#BusDescriptionText{
+  white-space: pre-wrap;
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  font-family: 'Calibri';
+}
 .WordCount{
   font-family: "Calibri"
 }
 
 .close{
   cursor: pointer;
-  height:25px;
-  width:25px;
+  height:20px;
+  width:20px;
   float:right;
   clear: both;
   align-self: flex-end;
 }
-#Products_Services input[type='text']{
+#Products_Services input, #Products_Services select{
   height:40px;
   border-radius: 0px;
   border:1px solid rgb(0,200,0);
-  padding:10px;
   font-size:17px;
-  font-family:"Corbel";
-  width:100%;
+  font-family:"Calibri";
+  appearance:none;
+  -moz-appearance:none;
+  padding-left: 10px;
+  box-sizing: border-box;
 }
 #Products_Services h4{
   margin:0px;
@@ -334,7 +396,8 @@ input[type='file']{
   font-family: "Calibri";
   color:rgb(140,140,140);
 }
-#Products_Services>div:nth-child(2)>div:nth-child(1),#Products_Services>div:nth-child(3)>div:nth-child(1){
+
+#Products_Services>div:nth-child(3)>div:nth-child(1),#Products_Services>div:nth-child(4)>div:nth-child(1){
   display: -webkit-box;
   display:-webkit-flex;
   display: -ms-flexbox;
@@ -374,44 +437,454 @@ input[type='file']{
   border:1px solid rgb(150,150,150);
   padding:5px;
   margin-bottom: 10px;
-  column-gap: 5px;
   cursor: pointer;
 }
 #Products_Services>#Products_ServicesOptions>div~div img{
   width:25px;
+  height: 25px;
+  margin-right: 5px;
 }
-#Products_Services #AddProduct, #Products_Services #AddService{
+#Products_Services>div:nth-child(2){
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+}
+
+#AddProduct, #AddService{
   border:1px solid rgb(0,200,0);
-  padding:10px;
+  padding:5px;
   width:100%;
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
 }
-#Products_Services #AddProduct .ProductPic, #Products_Services #AddService .ServicePic{
+#AddProductPic, #AddService .ServicePic{
   display: -webkit-box;
   display:-webkit-flex;
   display: -ms-flexbox;
   display: flex;
   flex-direction: row;
-  flex-wrap: nowrap;
-  column-gap:10px;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  width:100%;
 }
-#Products_Services #AddProduct .ProductPic>div,#Products_Services #AddService .ServicePic>div{
+#AddProductPic label,#AddService .ServicePic label{
   height:120px;
   width:120px;
   border:2px dashed rgb(0,200,0);
-  margin-bottom: 10px;
+  padding:5px;
   cursor:pointer;
-  display: inherit;
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
   text-align: center;
+  overflow: hidden;
+  margin-right:10px;
 }
-#Products_Services #AddProduct .ProductPic>div .AddBtn,#Products_Services #AddService .ServicePic>div .AddBtn{
-  filter: none;
+#AddProductPic label::-webkit-scrollbar,#AddService .ServicePic label::-webkit-scrollbar{
+  display: none;
 }
-#Products_Services #AddProduct .ProductPic>div:hover, #Products_Services #AddService .ServicePic>div:hover{
+#AddProductPic label.loadedHeight,#AddService .ServicePic label.loadedHeight{
+  cursor: default;
+  align-items: flex-start;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0px;
+  border:2px solid rgb(0,200,0)
+}
+
+#AddProductPic label.loadedWidth,#AddService .ServicePic label.loadedWidth{
+  cursor: default;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: row;
+  padding: 0px;
+  border:2px solid rgb(0,200,0)
+}
+#AddProductPic label .AddBtn,#AddService .ServicePic label .AddBtn{
+  height:30px;
+  width:30px;
+}
+#AddProductPic label>img:nth-child(1),#AddService .ServicePic label>img:nth-child(1){
+  width:100%;
+  position: relative;
+}
+#AddProductPic label[class*='loaded']>img:nth-child(1),#AddService .ServicePic label>img:nth-child(1){
+  min-width: 100% !important;
+}
+#AddProductPic label>.close,#AddService .ServicePic label>.close{
+  align-self: flex-start;
+  background: white;
+  position: relative;
+  right:28px;
+  top:6px;
+  padding:5px;
+  border-radius: 100%;
+  height: 15px;
+  width:15px;
+  box-shadow: 0px 0px 3px black;
+}
+#AddProductPic label.loadedWidth>.DropMenu, .AddServicePic label.loadedWidth>.DropMenu{
+  position: relative;
+  right:28px;
+  bottom:35px;
+  filter:drop-shadow(0px 0px 3px black);
+  height:25px;
+  cursor: pointer
+}
+#AddProductPic label.loadedHeight>.DropMenu, .AddServicePic label.loadedHeight>.DropMenu{
+  position: relative;
+  right:28px;
+  top:6px;
+  filter:drop-shadow(0px 0px 3px black);
+  height:25px;
+  cursor: pointer
+}
+
+#AddProductPic>div, #AddService .ServicePic>div{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+}
+#AddProductPic>div>.AddProductPicMenu, #AddService .ServicePic>div>.AddProductPicMenu{
+  border:1px solid rgb(0,200,0);
+  max-width:120px;
+  padding:5px;
+  height:90px;
+  margin-top:5px;
+}
+#AddProductPic>div>.AddProductPicMenu>div, #AddService .ServicePic>div>.AddServicePicMenu>div{
+  padding:5px;
+  margin:5px;
+  font-family:"Calibri Bold";
+  cursor: pointer;
+}
+#AddProductPic>div>.AddProductPicMenu>div:nth-child(1), #AddService .ServicePic>div>.AddServicePicMenu>div:nth-child(1){
+  color:rgb(255,0,0);
+  border:1px solid rgb(255,0,0);
+}
+#AddProductPic>div>.AddProductPicMenu>div:nth-child(2), #AddService .ServicePic>div>.AddServicePicMenu>div:nth-child(2){
+  border:1px solid rgb(0,200,0);
+  color:rgb(0,200,0);
+}
+#AddProductPic>div>.AddProductPicMenu>div:nth-child(1):hover, #AddService .ServicePic>div>.AddServicePicMenu>div:nth-child(1):hover{
+  background:rgb(255,0,0);
+  color:white;
+}
+#AddProductPic>div>.AddProductPicMenu>div:nth-child(2):hover, #AddService .ServicePic>div>.AddServicePicMenu>div:nth-child(2):hover{
   background:rgb(0,200,0);
   color:white;
+}
+#AddProductPic>div>div, #AddService .ServicePic>div>div{
+  transition:0.5s;
+  overflow: hidden
+}
+#AddProductPic>div>div.hidden, #AddService .ServicePic>div>div.hidden{
+  height:0px;
+  border:0px;
+  margin: 0px;
+  display: block;
+  padding:0px;
+}
+.AddProductPicOptions{
+  width:120px;
+  margin-top: 5px;
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-around;
+}
+.AddProductPicOptions img{
+  height:25px;
+  width:25px;
+  cursor:pointer;
+  border-radius: 100%;
+  background: white;
+  padding:4px;
+  box-sizing: border-box;
+}
+.AddProductPicOptions img:nth-child(1){
+  border:2px solid rgb(255,0,0);
+}
+.AddProductPicOptions img:nth-child(2){
+  border:2px solid rgb(0,200,0);
+}
+
+#AddProductName{
+  width:100%;
+}
+
+#AddProductPrice{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  width:100%;
+}
+#AddProductPrice h3:nth-child(1){
+  margin-bottom: 0px;
+}
+#AddProductPrice>div:not(.error){
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction:row;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  min-width:70%;
+}
+#AddProductPrice .error{
+  margin: 0px;
+  position: relative;
+  bottom:10px;
+  align-self: flex-end;
+  width:80%;
+}
+#AddProductPrice label{
+  height:48px;
+  min-width:80%;
+  border:1px solid rgb(0,200,0);
+  padding:5px;
+}
+#AddProductPrice input,#AddProductPrice select{
+  width:79%;
+  border:0px;
+}
+#AddProductPriceType{
+  width:100%;
+  border:0px;
+}
+#AddProductPrice input:focus,#AddProductPrice select:focus{
+  outline: 0px;
+}
+#AddProductPrice div.hidden{
+  display: none;
+}
+
+#AddProductVariation{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  width:100%;
+}
+#AddProductVariation .hidden{
+  display: none !important;
+}
+#AddProductVariation div{
+  width:100%;
+  
+}
+#AddProductVariation .error{
+  margin: 0px;
+  position: relative;
+  bottom:10px;
+  align-self: flex-end;
+  width:80%;
+}
+#AddProductVariation>div:first-child{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  margin:20px 0px 5px 0px;
+}
+#AddProductVariation div:first-child h3{
+  margin: 0px 5px 0px 0px;
+}
+#AddProductVariation>div>div{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+}
+#AddProductVariation>div:last-child>div:last-child{
+  display: block;
+}
+#AddProductVariation input[type='text']{
+  outline:0px;
+  min-width:80%;
+  max-width:80%;
+  height:48px;
+}
+#AddProductVariation input[type='button']{
+  color:rgb(0,200,0);
+  background: white;
+  font-family:'Calibri Bold';
+  cursor:pointer;
+  margin-right: 5px;
+}
+#AddProductVariation input[type='button']:hover{
+  color:white;
+  background:rgb(0,200,0);
+}
+#AddProductVariation .AddBtn{
+  width:25px;
+  height:25px;
+}
+#ProductVariationAdder{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+}
+#AddProductVariation>div:nth-child(2){
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  font-family: "Calibri";
+}
+#AddProductVariation>div:nth-child(2)>div>div:nth-child(1){
+  background:white;
+  color:rgb(255,0,0);
+  padding:5px;
+  border:1px solid rgb(255,0,0);
+  cursor: pointer;
+  width: auto;
+}
+#AddProductVariation>div:nth-child(2)>div>div:nth-child(1):hover{
+  background:rgb(255,0,0);
+  color:white;
+  padding:5px;
+}
+#AddProductVariation>div:nth-child(2) div{
+  width:auto;
+}
+#AddProductVariation>div:nth-child(2)>div{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction:row;
+  justify-content: space-around;
+  padding:5px;
+  border:1px solid rgb(0,200,0);
+}
+#AddProductVariation>div:nth-child(2)>div>div{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content:center!important;
+  width:33%;
+}
+#AddProductVariation>div:nth-child(2)>div>div:last-child{
+  flex-direction:row;
+  flex-wrap: wrap;
+  align-items: center;
+}
+#AddProductVariation>div:nth-child(2)>div>div:last-child>div{
+  border:1px solid rgb(0,200,0);
+  padding:5px;
+  color:rgb(0,200,0);
+  margin:2px;
+  word-break: break-all
+}
+
+#AddProductAvailability .error{
+  margin: 0px 0px 10px 0px;
+  position: relative;
+  bottom:10px;
+  float: right;
+  width:70%;
+}
+#AddProductAvailability>div:not(.error){
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+  width:100%;
+}
+#AddProductAvailability>div:nth-child(2)>input,#AddProductAvailability>div:nth-child(4)>label{
+  min-width:70%;
+}
+#AddProductAvailability>div:nth-child(4)>label[for="AddProductLocationSelector"]{
+  min-width:70%;
+  max-width: 70%;
+  border:1px solid rgb(0,200,0);
+  padding:5px;
+}
+#AddProductAvailability>div:nth-child(4)>label>input{
+  border:0px;
+  width:100%;
+  height:30px;
+}
+#AddProductAvailability>div:nth-child(4)>label>div{
+  border:1px solid rgb(0,200,0);
+  display:inline-flex;
+  align-items: center;
+  flex-wrap: wrap;
+  padding:5px;
+  color:rgb(0,200,0);
+  margin-right: 5px;
+  margin-bottom: 5px;
+}
+#AddProductAvailability>div:nth-child(4)>label .close{
+  height:15px;
+  width:15px;
+  margin-left:5px;
+}
+#AddProductLocations{
+  float:right;
+  margin-top:10px;
+  width:70% !important;
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start !important;
+}
+#AddProductLocations>div{
+  display: -webkit-box;
+  display:-webkit-flex;
+  display: -ms-flexbox;
+  display: flex;
+  align-items: flex-start;
+  margin-bottom: 5px;
+}
+#AddProductLocations>div.hidden{
+  display: none;
+}
+#AddProductBtn{
+  width:40%;
+  align-self: center;
+  color:rgb(0,200,0);
+  background:white;
+  margin-top:20px;
+}
+#AddProductBtn:hover{
+  color:white;
+  background: rgb(0,200,0);
 }
 
 #AboutOwner>div{
@@ -440,7 +913,7 @@ input[type='file']{
 }
 #AboutOwner .EditProfilePic{
   position: relative;
-  right:20px;
+  right:25px;
 }
 #AboutOwner .EditProfilePic .EditBtn{
   height: 30px;
@@ -459,7 +932,6 @@ input[type='file']{
   display: flex;
   flex-direction: row;
   align-items: center;
-  column-gap:5px;
   margin-top:15px;
 }
 #AboutOwner>div:nth-child(6) h3{
@@ -479,7 +951,6 @@ input[type='file']{
   display: flex;
   align-items: center;
   flex-direction: row;
-  column-gap: 5px;
 }
 #AboutOwner>div:nth-child(8){
   height:260px;
@@ -526,7 +997,6 @@ input[type='file']{
   display: flex;
   flex-direction: row;
   align-items: center;
-  column-gap: 5px;
 }
 @media screen and (max-width:700px){
   #ProfileHead{
@@ -539,20 +1009,64 @@ input[type='file']{
     left:1%;
     top:20%
   }
+  #AddProduct, #AddService{
+    width:100%;
+  }
+  #AddProductPic, #AddService .ServicePic{
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    overflow-x: scroll;
+    width:100%;
+  }
+  #AddProductPic label,#AddService .ServicePic label{
+    min-height: 110 ;
+    max-height: 110;
+    min-width: 110;
+    max-width: 110;
+    font-size: 14px;
+  }
+  #AddProductPic>div>div, #AddService .ServicePic>div>div{
+    width:110px;
+  }
+  #AddProductPic label::-webkit-scrollbar,#AddService .ServicePic label::-webkit-scrollbar{
+    display: none;
+  }
+  #AddProductPrice>div{
+    width:100%;
+  }
+  #AddProductPrice label{
+    min-width:70%;
+    max-width:70%;
+  }
+  #AddProductPrice .error, #AddProductVariation .error{
+    width:70%;
+  }
+  #AddProductVariation input[type='text']{
+  outline:0px;
+  min-width:70%;
+  max-width:70%;
+  height:48px;
+}
+  #AddProductBtn{
+    width:100%;
+  }
 }
 @media screen and (max-width:700px) and (orientation:landscape){
   #ProfileHead{
     width:100%;
   }
   .AdjustPic{
-    width:100%;
-    height:75%;
-    left:15%;
-    top:20%
+    width:80%;
+    height:90%;
+    left:10%;
+    top:5%
   }
   .AdjustPic .Pic{
     width:150px;
     height:150px;
+  }
+ #AddProductVariation>div:nth-child(2)>div{
+    align-items:center;
   }
 }
 @media screen and (min-width:700px) and (max-width:999px){
@@ -562,6 +1076,10 @@ input[type='file']{
     top:5%;
     left:25%;
   }
+  #alert{
+    width:60%;
+    left:20%;
+  }
 }
 @media screen and (min-width:700px) and (max-width:999px) and (min-height:700px){
   .AdjustPic{
@@ -570,4 +1088,7 @@ input[type='file']{
     top:20%;
     left:20%;
   }
+}
+br {
+  
 }

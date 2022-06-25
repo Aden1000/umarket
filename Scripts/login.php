@@ -43,7 +43,7 @@ if(isset($_COOKIE['PHPSESSID']) && $_SESSION['logged_in']==true && $_SESSION['in
     $_SESSION['CreationTime']=$row['CreationTime'];
    $script="
    <script>
-   window.location.replace('$http://$host/Users/$table/Scripts/index.php');
+   window.location.replace('$http://$host/Users/$table');
    </script>";
    echo $script;
    die();
@@ -62,22 +62,28 @@ switch($HTTP_REFERER){
     if($_SESSION['logged_in']==true && $_SESSION['initialized']==true){
       extract($_SESSION);
       $mysql=connect('delete');
-      $query="DELETE FROM login WHERE Username='$Uname'";
-      $mysql->query($query);
-      $mysql=connect('insert');
+      $stmt=$mysql->prepare("DELETE FROM login WHERE Username=?");
+      $stmt->bind_param("s",$Uname);
+      $stmt->execute();
       //then create a new login
-      $query="INSERT INTO login (Username,LoginID,IP,AccountType) VALUES (\"$Uname\",\"$LoginID\",\"$REMOTE_ADDR\",\"$AccountType\")";
-      $mysql->query($query);
+      $mysql=connect('insert');
+      $stmt=$mysql->prepare("INSERT INTO login (Username,LoginID,IP,AccountType) VALUES (?,?,?,?)");
+      $stmt->bind_param("ssss",$Uname,$LoginID,$REMOTE_ADDR,$AccountType);
+      $stmt->execute();
       //get the creation time
       $mysql=connect('select');
-      $query="SELECT CreationTime FROM $AccountType WHERE Username='$Uname'";
-      $result=$mysql->query($query);
+      $stmt=$mysql->prepare("SELECT CreationTime FROM $AccountType WHERE Username=?");
+      $stmt->bind_param("s",$Uname);
+      $stmt->execute();
+      $result=$stmt->get_result();
       $row=$result->fetch_array();
       $_SESSION['CreationTime']=$row['CreationTime'];
       $mysql=disconnect();
       setcookie(session_name(),session_id(),time()+60*60*24*7,"/",$host,true,true);
+      $mysql=disconnect();
+      $stmt->close();
       $script="<script>
-      window.location.replace('$http://$host/Users/$AccountType/Scripts/index.php');
+      window.location.replace('$http://$host/Users/$AccountType/');
       </script>;";
       echo $script;
     }
@@ -97,28 +103,32 @@ switch($HTTP_REFERER){
     extract($_POST);
     //authenticate the user
     $mysql=connect('select');
-    $query="SELECT * FROM $AccountType WHERE Username=\"$Uname\"";
-    $result=$mysql->query($query);
+    $stmt=$mysql->prepare("SELECT * FROM $AccountType WHERE Username=?");
+    $stmt->bind_param('s',$Uname);
+    $stmt->execute();
+    $result=$stmt->get_result();
     $row=$result->fetch_array();
     $ConfirmPwd=$row['Password'];
     if(password_verify($Pwd,$ConfirmPwd)){
       session_start();
       //first delete previously logged in devices     
       $mysql=connect('delete');
-      $query="DELETE FROM login WHERE Username=\"$Uname\"";
-      $mysql->query($query);
+      $stmt=$mysql->prepare("DELETE FROM login WHERE Username=?");
+      $stmt->bind_param('s',$Uname);
+      $stmt->execute();
       //then create a new login
+      $mysql=disconnect();
       $mysql=connect('insert');
       $LoginID=session_id();
-      $query="INSERT INTO login (Username,LoginID,IP,AccountType) VALUES (\"$Uname\",\"$LoginID\",\"$REMOTE_ADDR\",\"$AccountType\")";
-      $mysql->query($query);
-      //get all information about the user
-      //create a new session cookie
-//      setcookie("PHPSESSID",session_id(),time()-1,"/");
+      $stmt=$mysql->prepare("INSERT INTO login (Username,LoginID,IP,AccountType) VALUES (?,?,?,?)");
+      $stmt->bind_param("ssss",$Uname,$LoginID,$REMOTE_ADDR,$AccountType);
+      $stmt->execute();
       setcookie("PHPSESSID",session_id(),time()+60*60*24*7,"/",$host,true,true);
       $mysql=connect('select');
-      $query="SELECT * FROM $AccountType WHERE Username='$Uname'";
-      $result=$mysql->query($query);
+      $stmt=$mysql->prepare("SELECT * FROM $AccountType WHERE Username=?");
+      $stmt->bind_param("s",$Uname);
+      $stmt->execute();
+      $result=$stmt->get_result();
       $row=$result->fetch_array();
       $_SESSION['initialized']=true;
       $_SESSION['logged_in']=true;
@@ -131,8 +141,10 @@ switch($HTTP_REFERER){
       $_SESSION['Pwd']=$_POST['Pwd'];
       $_SESSION['loginID']=$loginID;
       $_SESSION['CreationTime']=$row['CreationTime'];
+      $mysql=disconnect();
+      $stmt->close();
       $script="<script>
-      window.location.replace('$http://$host/Users/$AccountType/Scripts/index.php');
+      window.location.replace('$http://$host/Users/$AccountType');
       </script>;";
       echo $script;
     }

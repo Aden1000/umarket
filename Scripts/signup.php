@@ -43,7 +43,7 @@ if(isset($_COOKIE['PHPSESSID']) && $_SESSION['initialized']==true && $_SESSION['
    $_SESSION['CreationTime']=$row['CreationTime'];
    $script="
    <script>
-   window.location.replace('$http://$host/Users/$table/Scripts/index.php');
+   window.location.replace('$http://$host/Users/$table');
    </script>";
    echo $script;
    die();
@@ -116,53 +116,74 @@ if(checkPwd($Pwd)==false) $ErrorCount++;
 if(checkConfirmPwd($ConfirmPwd,$Pwd)==false) $ErrorCount++;
 if($ErrorCount==0){
   $Pwd=password_hash($Pwd,PASSWORD_DEFAULT);
-  require_once('mysql.php');
   $mysql=connect('insert');
   switch($AccountType){
     case "Seller account":
-      $query="INSERT INTO sellers  (BusName,BusType,Email,Title,Firstname,Lastname,DOB,Username,Password) VALUES (\"$BusName\",\"$BusType\",\"$Email\",\"$Title\",\"$Fname\",\"$Lname\",\"$DOB\",\"$Uname\",\"$Pwd\")";
-      $mysql->query($query);
+      $stmt=$mysql->prepare("INSERT INTO sellers  (BusName,BusType,Email,Title,Firstname,Lastname,DOB,Username,Password) VALUES (?,?,?,?,?,?,?,?,?)");
+      $stmt->bind_param("sssssssss",$BusName,$BusType,$Email,$Title,$Fname,$Lname,$DOB,$Uname,$Pwd);
+      $stmt->execute();
       if(!file_exists("../Users/sellers/$Uname")){
         mkdir("../Users/sellers/$Uname");
+        $htaccess=fopen("../Users/sellers/$Uname/.htaccess","w");
+        $string=<<<_END
+          DirectoryIndex ../../sellers
+          DirectoryIndexRedirect off
+          _END;
+        fwrite($htaccess,$string);
+        fclose($htaccess);
         mkdir("../Users/sellers/$Uname/Profile");
+        $htaccess=fopen("../Users/sellers/$Uname/Profile/.htaccess","w");
+        $string=<<<_END
+          DirectoryIndex ../../../sellers
+          DirectoryIndexRedirect off
+          _END;
+        fwrite($htaccess,$string);
+        fclose($htaccess);
         mkdir("../Users/sellers/$Uname/Products");
+        copy("../Users/sellers/$Uname/Profile/.htaccess","../Users/sellers/$Uname/Products/.htaccess");
         $productJson=fopen("../Users/sellers/$Uname/Products/product.json","w");
         $string=<<<_END
         {
-          "maxProducts":3,
-          "maxPics":3,
+          "max":3,
           "numberProducts":0,
-            "Products":{}
+          "Products":[
+            ]
         }
         _END;
         fwrite($productJson,$string);
         fclose($productJson); 
         mkdir("../Users/sellers/$Uname/Services");
+        copy("../Users/sellers/$Uname/Profile/.htaccess","../Users/sellers/$Uname/Services/.htaccess");
         $serviceJson=fopen("../Users/sellers/$Uname/Services/service.json","w");
         $string=<<<_END
         {
-          "maxServices":3,
-          "maxPics":3,
+          "max":3,
           "numberServices":0,
-            "Services":{}
+          "Services":[
+            ]
         }
         _END;
         fwrite($serviceJson,$string);
         fclose($serviceJson);
         mkdir("../Users/sellers/$Uname/Messages");
+        copy("../Users/sellers/$Uname/Profile/.htaccess","../Users/sellers/$Uname/Messages/.htaccess");
         mkdir("../Users/sellers/$Uname/Orders");
+        copy("../Users/sellers/$Uname/Profile/.htaccess","../Users/sellers/$Uname/Orders/.htaccess");
         mkdir("../Users/sellers/$Uname/Images");
+        copy("../Users/sellers/$Uname/Profile/.htaccess","../Users/sellers/$Uname/Images/.htaccess");
       }
       break;
       
     case "Buyer account":
-      $query="INSERT INTO buyers  (Title,Firstname,Lastname,DOB,Username,Email,Password) VALUES (\"$Title\",\"$Fname\",\"$Lname\",\"$DOB\",\"$Uname\",\"$Email\",\"$Pwd\")";
-      $mysql->query($query);
+      $stmt=$mysql->prepare("INSERT INTO buyers  (Title,Firstname,Lastname,DOB,Username,Email,Password) VALUES (?,?,?,?,?,?,?)");
+      $stmt->bind_param("sssssss",$Title,$Fname,$Lname,$DOB,$Uname,$Email,$Pwd);
+      $stmt->execute();
       break;
       
     case "Delivery Agent account":
-      $query="INSERT INTO delivery_agents  (BusName,BusType,Email,Title,Firstname,Lastname,DOB,Username,Password) VALUES (\"$BusName\",\"$BusType\",\"$Email\",\"$Title\",\"$Fname\",\"$Lname\",\"$DOB\",\"$Uname\",\"$Pwd\")";
-      $mysql->query($query);
+      $stmt=$mysql->prepare("INSERT INTO delivery_agents (BusName,BusType,Email,Title,Firstname,Lastname,DOB,Username,Password) VALUES (?,?,?,?,?,?,?,?,?)");
+      $stmt->bind_param("sssssssss",$BusName,$BusType,$Email,$Title,$Fname,$Lname,$DOB,$Uname,$Pwd);
+      $stmt->execute();
       break;
   }
   $mysql=disconnect();
@@ -203,19 +224,26 @@ function checkBname($input,$table){
   }
   else{
     $mysql=connect('select');
-    $query="SELECT BusName FROM $table where BusName='$input'";
-    $result=$mysql->query($query);
+    $mysql=connect('select');
+    $stmt=$mysql->prepare("SELECT BusName FROM $table where BusName=?");
+    $stmt->bind_param("s",$input);
+    $stmt->execute();
+    $result=$stmt->get_result();
     if($result->num_rows>0){
       $Error="Sorry. This business name has been used already.";
       $script="<script>
       $('#txtBusName').siblings().eq(0).html(\"$Error\");
       $('#txtBusName').attr('class','Invalid');
       </script>";
+      $mysql=disconnect();
+      $stmt->close();
       echo $script;
       return false;
     }
     else{
-    return true;
+      $mysql=disconnect();
+      $stmt->close();
+      return true;
     }
   }
 }
@@ -349,24 +377,6 @@ function checkDOB($input,$stamp){
     if(($year-date("Y",$stamp))<18){
     $Error="You must be at least 18 years old to create an account.";
     $script="<script>
-$('#txtDOB').siblings().eq(0).html(\"$Error\");
-$('#txtDOB').attr('class','Invalid');
-</script>";
-    echo $script;
-    return false;
-  }
-    elseif($month<(date("m",$stamp)-1)){
-     $Error="You must be at least 18 years old to create an account.";
-    $script="<script>
-    $('#txtDOB').siblings().eq(0).html(\"$Error\");
-    $('#txtDOB').attr('class','Invalid');
-    </script>";
-    echo $script;
-    return false;
-  }
-    elseif($day<(date("d",$stamp)+1)){
-     $Error="You must be at least 18 years old to create an account.";
-    $script="<script>
     $('#txtDOB').siblings().eq(0).html(\"$Error\");
     $('#txtDOB').attr('class','Invalid');
     </script>";
@@ -374,7 +384,32 @@ $('#txtDOB').attr('class','Invalid');
     return false;
   }
     else{
-      return true;
+      if($month<(date("m",$stamp)-1)){
+        $Error="You must be at least 18 years old to create an account.";
+        $script="<script>
+        $('#txtDOB').siblings().eq(0).html(\"$Error\");
+        $('#txtDOB').attr('class','Invalid');
+        </script>";
+        echo $script;
+        return false;
+  }
+      elseif($month==(date("m",$stamp)-1)){
+        if($day<(date("d",$stamp)+1)){
+          $Error="You must be at least 18 years old to create an account.";
+          $script="<script>
+          $('#txtDOB').siblings().eq(0).html(\"$Error\");
+          $('#txtDOB').attr('class','Invalid');
+          </script>";
+          echo $script;
+          return false;
+        }
+        else{
+          return true;
+        }
+      }
+      else{
+        return true;
+      }
     }
   }
 }
@@ -408,19 +443,25 @@ function checkUname($input,$table){
   }
   else{
     $mysql=connect('select');
-    $query="SELECT Username FROM $table WHERE Username='$input'";
-    $result=$mysql->query($query);
+    $stmt=$mysql->prepare("SELECT Username FROM $table WHERE Username=?");
+    $stmt->bind_param("s",$Uname);
+    $stmt->execute();
+    $result=$stmt->get_result();
     if($result->num_rows>0){
       $Error="Sorry. This username has been used already.";
       $script="<script>
       $('#txtUname').siblings().eq(0).html(\"$Error\");
       $('#txtUname').attr('class','Invalid');
       </script>";
+      $mysql=disconnect();
+      $stmt->close();
       echo $script;
       return false;
     }
     else{
-    return true;
+      $mysql=disconnect();
+      $stmt->close();
+      return true;
   }
   }
 }

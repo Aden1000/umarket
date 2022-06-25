@@ -1,175 +1,224 @@
 var LastIcon;
-var ProfileScroll;
-var OrderScroll;
-var RevenueScroll;
-var MessageScroll;
-var NotificationScroll;
-var MenuScroll;
+var ProfileScroll=0;
+var OrderScroll=0;
+var RevenueScroll=0;
+var MessageScroll=0;
+var NotificationScroll=0;
+var MenuScroll=0;
+var http = new XMLHttpRequest();
 function ChangePage(Icon){
   LastIcon=Icon;
-  var width=document.body.clientWidth;
+  var width;
   switch($(Icon).parents().attr('id')){
     case "Footer":
       switch(Icon.id){
         case "Profile":
           $(Icon).attr('class','selected');
-          $("#ProfilePage").attr('class','');
+          $("#ProfilePage").removeClass('hidden');
+          $("#MainContent>div:not(#ProfilePage)").addClass('hidden');
           $("#MainContent").scrollLeft(0);
-          document.body.scrollIntoView(0,ProfileScroll);
-          $("#MainContent").children("div[id!='ProfilePage']").attr('class','hidden');
-          $("#Footer div[id!='Profile']").attr('class','unselected');
-          $("#BannerTabs div[id!='Profile']").attr('class','unselected');
-          $("#BannerTabs div[id='Profile']").attr('class','selected');
+          document.body.scroll(0,ProfileScroll);
+          $("#Footer>div:not(#Profile)").attr('class','unselected');
+          $("#BannerTabs>div:not(#Profile)").attr('class','unselected');
+          $("#BannerTabs>div#Profile").attr('class','selected');
           $("#PageName h1").html("Profile");
           break;
 
         case "Orders":
           $(Icon).attr('class','selected');
-          $("#OrdersPage").attr('class','');
-          $("#MainContent").scrollLeft(width);         
-          document.body.scrollIntoView(0,OrderScroll);
-
-          $("#MainContent").children("div[id!='OrdersPage']").attr('class','hidden');
-          $("#Footer div[id!='Orders']").attr('class','unselected');
-          $("#BannerTabs div[id!='Orders']").attr('class','unselected');
-          $("#BannerTabs div[id='Orders']").attr('class','selected');
+          $("#OrdersPage").removeClass('hidden');
+          $("#MainContent>div:not(#OrdersPage)").addClass('hidden');
+          width=document.body.clientWidth;
+          $("#MainContent").scrollLeft(width);
+          setTimeout(function(){
+            width=document.body.clientWidth;
+            $("#MainContent").scrollLeft(width);
+          },1)
+          document.body.scroll(0,OrderScroll);
+          $("#Footer>div:not(#Orders)").attr('class','unselected');
+          $("#BannerTabs>div:not(#Orders)").attr('class','unselected');
+          $("#BannerTabs>div#Orders").attr('class','selected');
           $("#PageName h1").html("Orders");
           break;
      
         case "Revenue":
           $(Icon).attr('class','selected');
-          $("#RevenuePage").attr('class','');
+          $("#RevenuePage").removeClass('hidden');
+          $("#MainContent>div:not(#RevenuePage)").addClass('hidden');
+          width=document.body.clientWidth;
           $("#MainContent").scrollLeft(width*2);
-          document.body.scrollIntoView(0,RevenueScroll);
-          $("#MainContent").children("div[id!='RevenuePage']").attr('class','hidden');
-          $("#Footer div[id!='Revenue']").attr('class','unselected');
-          $("#BannerTabs div[id!='Revenue']").attr('class','unselected');
-          $("#BannerTabs div[id='Revenue']").attr('class','selected');
+          setTimeout(function(){
+            width=document.body.clientWidth;
+            $("#MainContent").scrollLeft(width*2);
+          },1)
+          document.body.scroll(0,RevenueScroll);
+          $("#Footer>div:not(#Revenue)").attr('class','unselected');
+          $("#BannerTabs>div:not(#Revenue)").attr('class','unselected');
+          $("#BannerTabs>div#Revenue").attr('class','selected');
           $("#PageName h1").html("Revenue");
           break;
 
         case "Messages":
           $(Icon).attr('class','selected');
-          $("#MessagesPage").attr('class','');
-          $("#MainContent").scrollLeft(width*3);  
-          document.body.scrollIntoView(0,MessageScroll);
-          $("#MainContent").children("div[id!='MessagesPage']").attr('class','hidden');
-          $("#Footer div[id!='Messages']").attr('class','unselected');
-          $("#BannerTabs div[id!='Messages']").attr('class','unselected');
-          $("#BannerTabs div[id='Messages']").attr('class','selected');
+          $("#MessagesPage").removeClass('hidden');
+          $("#MainContent>div:not(#MessagesPage)").addClass('hidden');
+          width=document.body.clientWidth;
+          $("#MainContent").scrollLeft(width*3);
+          setTimeout(function(){
+            width=document.body.clientWidth;
+            $("#MainContent").scrollLeft(width*3);
+          },1)
+          document.body.scroll(0,MessageScroll);
+          $("#Footer>div:not(#Messages)").attr('class','unselected');
+          $("#BannerTabs>div:not(#Messages)").attr('class','unselected');
+          $("#BannerTabs>div#Messages").attr('class','selected');
           $("#PageName h1").html("Messages");
           break;
 
         case "Notifications":
           $(Icon).attr('class','selected');
-          $("#NotificationsPage").attr('class','');
+          $("#NotificationsPage").removeClass('hidden');
+          $("#MainContent>div:not(#NotificationsPage)").addClass('hidden');
+          width=document.body.clientWidth;
           $("#MainContent").scrollLeft(width*4);
-          document.body.scrollIntoView(0,NotificationScroll);
-          $("#MainContent").children("div[id!='NotificationsPage']").attr('class','hidden');
-          $("#Footer div[id!='Notifications']").attr('class','unselected');
-          $("#BannerTabs div[id!='Notifications']").attr('class','unselected');
-          $("#BannerTabs div[id='Notifications']").attr('class','selected');
+          setTimeout(function(){
+            width=document.body.clientWidth;
+            $("#MainContent").scrollLeft(width*4);
+          },1)
+          document.body.scroll(0,NotificationScroll);
+          $("#Footer>div:not(#Notifications)").attr('class','unselected');
+          $("#BannerTabs>div:not(#Notifications)").attr('class','unselected');
+          $("#BannerTabs>div#Notifications").attr('class','selected');
           $("#PageName h1").html("Notifications");
           break;
 
         case "Menu":
           $(Icon).attr('class','selected');
-          $("#MenuPage").attr('class','');
+          $("#MenuPage").removeClass('hidden');
+          $("#MainContent>div:not(#MenuPage)").addClass('hidden');
+          width=document.body.clientWidth;
           $("#MainContent").scrollLeft(width*5);
-          document.body.scrollIntoView(0,MenuScroll);
-          $("#MainContent").children("div[id!='MenuPage']").attr('class','hidden');
-          $("#Footer div[id!='Menu']").attr('class','unselected');
-          $("#BannerTabs div[id!='Menu']").attr('class','unselected');
-          $("#BannerTabs div[id='Menu']").attr('class','selected');
+          setTimeout(function(){
+            width=document.body.clientWidth;
+            $("#MainContent").scrollLeft(width*5);
+          },1)
+          document.body.scroll(0,NotificationScroll);
+          $("#Footer>div:not(#Menu)").attr('class','unselected');
+          $("#BannerTabs>div:not(#Menu)").attr('class','unselected');
+          $("#BannerTabs>div#Menu").attr('class','selected');
           $("#PageName h1").html("Menu");    
           break;
      
  };
       break;
     case "BannerTabs":
-      switch(Icon.id){
+       switch(Icon.id){
         case "Profile":
           $(Icon).attr('class','selected');
-          $("#ProfilePage").attr('class','');
+          $("#ProfilePage").removeClass('hidden');
+          $("#MainContent>div:not(#ProfilePage)").addClass('hidden');
           $("#MainContent").scrollLeft(0);
-          document.body.scrollIntoView(0,ProfileScroll);
-          $("#MainContent").children("div[id!='ProfilePage']").attr('class','hidden');
-          $("#BannerTabs div[id!='Profile']").attr('class','unselected');
-          $("#Footer div[id!='Profile']").attr('class','unselected');
-          $("#Footer div[id='Profile']").attr('class','selected');
+          document.body.scroll(0,ProfileScroll);
+          $("#BannerTabs>div:not(#Profile)").attr('class','unselected');
+          $("#Footer>div:not(#Profile)").attr('class','unselected');
+          $("#Footer>div#Profile").attr('class','selected');
           $("#PageName h1").html("Profile");
           break;
-     
+
         case "Orders":
           $(Icon).attr('class','selected');
-          $("#OrdersPage").attr('class','');
+          $("#OrdersPage").removeClass('hidden');
+          $("#MainContent>div:not(#OrdersPage)").addClass('hidden');
+          width=document.body.clientWidth;
           $("#MainContent").scrollLeft(width);
-          document.body.scrollIntoView(0,OrderScroll);
-          $("#MainContent").children("div[id!='OrdersPage']").attr('class','hidden');
-          $("#BannerTabs div[id!='Orders']").attr('class','unselected');
-          $("#Footer div[id!='Orders']").attr('class','unselected');
-          $("#Footer div[id='Orders']").attr('class','selected');
+          setTimeout(function(){
+            width=document.body.clientWidth;
+            $("#MainContent").scrollLeft(width);
+          },1)
+          document.body.scroll(0,OrderScroll);
+          $("#BannerTabs>div:not(#Orders)").attr('class','unselected');
+          $("#Footer>div:not(#Orders)").attr('class','unselected');
+          $("#Footer>div#Orders").attr('class','selected');
           $("#PageName h1").html("Orders");
           break;
      
         case "Revenue":
           $(Icon).attr('class','selected');
-          $("#RevenuePage").attr('class','');
+          $("#RevenuePage").removeClass('hidden');
+          $("#MainContent>div:not(#RevenuePage)").addClass('hidden');
+          width=document.body.clientWidth;
           $("#MainContent").scrollLeft(width*2);
-          document.body.scrollIntoView(0,RevenueScroll);
-          $("#MainContent").children("div[id!='RevenuePage']").attr('class','hidden');
-          $("#BannerTabs div[id!='Revenue']").attr('class','unselected');
-          $("#Footer div[id!='Revenue']").attr('class','unselected');
-          $("#Footer div[id='Revenue']").attr('class','selected');
+          setTimeout(function(){
+            width=document.body.clientWidth;
+            $("#MainContent").scrollLeft(width*2);
+          },1)
+          document.body.scroll(0,RevenueScroll);
+          $("#BannerTabs>div:not(#Revenue)").attr('class','unselected');
+          $("#Footer>div:not(#Revenue)").attr('class','unselected');
+          $("#Footer>div#Revenue").attr('class','selected');
           $("#PageName h1").html("Revenue");
           break;
-     
+
         case "Messages":
           $(Icon).attr('class','selected');
-          $("#MessagesPage").attr('class','');
+          $("#MessagesPage").removeClass('hidden');
+          $("#MainContent>div:not(#MessagesPage)").addClass('hidden');
+          width=document.body.clientWidth;
           $("#MainContent").scrollLeft(width*3);
-          document.body.scrollIntoView(0,MessageScroll);
-          $("#MainContent").children("div[id!='MessagesPage']").attr('class','hidden');
-          $("#BannerTabs div[id!='Messages']").attr('class','unselected');
-          $("#Footer div[id!='Messages']").attr('class','unselected');
-          $("#Footer div[id='Messages']").attr('class','selected');
+          setTimeout(function(){
+            width=document.body.clientWidth;
+            $("#MainContent").scrollLeft(width*3);
+          },1)
+          document.body.scroll(0,MessageScroll);
+          $("#BannerTabs>div:not(#Messages)").attr('class','unselected');
+          $("#Footer>div:not(#Messages)").attr('class','unselected');
+          $("#Footer>div#Messages").attr('class','selected');
           $("#PageName h1").html("Messages");
           break;
-          
+
         case "Notifications":
           $(Icon).attr('class','selected');
-          $("#NotificationsPage").attr('class','');
+          $("#NotificationsPage").removeClass('hidden');
+          $("#MainContent>div:not(#NotificationsPage)").addClass('hidden');
+          width=document.body.clientWidth;
           $("#MainContent").scrollLeft(width*4);
-          document.body.scrollIntoView(0,NotificationScroll);
-          $("#MainContent").children("div[id!='NotificationsPage']").attr('class','hidden');
-          $("#BannerTabs div[id!='Notifications']").attr('class','unselected');
-          $("#Footer div[id!='Notifications']").attr('class','unselected');
-          $("#Footer div[id='Notifications']").attr('class','selected');
+          setTimeout(function(){
+            width=document.body.clientWidth;
+            $("#MainContent").scrollLeft(width*4);
+          },1)
+          document.body.scroll(0,NotificationScroll);
+          $("#BannerTabs>div:not(#Notifications)").attr('class','unselected');
+          $("#Footer>div:not(#Notifications)").attr('class','unselected');
+          $("#Footer>div#Notifications").attr('class','selected');
           $("#PageName h1").html("Notifications");
           break;
-          
+
         case "Menu":
           $(Icon).attr('class','selected');
-          $("#MenuPage").attr('class','');
+          $("#MenuPage").removeClass('hidden');
+          $("#MainContent>div:not(#MenuPage)").addClass('hidden');
+          width=document.body.clientWidth;
           $("#MainContent").scrollLeft(width*5);
-          document.body.scrollIntoView(0,MenuScroll);
-          $("#MainContent").children("div[id!='MenuPage']").attr('class','hidden');
-          $("#BannerTabs div[id!='Menu']").attr('class','unselected');
-          $("#Footer div[id!='Menu']").attr('class','unselected');
-          $("#Footer div[id='Menu']").attr('class','selected');
+          setTimeout(function(){
+            width=document.body.clientWidth;
+            $("#MainContent").scrollLeft(width*5);
+          },1)
+          document.body.scroll(0,NotificationScroll);
+          $("#BannerTabs>div:not(#Menu)").attr('class','unselected');
+          $("#Footer>div:not(#Menu)").attr('class','unselected');
+          $("#Footer>div#Menu").attr('class','selected');
           $("#PageName h1").html("Menu");    
           break;
+     
  };
       break;
   }
 }
-function CloseAlert(obj){
-  $(obj).css('transform','scale(1.5,1.5)');
-  $(obj).css('transform','scale(1,1)');
-  $(obj.parentElement.parentElement).attr('class','hidden');
-}
 function ResizePage(){
-  $(LastIcon).click()
+  $(LastIcon).click();
+  if($("#BusDescriptionWrapper").height()>154){
+    seeMore(document.getElementsByClassName("SeeMore").item(0));
+  }
 }
 function PageScroll(){
   var icon=$("#Footer .selected").eq(0)
@@ -192,5 +241,68 @@ function PageScroll(){
     case "Menu":
       MenuScroll=$("body").eq(0).scrollTop();
       break;
+  }
+}
+function ReloadProfile(Obj){
+  $("#ProfilePage *:not(.LoadingImg)").remove();
+  $("#ProfilePage").addClass('loading');
+  http.open("POST","Scripts/profile.php",true);
+  http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+  http.onreadystatechange=handleReloadRequest();
+  http.send("ReloadProfile="+true);
+  function handleReloadRequest(){
+    if(http.readyState==4){
+      if(http.status==200){
+        $("#response").html(http.response);
+        http.abort();
+      }
+      else{
+        setTimeout(handleReloadRequest,2000);
+      }
+    }
+    else{
+      setTimeout(handleReloadRequest,2000);
+    }
+  }
+}
+function CloseAlert(){
+  $('#alert').addClass('hidden');
+}
+function failureAlert(text){
+  $("#alert #alertIcon").html("<img src='../../Images/Failure.svg'>");
+  $("#alert #content").html(text);
+  $("#alert .close").removeClass('hidden');
+  $("#alert").addClass('failure');
+  $("#alert").removeClass('success');
+  $("#alert").removeClass('info');
+  $("#alert").removeClass('hidden');
+}
+function successAlert(text){
+  $("#alert #alertIcon").html("<img src='../../Images/Success.svg'>");
+  $("#alert #content").html(text);
+  $("#alert .close").addClass('hidden');
+  $("#alert").addClass('success');
+  $("#alert").removeClass('failure');
+  $("#alert").removeClass('info');
+  $("#alert").removeClass('hidden');
+  setTimeout(function(){
+    $("#alert").addClass('hidden');
+  },3000);
+}
+function infoAlert(text){
+  $("#alert #alertIcon").html("<img src='../../Images/Tip.svg'>");
+  $("#alert #content").html(text);
+  $("#alert .close").removeClass('hidden');
+  $("#alert").addClass('info');
+  $("#alert").removeClass('failure');
+  $("#alert").removeClass('success');
+  $("#alert").removeClass('hidden');
+}
+function scrollIntoView(id,Adjust){
+  document.getElementById(id).scrollIntoView(true);
+  if(Adjust!=false){
+    var height=$("#Banner").height()+$("#PageName").height();
+    height=0-height;
+    document.body.scrollBy(0,height);
   }
 }

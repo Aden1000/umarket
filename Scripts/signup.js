@@ -276,29 +276,40 @@ function checkDOB(input){
      $(input).attr('class','Invalid');
      return false;
      }
-  else if((Now.getFullYear()-input.valueAsDate.getFullYear())<18){
-    Error="You must be at least 18 years old to create an account.";
-    $(input).siblings().eq(0).html(Error);
-    $(input).attr('class','Invalid');
-    return false;
-  } 
-  else if(Now.getMonth()<input.valueAsDate.getMonth()){
-    Error="You must be at least 18 years old to create an account.";
-    $(input).siblings().eq(0).html(Error);
-    $(input).attr('class','Invalid');
-    return false;
-    }
-  else if(Now.getDate()<input.valueAsDate.getDate()){
-    Error="You must be at least 18 years old to create an account.";
-    $(input).siblings().eq(0).html(Error);
-    $(input).attr('class','Invalid');
-    return false;
-  }
   else{
+    if((Now.getFullYear()-input.valueAsDate.getFullYear())<18){
+      Error="You must be at least 18 years old to create an account.";
+      $(input).siblings().eq(0).html(Error);
+      $(input).attr('class','Invalid');
+      return false;
+    }
+    else{
+      if(Now.getMonth()<input.valueAsDate.getMonth()){
+        Error="You must be at least 18 years old to create an account.";
+        $(input).siblings().eq(0).html(Error);
+        $(input).attr('class','Invalid');
+        return false;
+    }
+      else if(Now.getMonth()==input.valueAsDate.getMonth()){
+        if(Now.getDate()<input.valueAsDate.getDate()){
+          Error="You must be at least 18 years old to create an account.";
+          $(input).siblings().eq(0).html(Error);
+          $(input).attr('class','Invalid');
+          return false;
+  }
+        else{
         $(input).attr('class','Valid');
+        $(input).siblings().eq(0).html("");
         return true;
+  }
       }
-    
+      else{
+        $(input).attr('class','Valid');
+        $(input).siblings().eq(0).html("");
+        return true;
+  }
+    }
+  }
 }
 function checkUname(input){
   $(input).siblings().eq(0).html("");

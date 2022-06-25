@@ -30,6 +30,9 @@
   src:
     url('../Fonts/Corbel Bold.ttf') format('truetype');
 }
+a{
+  text-decoration: none;
+}
 h1,h2,h3,h4,h5{
   color:rgb(0,200,0);
   font-family:"Corbel Bold"
@@ -192,7 +195,6 @@ form>div:last-child{
   display:-ms-flexbox; 
   display:flex;
   align-items: center;
-  column-gap: 10px;
   font-family: "Calibri Bold";
   color:rgb(0,200,0);
 }
@@ -255,6 +257,7 @@ fieldset input, fieldset select{
   padding: 0px;
   box-sizing: border-box;
   background:rgb(245,245,245);
+  font-family: "Calibri";
 }
 
 .HelpTip{
@@ -264,6 +267,7 @@ fieldset input, fieldset select{
 }
 .error{
   color: rgb(255,0,0);
+  padding-left:5px;
 }
 #SubmitBtn{
   font-family: "Calibri Bold";
@@ -293,6 +297,7 @@ fieldset input, fieldset select{
   animation-duration: 2s;
   align-self: center;
   height:30px;
+  margin-right:5px;
 }
 .hidden{
   display: none !important;

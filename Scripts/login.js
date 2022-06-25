@@ -1,5 +1,6 @@
 var http=new XMLHttpRequest();
-function SubmitForm(){
+function SubmitForm(event){
+  event.preventDefault();
   var ErrorCount=0;
   //ensure that all fields as filled
   if(checkUname()==false) ErrorCount++

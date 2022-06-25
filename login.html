@@ -20,7 +20,7 @@
     <div id="MainContent">
       <img id="UmarketBanner" src="./Images/Umarket%20Banner.svg">
       <h1>Log into your Umarket account!</h1>
-      <form id="Form">
+      <form id="Form" onsubmit="SubmitForm(event)">
         <div class='error'></div>
         <div>
           <div>
@@ -62,7 +62,7 @@
             <div class='error'></div>
           </div>
         </div>
-        <input type="button" value="LOGIN ACCOUNT" id="LoginBtn" onclick="SubmitForm()">
+        <input type="submit" value="LOGIN ACCOUNT" id="LoginBtn">
         <div class='hidden'>
           <img src="./Images/Loading.svg" id='LoadingImg'>
         </div>

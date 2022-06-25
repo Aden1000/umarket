@@ -22,3 +22,16 @@
 img{
   width:110%;
 }
+input[type='checkbox']{
+  border:1px solid rgb(0,200,0);
+  width:20px;
+  height:20px;
+  align-self: center;
+  color:white;
+  cursor: pointer;
+  appearance:none;
+  margin: 0px 2px 0px 0px;
+}
+input[type='checkbox']:checked{
+  background-image: url('../Images/Checked.svg');
+}

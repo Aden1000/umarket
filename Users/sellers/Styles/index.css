@@ -7,7 +7,6 @@
     url("../../../Fonts/Calibri.woff2") format("woff2"),
     url("../../../Fonts/Calibri.eot") format("embedded-opentype");
 }
-/*
 @font-face{
   font-family:'Calibri Bold';
   src:
@@ -17,7 +16,6 @@
     url("../../../Fonts/Calibri Bold.eot") format("embedded-opentype"),
     url("../../../Fonts/Calibri Bold.otf") format("opentype");
 }
-*/
 @font-face{
   font-family:"Corbel";
   src:
@@ -40,14 +38,45 @@ h1,h2,h3,h4{
 .hidden{
   display: none;
 }
-div{
+.error{
+  color:rgb(255,0,0);
+  font-family: "Calibri bold";
+  margin-bottom: 15px;
+}
+input[type='button']{
+  cursor:pointer;
+  font-family: 'Calibri Bold' !important;
+}
+input[type='checkbox']{
+  border:1px solid rgb(0,200,0);
+  width:20px !important;
+  height:20px !important;
+  align-self: center;
+  color:white;
+  cursor: pointer;
+  appearance:none;
+  -moz-appearance:none;
+  -ms-appearance:none;
+  -webkit-appearance:none;
+  margin: 0px 5px 0px 0px;
+}
+input[type='checkbox']:checked{
+  background-image: url('../../../Images/Checked.svg');
+  background-position: center;
+  background-size: 15px;
+  background-repeat: no-repeat;
+}
+.Invalid{
+  border-color:rgb(255,0,0) !important;
+}
+div,label{
   box-sizing: border-box;
 }
 #Banner{
   position: fixed;
   left:0px;
   top:0px;
-  z-index:2;
+  z-index:4;
   height:80px;
   width:100%;
   display: -webkit-box;
@@ -99,7 +128,7 @@ div{
   position: fixed;
   top:80px;
   left:25%;
-  z-index: 1;
+  z-index: 3;
   width:50%;
   height:40px;
   padding:0px;
@@ -122,17 +151,6 @@ div{
   font-family:"Corbel";
   overflow-x: hidden;
 }
-#MainContent>div.hidden{
-  opacity: 0;
-  height:0px;
-  min-width: 0px;
-  overflow: hidden;
-  display: block;
-}
-#MainContent>div{
-  min-width:100%;
-  height:auto;
-}
 #MainContent>#MenuPage>div{
   display: -webkit-box;
   display:-webkit-flex;
@@ -148,18 +166,36 @@ div{
   height:20px;
   margin-right: 20px
 }
+
 .LoadingImg{
   animation-name: Loading;
   animation-iteration-count: infinite;
   animation-timing-function: linear;
   animation-duration: 2s;
   height:30px;
+  margin-right:5px;
 }
-#MainContent>.LoadingImg{
+#MainContent>div{
+  min-width:100%;
+  height:auto;
+}
+#MainContent>div.hidden,#MainContent>div.loading{
+  display: block;
+  height:0px;
+  overflow: hidden;
+}
+#MainContent>div.hidden *{
+  visibility:hidden !important;
+}
+#MainContent>div.loading>.LoadingImg{
   align-self: center;
   position: fixed;
   top:45%;
   left:45%;
+  visibility:visible;
+}
+#MainContent>div:not(.loading)>.LoadingImg{
+  display: none;
 }
 @keyframes Loading{
   to{
@@ -169,6 +205,7 @@ div{
 
 #Footer{
   display: none; 
+  z-index: 5;
 }
 #FooterExtra{
   display: none;
@@ -177,52 +214,65 @@ div{
   width:150px;
 }
 #alert{
-  color: rgb(100,100,100);
-  font-family: "Corbel";
+  font-family: "Calibri";
   transition: 1s;
   -moz-transition: 1s;
   -webkit-transition: 1s;
   -ms-transition: 1s;
   transition-property: position display;
   position: fixed;
-  padding: 10px;
   background: white;
   width:40%;
-  height:auto;
-  border:1px solid rgb(0,200,0);
   top:5px;
   left:30%;
-  display: -webkit-box;
-  display:-webkit-flex;
-  display: -ms-flexbox;
-  display: flex;
-  flex-direction: column;
-  z-index: 4;
+  z-index: 6;
 }
-#alert.hidden{
-  top:-50%;
+#alert img:first-of-type{
+  width:20px;
 }
-#alert>div:nth-child(1) img{
-  height:15px;
-  cursor:pointer;
-  float: right;
-}
-#alert>#content{
+#alert>div{
   display: -webkit-box;
   display:-webkit-flex;
   display: -ms-flexbox;
   display: flex;
   flex-direction: row;
   align-items: center;
+  justify-content:space-around;
+  padding:10px;
   column-gap: 10px;
 }
-#alert>#content>img{
-  height:25px;
+#alert.failure>div{
+  background:rgba(255,0,0,0.2);
+  border: 1px solid rgb(255,0,0);
+  border-left:5px solid rgb(255,0,0);
+}
+#alert.success>div{
+  background:rgba(0,255,0,0.2);
+  border: 1px solid rgb(0,255,0);
+  border-left:5px solid rgb(0,200,0);
+  justify-content: flex-start;
+}
+#alert.info>div{
+  background:rgba(200,200,200,0.2);
+  border: 1px solid rgb(200,200,200);
+  border-left:5px solid rgb(200,200,200);
+}
+#alert.info img:first-of-type{
+  filter:grayscale(1);
+}
+#alert .close{
+  height:15px;
+  width:15px;
+  filter: grayscale(1);
+}
+#alert.hidden{
+  top:-50%;
+  display: block !important;
 }
 @media screen and (max-width:700px){
   #Banner{
     height:80px;
-    z-index: 3;
+    z-index: 4;
   }
   #BannerExtra{
     height:120px;
@@ -230,7 +280,7 @@ div{
   #PageName{
     top:80px;
     left:0px;
-    z-index: 2;
+    z-index: 3;
     height: 40px;
     width: 100%;
     padding-left:5px;

@@ -30,7 +30,7 @@
      <div class='unselected' onclick='DisplayForm(this)'>BUYER</div>
      <div class='unselected'  onclick='DisplayForm(this)'>DELIVERY AGENT</div>
      </div>
-     <form  class='hidden' id="Form" action="Scripts/signup.php" onsubmit="return EvaluateForm(event,this)" method="post" enctype="application/x-www-form-urlencoded">
+     <form  class='hidden' id="Form" action="Scripts/signup.php" onsubmit="EvaluateForm(event,this)" method="post" enctype="application/x-www-form-urlencoded">
        <input id='hidAccountType' type='hidden' name='AccountType' value=''>
        <fieldset id='BusInfo' class='shown'>  
          <legend>Business Information</legend>
@@ -158,7 +158,7 @@
            </div>
          </div>
        </fieldset>
-       <input type="button" value="CREATE ACCOUNT" id="SubmitBtn" onclick="SubmitForm(this)">
+       <input type="submit" value="CREATE ACCOUNT" id="SubmitBtn">
        <div class='hidden'>
          <img src='./Images/Loading.svg' id="LoadingImg">
        </div>

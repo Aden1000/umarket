@@ -1,6 +1,6 @@
 <html lang='en'>
   <head id='SellersProfilePage'>
-    <link media='all' rel='stylesheet' href='../Styles/profile.css'>
+    <link media='all' rel='stylesheet' href='Styles/profile.css'>
   </head>
   <body>
     <div id='ProfileHead'>
@@ -9,23 +9,23 @@
         </div>
         <div class='EditProfilePic' onclick='showProfilePicOptions(this.parentElement.parentElement)'>
         <div class='EditBtn' title='Edit profile picture.'>
-          <img src='../../../Images/Camera.svg'>
+          <img src='../../Images/Camera.svg'>
         </div>
         <input id='NewProfilePic' type='file' onchange='updateProfilePic(this,this.parentElement.parentElement.parentElement)'>
         </div>
       </div>
       <div class='ProfilePicOptions hidden'>
-          <img src='../../../Images/Close.svg' class='close' onclick='closeProfilePicOptions(this.parentElement.parentElement)'>
+          <img src='../../Images/Close.svg' class='close' onclick='closeProfilePicOptions(this.parentElement.parentElement)'>
         <label for='NewProfilePic'>
-          <img src='../../../Images/Upload.svg'>
+          <img src='../../Images/Upload.svg'>
           Upload new picture
         </label>
         <label onclick='adjustProfilePic(false,this.parentElement.parentElement)'>
-          <img src='../../../Images/Edit.svg'>
+          <img src='../../Images/Edit.svg'>
           Edit picture
         </label>
         <label onclick='deleteProfilePic(this.parentElement.parentElement)'>
-          <img src='../../../Images/Delete.svg'>
+          <img src='../../Images/Delete.svg'>
           Delete picture
         </label>
       </div>
@@ -49,10 +49,13 @@
       <div>
         <h2>About Business</h2>
         <div class='EditBtn' onclick='editAbout(false,this.parentElement.parentElement)'>
-        <img src='../../../Images/Edit.svg'>
+        <img src='../../Images/Edit.svg'>
         </div>
       </div>
-      <div></div>
+      <div id='BusDescriptionWrapper'>
+        <h5 class='SeeMore' onclick='seeMore(this)'>...see more</h5>
+        <div id='BusDescriptionText' onclick='unSeeMore(this)'></div>
+      </div>
       <div class='hidden'>
         <textarea maxlength=1000 wrap='hard' placeholder='Write a description of your business. For example, you can tell what kind of goods or services you offer to customers and where you can deliver them.' onkeyup='enableEditAbout(this,this.parentElement.parentElement)'></textarea>
         <br>
@@ -65,9 +68,13 @@
       <div>
         <h2>Products | Services</h2>
         <div class='AddBtn' onclick='showProducts_ServicesOptions()'>
-          <img src='../../../Images/Add.svg'>
+          <img src='../../Images/Add.svg'>
         </div>
       </div>
+      <div class='hidden'>
+        <img src='../../Images/Loading.svg' class='LoadingImg'>
+        Adding product...
+        </div>
       <div>
         <div>
           <h4>Products</h4>
@@ -80,24 +87,257 @@
       </div>
       <div id='Products_ServicesOptions' class='hidden'>
         <div>
-          <img src='../../../Images/Close.svg' class='close' onclick='closeProducts_ServicesOptions()'>
+          <img src='../../Images/Close.svg' class='close' onclick='closeProducts_ServicesOptions()'>
         </div>
-        Choose what you want to add:
+        What would you like to add?
         <div onclick=showAddProduct()>
-          <img src='../../../Images/Product.svg'>
+          <img src='../../Images/Product.svg'>
           Products
         </div>
         <div>
-          <img src='../../../Images/Service.svg'>
+          <img src='../../Images/Service.svg'>
           Services
         </div>
       </div>
       <div id='AddProduct' class='hidden'>
-        <img src='../../../Images/Close.svg' onclick='closeAddProduct()' class='close'>
+        <img src='../../Images/Close.svg' onclick='closeAddProduct()' class='close'>
         <h3>Add a new product</h3>
-        <div class='ProductPic'>
+        <div id='AddProductPic'>
+          <input type='file' id='AddProductPic1' onchange='addProductPic(this)'>
+          <input type='file' id='AddProductPic2' onchange='addProductPic(this)'>
+          <input type='file' id='AddProductPic3' onchange='addProductPic(this)'>
+          <input type='file' id='AddProductPic4' onchange='addProductPic(this)'>
+          <input type='file' id='AddProductPic5' onchange='addProductPic(this)'>
+          <input type='file' id='AddProductPic6' onchange='addProductPic(this)'>
+          <input type='file' id='AddProductPic7' onchange='addProductPic(this)'>
         </div>
-        <input type='text'  maxlength='70' placeholder='Enter product name'>
+        <div class='Tip hidden'>
+          <img src='../../Images/Tip.svg'>
+          <br>
+          <h4>For mobiles</h4>: Drag the product image to reposition it.
+          <br>
+          <h4>For Desktops</h4>: Click the image, then use the arrow buttons to resposition it.
+        </div>
+        <div class='error'></div>
+
+        <input type='text'  maxlength='70' placeholder='Enter product name. E.g, Confam T-shirts.' id='AddProductName' onkeyup='addProductName(this)'>
+        <div class='WordCount'>70 characters left.</div>
+        <div class='error'></div>
+        <br>
+        <textarea maxlength='1000' placeholder='Write a description of your product. For example, you could talk about the various features of your product that makes it different from those of other brands.' onkeyup='addProductDescription(this)' id='AddProductDescription'></textarea>
+        <div class='WordCount'>1000 characters left</div>
+        <div class='error'></div>
+        <div id='AddProductPrice'>
+          <h3>Pricing</h3>
+          <div>
+          Price Type:
+            <label for='AddProductPriceType'>
+              <select  id='AddProductPriceType' onchange='showProductPriceOptions(this.value)'>
+              <option selected></option>
+              <option>Fixed price</option>
+              <option>Range price</option>
+              <option>Discounted price</option>
+            </select>
+            </label>
+          </div>
+          <div class='error'></div>
+          <div class='hidden'>
+            Price: 
+            <label for='AddProductFixedPrice'>
+              NGN
+              <input  id='AddProductFixedPrice' type='tel' placeholder='E.g, 2000' onkeyup='checkProductFixedPrice(this)'>
+            </label> 
+
+          </div>
+          <div class='error'></div>
+          <div class='hidden'>
+              Min: 
+            <label for='AddProductMinPrice'>
+              NGN
+              <input type='tel' id='AddProductMinPrice' placeholder='E.g, 1000' onkeyup='checkProductRangePrice(this)'>
+            </label>
+            </div>
+          <div class='error'></div>
+          <div class='hidden'>
+              Max: 
+            <label for='AddProductMaxPrice'>
+              NGN
+              <input type='tel' id='AddProductMaxPrice' placeholder='E.g, 2000' onkeyup='checkProductRangePrice(null,this)'>
+            </label>
+            </div>
+          <div class='error'></div>
+          <div class='hidden'>
+            Original Price: 
+            <label for='AddProductOriginalPrice'>
+              NGN <input type='tel' id='AddProductOriginalPrice' placeholder='E.g, 2000' onkeyup='checkProductDiscountedPrice(this)'>
+            </label>
+          </div>
+          <div class='error'></div>
+          <div class='hidden'>
+            Discounted Price: 
+            <label for='AddProductDiscountedPrice'>
+              NGN <input type='tel' id='AddProductDiscountedPrice' placeholder='E.g, 1500' onkeyup='checkProductDiscountedPrice(null,this)'>
+            </label>
+          </div>
+          <div class='error'></div>
+        </div>
+        <div id='AddProductVariation'>
+          <div>
+            <h3>
+              Variations
+            </h3>
+              <img src='../../Images/Add.svg' class='AddBtn' onclick='showProductVariationAdder()' title='Add a product variation.'>
+          </div>
+          <div>None</div>
+          <div id='ProductVariationAdder' class='hidden'>
+            <div>
+              Variation Name: <input type='text' id='ProductVariationName' placeholder='E.g, Color'>
+            </div>
+            <div class='error'></div>
+            <div>
+              Variation(s) <input type='text' id='ProductVariation' placeholder='E.g, Red'>
+            </div>
+            <div class='error'></div>
+            <div class='Tip'>
+              <img src='../../Images/Tip.svg'>
+              <br>
+              To add multiple variations, separate each one with a comma followed by a space. E.g, for Color variations, you can add multiple options by typing like this: Red, Pink, Yellow, Indigo
+            </div>
+            <div>
+              <input type='button' value='Cancel' onclick='closeProductVariationAdder()'>
+              <input type='button' value='Add Variation' onclick='addProductVariation()'>
+            </div>
+          </div>
+        </div>
+        <div id='AddProductAvailability'>
+          <h3>Availability</h3>
+          <div>
+            Stock available:
+            <input type='tel' id='AddProductStockAvailable' onkeyup='checkProductAvailability(this)' placeholder='Quantity of goods available for sale'>
+          </div>
+          <div class='error'></div>
+          <div>
+            Location(s):
+            <label for='AddProductLocationSelector'>
+              <input type='text' placeholder='Enter name of state' onkeyup='addProductLocation(this)' id='AddProductLocationSelector'>  
+            </label>
+          </div>
+          <div class='error'></div>
+          <div id='AddProductLocations'>
+            <div class='hidden'>
+                  <input type='checkbox' onchange='addProductLocation(this)' value='Abia'>Abia<br>
+                </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Abuja'>Abuja<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Adamawa'>Adamawa<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Akwa-Ibom'>Akwa-Ibom<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Anambra'>Anambra <br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Bauchi'>Bauchi<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Benue'>Benue<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Borno'>Borno<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Cross-River'>Cross-River<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Delta'>Delta<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Ebonyi'>Ebonyi<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Edo'>Edo<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Ekiti'>Ekiti<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Enugu'>Enugu<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Gombe'>Gombe<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Imo'>Imo<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Jigawa'>Jigawa<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Kaduna'>Kaduna<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Kano'>Kano<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Katsina'>Katsina<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Kebbi'>Kebbi<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Kogi'>Kogi<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Kwara'>Kwara<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Lagos'>Lagos<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Nassarawa'>Nassarawa<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Niger'>Niger<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Ogun'>Ogun<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Ondo'>Ondo<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Osun'>Osun<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Oyo'>Oyo<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Plateau'>Plateau<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Rivers'>Rivers<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Sokoto'>Sokoto<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Taraba'>Taraba<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Yobe'>Yobe<br>
+            </div>
+            <div class='hidden'>
+            <input type='checkbox' onchange='addProductLocation(this)' value='Zamfara'>Zamfara<br>
+            </div>
+            <div class='error hidden'>
+              No results found.
+            </div>
+              </div>
+        </div>
+        <input type='button' value='Add Product' onclick='addProduct(this)' id='AddProductBtn'>
       </div>
       <div id='AddService' class='hidden'>
         <h3>Add a new service</h3>
@@ -120,25 +360,25 @@
         </div>
         <div class='EditProfilePic' onclick='showProfilePicOptions(this.parentElement.parentElement)'>
            <div class='EditBtn' title='Edit profile picture.'>
-             <img src='../../../Images/Camera.svg'>
+             <img src='../../Images/Camera.svg'>
            </div>
            <input id='OwnerNewProfilePic' type='file' onchange='updateProfilePic(this,this.parentElement.parentElement.parentElement)'>
         </div>  
       </div>
       <div class='ProfilePicOptions hidden'>
         <div onclick='closeProfilePicOptions(this.parentElement.parentElement)'>
-          <img src='../../../Images/Close.svg' class='close'>
+          <img src='../../Images/Close.svg' class='close'>
         </div>
         <label for='OwnerNewProfilePic'>
-          <img src='../../../Images/Upload.svg'>
+          <img src='../../Images/Upload.svg'>
           Upload new picture
         </label>
         <label onclick='adjustProfilePic(false,this.parentElement.parentElement)'>
-          <img src='../../../Images/Edit.svg'>
+          <img src='../../Images/Edit.svg'>
           Edit picture
         </label>
         <label onclick='deleteProfilePic(this.parentElement.parentElement)'>
-          <img src='../../../Images/Delete.svg'>
+          <img src='../../Images/Delete.svg'>
           Delete picture
         </label>
       </div>
@@ -159,7 +399,7 @@
       <div>
         <h3>About you</h3>
         <div class='EditBtn' onclick='editAbout(false,this.parentElement.parentElement)'>
-          <img src='../../../Images/Edit.svg'>
+          <img src='../../Images/Edit.svg'>
         </div>
       </div>
       <div></div>
@@ -171,6 +411,9 @@
         <br>
         <div class='WordCount'></div>
       </div>
+    </div>
+    <div style='display: none'>
+      <img src='../../Images/Drop%20Menu.svg'>
     </div>
   </body>
 </html>
