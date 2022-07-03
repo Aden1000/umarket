@@ -1,4 +1,36 @@
 var http = new XMLHttpRequest();
+var StartDrag=[];
+function checkDevice(){
+  var link=document.createElement('link');
+  if(/iPhone|iPad|Android/.test(window.navigator.userAgent)){
+    link.setAttribute('href','Styles/profileMobile.css');
+    link.setAttribute('onload','styleLoaded()');
+    link.setAttribute('rel','stylesheet');
+    document.head.append(link);
+  }
+  else{
+    link.setAttribute('href','Styles/profileDesktop.css');
+    link.setAttribute('onload','styleLoaded()');    
+    link.setAttribute('rel','stylesheet');
+    document.head.append(link);
+  }
+}
+function styleLoaded(){
+  $("#ProfilePage").removeClass('loading');
+}
+function checkProfilePic(Obj,type){
+   if($(Obj).height()>$(Obj).width()){
+     $(Obj).parent().addClass('loadedHeight');
+   }
+  else{
+      $(Obj).parent().addClass('loadedWidth');
+    }
+  switch(type){
+    case "update":
+      successAlert("Upload successful!");
+      break;
+  }
+}
 function showProfilePicOptions(Parent) {
   switch(Parent.id){
     case "AboutOwner":
@@ -21,9 +53,13 @@ switch(Parent.id){
 }
 function updateProfilePic(Obj,Parent){
   if(Obj.files.length!==0){
+    //check the uploaded file type.
     if(/jpeg|png|gif/.test(Obj.files[0].type)){
+      //check the uploaded file size; It should not exceed 5MB.
       if(Obj.files[0].size<52428800){
+        //check if the profile pic update is for the owner or the business.
         switch(Parent.id){
+            //for the business
           case "ProfileHead":
             $("#ProfileHead .EditProfilePic").attr('onclick','');
             $("#ProfileHead .ProfilePicOptions").addClass('hidden');
@@ -38,6 +74,7 @@ function updateProfilePic(Obj,Parent){
             http.send(formData);
             break;
           
+            //for the business
           case "AboutOwner":
             $("#AboutOwner .EditProfilePic").attr('onclick','');
             $("#AboutOwner .ProfilePicOptions").addClass('hidden');
@@ -127,6 +164,7 @@ function updateProfilePic(Obj,Parent){
       $("#response").html(http.response);
       switch(Parent.id){
         case "ProfileHead":
+          $("#ProfileHead .ProfilePic").css('justify-content','');
           $("#ProfileHead .EditProfilePic").attr('onclick','showProfilePicOptions(this.parentElement.parentElement)');
           Parent=Obj.parentElement
           $(Obj).remove();
@@ -139,6 +177,7 @@ function updateProfilePic(Obj,Parent){
           break;
         
         case "AboutOwner":
+          $("#AboutOwner .ProfilePic").css('justify-content','');
           $("#AboutOwner .EditProfilePic").attr('onclick','showProfilePicOptions(this.parentElement.parentElement)');
           Parent=Obj.parentElement
           $(Obj).remove();
@@ -161,125 +200,177 @@ function updateProfilePic(Obj,Parent){
   }  
 }
 }
-function adjustProfilePic(edited,Parent,Obj){
-  switch(Obj){
-    case undefined:
-      switch(Parent.id){
-    case "ProfileHead":
-      $("#ProfileHead .ProfilePicOptions").addClass('hidden');
-      switch(edited){
-    case true:
-      $("#ProfileHead .AdjustPic .Pic").css("overflow","hidden");
-      $("#ProfileHead .AdjustPic input").attr('disabled',true);
-      $("#ProfileHead .AdjustPic input").css('opacity','0.5');
-      $("#ProfileHead .AdjustPic div").eq(1).html("<img src='../../Images/Loading.svg' class='LoadingImg'>Editing...");
-      var top=$("#ProfileHead .AdjustPic .Pic").scrollTop();
-      var height=$("#ProfileHead .AdjustPic .Pic").height();
-      top=(120/height)*top;
-      http.open("POST","Scripts/profile.php",true);
-      http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-      http.onreadystatechange=handleAdjustRequest();
-      http.send(
-        "AdjustProfilePic=true&Business=true"+
-        "&top="+top
-      )
-      break;
-    case false: 
-          $("#ProfileHead .AdjustPic").removeClass('hidden');
-          $("#ProfileHead .AdjustPic input").attr('disabled',true);
-          $("#ProfileHead .AdjustPic input").css('opacity','0.5');
-          $("#ProfileHead .AdjustPic .Pic").html("<img src='../../Images/Loading.svg' class='LoadingImg'><br>");
-          $("#ProfileHead .AdjustPic div").eq(1).html("Shift the picture to adjust it's position.");
-          var img=new Image();
-          img.src=$("#ProfileHead .ProfilePic img").attr('src');
-          var center=document.createElement("center");
-          setTimeout(function(){
-          $("#ProfileHead .AdjustPic .Pic").html(center);
-          $("#ProfileHead .AdjustPic .Pic center").html(img);
-          if(img.height>img.parentElement.parentElement.clientHeight){
-          $("#ProfileHead .AdjustPic .Pic").css('justify-content','flex-start');
+function adjustProfilePic(edited,Parent){
+  switch(Parent.id){
+        case "ProfileHead":
+          $("#ProfileHead .ProfilePicOptions").addClass('hidden');
+          switch(edited){
+            case true:
+              $("#ProfileHead .Pic").css('overflow','hidden');
+              $("#ProfileHead .AdjustPic input").attr('disabled',true);
+              $("#ProfileHead .AdjustPic input").css('opacity','0.5');
+              $("#ProfileHead .AdjustPic>div").eq(1).removeClass('hidden');
+              $("#ProfileHead .AdjustPic>div").eq(2).addClass('hidden');
+              var top=$("#ProfileHead .Pic").scrollTop();
+              var left=$("#ProfileHead .Pic").scrollLeft();
+              var picWidth=$("#ProfileHead .Pic img").eq(0).innerWidth();
+              var height=$("#ProfileHead .Pic").height();
+              var width=$("#ProfileHead .Pic").innerWidth();
+              top=(114/height)*top;
+              left=(114/width)*left;
+              picWidth=(114/width)*picWidth;
+              http.open("POST","Scripts/profile.php",true);
+              http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+              http.onreadystatechange=handleAdjustRequest();
+              http.send(
+                "AdjustProfilePic=true&Business=true"+
+                "&top="+top+
+                "&left="+left+
+                "&width="+picWidth
+              )
+              break;
+            case false: 
+              $("#ProfileHead .AdjustPic").removeClass('hidden');
+              $("#ProfileHead .AdjustPic input").attr('disabled',true);
+              $("#ProfileHead .AdjustPic input").css('opacity','0.5');
+              $("#ProfileHead .Pic").html("<img src='../../Images/Loading.svg' class='LoadingImg'>");
+              var img=new Image();
+              img.src=$("#ProfileHead .ProfilePic img").attr('src');
+              img.setAttribute('ondragstart','startDrag(this,event)');
+              img.setAttribute('ondrag','continueDrag(this,event)');
+              img.setAttribute('droppable',false);
+              setTimeout(function(){
+                 var parent=$("#ProfileHead .Pic");
+                $(parent).html(img);
+                var width=$("#ProfileHead .ProfilePic img").innerWidth();
+                width=(width/114)*$(parent).innerWidth();
+                var left=$("#ProfileHead .ProfilePic img").css('right');
+                left=left.substr(0,left.length-2);
+                left=(left/114)*$(parent).innerWidth();
+                var top=$("#ProfileHead .ProfilePic img").css('bottom');
+                top=top.substr(0,top.length-2);
+                top=(top/114)*$(parent).height();
+                $("#ProfileHead .AdjustPic>div").eq(2).removeClass('hidden');
+                img=$("#ProfileHead .Pic img").eq(0);
+                $(img).css('width',width);
+                if($(img).height()>$("#ProfileHead .Pic").height()){
+                  $("#ProfileHead .Pic").addClass('loadedHeight');
+                }
+                else{
+                  $("#ProfileHead .Pic").addClass('loadedWidth');
+                }
+                $(parent).scrollLeft(left);
+                $(parent).scrollTop(top);
+                $("#ProfileHead .AdjustPic input").attr('disabled',false);
+                $("body").css('overflow','hidden');
+                $("#ProfileHead .AdjustPic input").css('opacity','1');
+              },2000);
+              break;
+
+            case null:
+              $("#ProfileHead .Pic").css('justify-content','');
+              $("#ProfileHead .Pic").removeClass('loadedHeight');
+              $("#ProfileHead .Pic").removeClass('loadedWidth');;
+              $("#ProfileHead .AdjustPic>div").eq(2).addClass('hidden');
+              $("#ProfileHead .AdjustPic").addClass('hidden');
+              $("body").css('overflow','scroll');
           }
-          $("#ProfileHead .AdjustPic input").attr('disabled',false);
-          $("body").css('overflow','hidden');
-          $("#ProfileHead .AdjustPic input").css('opacity','1');
-          },2000);
           break;
-    case null:
-      $("#ProfileHead .AdjustPic .Pic").css('justify-content','center');
-      $("#ProfileHead .AdjustPic").addClass('hidden');
-      $("body").css('overflow','scroll');
+        
+        case "AboutOwner":
+          $("#AboutOwner .ProfilePicOptions").addClass('hidden');
+          switch(edited){
+            case true:
+              $("#AboutOwner .Pic").css('overflow','hidden');
+              $("#AboutOwner .AdjustPic input").attr('disabled',true);
+              $("#AboutOwner .AdjustPic input").css('opacity','0.5');
+              $("#AboutOwner .AdjustPic>div").eq(1).removeClass('hidden');
+              $("#AboutOwner .AdjustPic>div").eq(2).addClass('hidden');
+              var top=$("#AboutOwner .Pic").scrollTop();
+              var left=$("#AboutOwner .Pic").scrollLeft();
+              var picWidth=$("#AboutOwner .Pic img").eq(0).innerWidth();
+              var height=$("#AboutOwner .Pic").height();
+              var width=$("#AboutOwner .Pic").innerWidth();
+              top=(56/height)*top;
+              left=(56/width)*left;
+              picWidth=(56/width)*picWidth;
+              http.open("POST","Scripts/profile.php",true);
+              http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+              http.onreadystatechange=handleAdjustRequest();
+              http.send(
+                "AdjustProfilePic=true&Owner=true"+
+                "&top="+top+
+                "&left="+left+
+                "&width="+picWidth
+              )
+              break;
+            case false: 
+              $("#AboutOwner .AdjustPic").removeClass('hidden');
+              $("#AboutOwner .AdjustPic input").attr('disabled',true);
+              $("#AboutOwner .AdjustPic input").css('opacity','0.5');
+              $("#AboutOwner .Pic").html("<img src='../../Images/Loading.svg' class='LoadingImg'>");
+              var img=new Image();
+              img.src=$("#AboutOwner .ProfilePic img").attr('src');
+              img.setAttribute('ondragstart','startDrag(this,event)');
+              img.setAttribute('ondrag','continueDrag(this,event)');
+              setTimeout(function(){
+                //ensure to remove 'px' at the end of each value
+                var parent=$("#AboutOwner .Pic");
+                $(parent).html(img);
+                var width=$("#AboutOwner .ProfilePic img").innerWidth();
+                width=(width/56)*$(parent).innerWidth();
+                var left=$("#AboutOwner .ProfilePic img").css('right');
+                left=left.substr(0,left.length-2);
+                left=(left/56)*$(parent).innerWidth();
+                var top=$("#AboutOwner .ProfilePic img").css('bottom');
+                top=top.substr(0,top.length-2);
+                top=(top/56)*$(parent).height();
+                $("#AboutOwner .AdjustPic>div").eq(2).removeClass('hidden');
+                img=$("#AboutOwner .Pic img").eq(0);
+                $(img).css('width',width);
+                if($(img).height()>$("#AboutOwner .Pic").height()){
+                  $("#AboutOwner .Pic").addClass('loadedHeight');
+                }
+                else{
+                  $("#AboutOwner .Pic").addClass('loadedWidth');
+                }
+                $(parent).scrollLeft(left);
+                $(parent).scrollTop(top);
+                $("#AboutOwner .AdjustPic input").attr('disabled',false);
+                $("body").css('overflow','hidden');
+                $("#AboutOwner .AdjustPic input").css('opacity','1');
+                },2000);
+              break;
 
-}
-      break;
-      
-    case "AboutOwner":
-      $("#AboutOwner .ProfilePicOptions").addClass('hidden');
-      switch(edited){
-    
-        case true:
-          $("#AboutOwner .AdjustPic .Pic").css("overflow","hidden");
-          $("#AboutOwner .AdjustPic input").attr('disabled',true);
-          $("#AboutOwner .AdjustPic input").css('opacity','0.5');
-          $("#AboutOwner .AdjustPic div").eq(1).html("<img src='../../Images/Loading.svg' class='LoadingImg'>Editing...");
-          var top=$("#AboutOwner .AdjustPic .Pic").scrollTop();
-          var height=$("#AboutOwner .AdjustPic .Pic").height();
-          top=(60/height)*top;
-          http.open("POST","Scripts/profile.php",true);
-          http.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-          http.onreadystatechange=handleAdjustRequest();
-          http.send(
-            "AdjustProfilePic=true&Owner=true"+
-            "&top="+top
-          )
+            case null:
+              $("#AboutOwner .Pic").css('justify-content','');
+              $("#AboutOwner .Pic").removeClass('loadedHeight');
+              $("#AboutOwner .Pic").removeClass('loadedWidth');;
+              $("#AboutOwner .AdjustPic>div").eq(2).addClass('hidden');
+              $("#AboutOwner .AdjustPic").addClass('hidden');
+              $("body").css('overflow','scroll');
+          }
           break;
-    
-        case false: 
-          $("#AboutOwner .AdjustPic").removeClass('hidden');
-          $("#AboutOwner .AdjustPic input").attr('disabled',true);
-          $("#AboutOwner .AdjustPic input").css('opacity','0.5');
-          $("#AboutOwner .AdjustPic .Pic").html("<img src='../../Images/Loading.svg' class='LoadingImg'><br>");
-          $("#AboutOwner .AdjustPic div").eq(1).html("Shift the picture to adjust it's position.");
-          var img=new Image();
-          img.src=$("#AboutOwner .ProfilePic img").attr('src');
-          var center=document.createElement("center");
-          setTimeout(function(){
-            $("#AboutOwner .AdjustPic .Pic").html(center);
-            $("#AboutOwner .AdjustPic .Pic center").html(img);
-            if(img.height>img.parentElement.parentElement.clientHeight){
-            $("#AboutOwner .AdjustPic .Pic").css('justify-content','flex-start');
-            }
-            $("#AboutOwner .AdjustPic input").attr('disabled',false);
-            $("body").css('overflow','hidden');
-            $("#AboutOwner .AdjustPic input").css('opacity','1');
-            },2000);
-          break;
-          
-        case null:
-          $("#AboutOwner .AdjustPic .Pic").css('justify-content','center');
-          $("#AboutOwner .AdjustPic").addClass('hidden');
-          $("body").css('overflow','scroll');
-}
-      break;
-  }
-      break;
-
-    default:
-       break;
   }
   function handleAdjustRequest(){
    if(http.readyState==4){
-     if(http.status==200){
-           
+     if(http.status==200){     
        switch(Parent.id){
          case "ProfileHead":
-           $("#ProfileHead .AdjustPic .Pic").css('justify-content','center');
-           $("#ProfileHead .AdjustPic .Pic").css('overflow','scroll');
+           $("#ProfileHead .Pic").css('overflow','');
+           $("#ProfileHead .Pic").css('justify-content','');
+           $("#ProfileHead .Pic").removeClass('loadedHeight');
+           $("#ProfileHead .Pic").removeClass('loadedWidth');
+           $("#ProfileHead .AdjustPic>div").eq(1).addClass('hidden');
            $("body").css('overflow','scroll');
            break;
          
          case "AboutOwner":
-           $("#AboutOwner .AdjustPic .Pic").css('justify-content','center');
-           $("#AboutOwner .AdjustPic .Pic").css('overflow','scroll');
+           $("#AboutOwner .Pic").css('overflow','');
+           $("#AboutOwner .Pic").css('justify-content','');
+           $("#AboutOwner .Pic").removeClass('loadedHeight');
+           $("#AboutOwner .Pic").removeClass('loadedWidth');
+           $("#AboutOwner .AdjustPic>div").eq(1).addClass('hidden');
            $("body").css('overflow','scroll');
            break;
        }
@@ -293,8 +384,58 @@ function adjustProfilePic(edited,Parent,Obj){
    else{
        setTimeout(handleAdjustRequest,2000)
      }
-
  }
+}
+function startDrag(Obj,event){
+  var img=new Image(0,0);
+  img.src='../../Images/Null.svg';
+  try{
+    event.dataTransfer.setDragImage(img,0,0);
+    event.dataTransfer.clearData(event.dataTransfer.types[0]);
+  }
+  catch(error){
+  
+  }
+  StartDrag[0]=event.x;
+  StartDrag[1]=event.y;
+}
+function continueDrag(Obj,event){
+  var parent=Obj.parentElement;
+  var x=event.x;
+  var y=event.y;
+  var scrollX=StartDrag[0]-x;
+  var scrollY=StartDrag[1]-y;
+  if(x!=0 && y!=0 && StartDrag[0]!=0 && StartDrag[1]!=0){
+    parent.scrollLeft+=scrollX;
+    parent.scrollTop+=scrollY;
+  }
+  StartDrag[0]=event.x;
+  StartDrag[1]=event.y;
+}
+function zoomIn(Obj){
+  var parent=Obj.parentElement.previousElementSibling.previousElementSibling;
+  var Obj=$(Obj.parentElement.previousElementSibling.previousElementSibling.firstChild);
+  var width=$(Obj).innerWidth();
+  var height=$(Obj).height();
+  $(Obj).css('width',width+10);
+  height=$(Obj).height()-height;
+//  parent.scrollBy(5,height);
+  parent.scrollLeft+=5;
+  parent.scrollTop+=height;
+}
+function zoomOut(Obj){
+  var parent=Obj.parentElement.previousElementSibling.previousElementSibling;
+  var Obj=$(Obj.parentElement.previousElementSibling.previousElementSibling.firstChild);
+  var width=$(Obj).innerWidth();
+  var parentWidth=$(parent).innerWidth();
+  if(width>parentWidth){
+    var height=$(Obj).height();
+    $(Obj).css('width',width-10);
+    height=height-$(Obj).height();
+//   parent.scrollBy(-5,-height);
+    parent.scrollLeft-=5;
+    parent.scrollTop-=height;
+  }
 }
 function deleteProfilePic(Parent){
   

@@ -17,7 +17,7 @@ function ChangePage(Icon){
           $("#ProfilePage").removeClass('hidden');
           $("#MainContent>div:not(#ProfilePage)").addClass('hidden');
           $("#MainContent").scrollLeft(0);
-          document.body.scroll(0,ProfileScroll);
+          document.body.scrollTop=ProfileScroll;
           $("#Footer>div:not(#Profile)").attr('class','unselected');
           $("#BannerTabs>div:not(#Profile)").attr('class','unselected');
           $("#BannerTabs>div#Profile").attr('class','selected');
@@ -34,7 +34,7 @@ function ChangePage(Icon){
             width=document.body.clientWidth;
             $("#MainContent").scrollLeft(width);
           },1)
-          document.body.scroll(0,OrderScroll);
+          document.body.scrollTop=OrderScroll;
           $("#Footer>div:not(#Orders)").attr('class','unselected');
           $("#BannerTabs>div:not(#Orders)").attr('class','unselected');
           $("#BannerTabs>div#Orders").attr('class','selected');
@@ -51,7 +51,7 @@ function ChangePage(Icon){
             width=document.body.clientWidth;
             $("#MainContent").scrollLeft(width*2);
           },1)
-          document.body.scroll(0,RevenueScroll);
+          document.body.scrollTop=RevenueScroll;
           $("#Footer>div:not(#Revenue)").attr('class','unselected');
           $("#BannerTabs>div:not(#Revenue)").attr('class','unselected');
           $("#BannerTabs>div#Revenue").attr('class','selected');
@@ -68,7 +68,7 @@ function ChangePage(Icon){
             width=document.body.clientWidth;
             $("#MainContent").scrollLeft(width*3);
           },1)
-          document.body.scroll(0,MessageScroll);
+          document.body.scrollTop=MessageScroll;
           $("#Footer>div:not(#Messages)").attr('class','unselected');
           $("#BannerTabs>div:not(#Messages)").attr('class','unselected');
           $("#BannerTabs>div#Messages").attr('class','selected');
@@ -85,7 +85,7 @@ function ChangePage(Icon){
             width=document.body.clientWidth;
             $("#MainContent").scrollLeft(width*4);
           },1)
-          document.body.scroll(0,NotificationScroll);
+          document.body.scrollTop=NotificationScroll;
           $("#Footer>div:not(#Notifications)").attr('class','unselected');
           $("#BannerTabs>div:not(#Notifications)").attr('class','unselected');
           $("#BannerTabs>div#Notifications").attr('class','selected');
@@ -102,7 +102,7 @@ function ChangePage(Icon){
             width=document.body.clientWidth;
             $("#MainContent").scrollLeft(width*5);
           },1)
-          document.body.scroll(0,NotificationScroll);
+          document.body.scrollTop=NotificationScroll;
           $("#Footer>div:not(#Menu)").attr('class','unselected');
           $("#BannerTabs>div:not(#Menu)").attr('class','unselected');
           $("#BannerTabs>div#Menu").attr('class','selected');
@@ -118,7 +118,7 @@ function ChangePage(Icon){
           $("#ProfilePage").removeClass('hidden');
           $("#MainContent>div:not(#ProfilePage)").addClass('hidden');
           $("#MainContent").scrollLeft(0);
-          document.body.scroll(0,ProfileScroll);
+          document.body.scrollTop=ProfileScroll;
           $("#BannerTabs>div:not(#Profile)").attr('class','unselected');
           $("#Footer>div:not(#Profile)").attr('class','unselected');
           $("#Footer>div#Profile").attr('class','selected');
@@ -135,7 +135,7 @@ function ChangePage(Icon){
             width=document.body.clientWidth;
             $("#MainContent").scrollLeft(width);
           },1)
-          document.body.scroll(0,OrderScroll);
+          document.body.scrollTop=OrderScroll;
           $("#BannerTabs>div:not(#Orders)").attr('class','unselected');
           $("#Footer>div:not(#Orders)").attr('class','unselected');
           $("#Footer>div#Orders").attr('class','selected');
@@ -152,7 +152,7 @@ function ChangePage(Icon){
             width=document.body.clientWidth;
             $("#MainContent").scrollLeft(width*2);
           },1)
-          document.body.scroll(0,RevenueScroll);
+          document.body.scrollTop=RevenueScroll;
           $("#BannerTabs>div:not(#Revenue)").attr('class','unselected');
           $("#Footer>div:not(#Revenue)").attr('class','unselected');
           $("#Footer>div#Revenue").attr('class','selected');
@@ -169,7 +169,7 @@ function ChangePage(Icon){
             width=document.body.clientWidth;
             $("#MainContent").scrollLeft(width*3);
           },1)
-          document.body.scroll(0,MessageScroll);
+          document.body.scrollTop=MessageScroll;
           $("#BannerTabs>div:not(#Messages)").attr('class','unselected');
           $("#Footer>div:not(#Messages)").attr('class','unselected');
           $("#Footer>div#Messages").attr('class','selected');
@@ -186,7 +186,7 @@ function ChangePage(Icon){
             width=document.body.clientWidth;
             $("#MainContent").scrollLeft(width*4);
           },1)
-          document.body.scroll(0,NotificationScroll);
+          document.body.scrollTop=NotificationScroll;
           $("#BannerTabs>div:not(#Notifications)").attr('class','unselected');
           $("#Footer>div:not(#Notifications)").attr('class','unselected');
           $("#Footer>div#Notifications").attr('class','selected');
@@ -203,7 +203,7 @@ function ChangePage(Icon){
             width=document.body.clientWidth;
             $("#MainContent").scrollLeft(width*5);
           },1)
-          document.body.scroll(0,NotificationScroll);
+          document.body.scrollTop=MenuScroll;
           $("#BannerTabs>div:not(#Menu)").attr('class','unselected');
           $("#Footer>div:not(#Menu)").attr('class','unselected');
           $("#Footer>div#Menu").attr('class','selected');

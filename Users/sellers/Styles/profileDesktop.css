@@ -439,7 +439,6 @@ input[type='file']{
 }
 #Products_Services>div:nth-child(1){
   font-family: "Calibri";
-  color:rgb(140,140,140);
 }
 
 #Products_Services>div:nth-child(3)>div:nth-child(1),#Products_Services>div:nth-child(4)>div:nth-child(1){
@@ -1042,106 +1041,4 @@ input[type='file']{
   display: flex;
   flex-direction: row;
   align-items: center;
-}
-@media screen and (max-width:700px){
-  #ProfileHead{
-    width:100%;
-    justify-content: space-between;
-  }
-  .AdjustPic{
-    width:98%;
-    height:70%;
-    left:1%;
-    top:15%
-  }
-  #AddProduct, #AddService{
-    width:100%;
-  }
-  #AddProductPic, #AddService .ServicePic{
-    justify-content: flex-start;
-    flex-wrap: nowrap;
-    overflow-x: scroll;
-    width:100%;
-  }
-  #AddProductPic label,#AddService .ServicePic label{
-    min-height: 110 ;
-    max-height: 110;
-    min-width: 110;
-    max-width: 110;
-    font-size: 14px;
-  }
-  #AddProductPic>div>div, #AddService .ServicePic>div>div{
-    width:110px;
-  }
-  #AddProductPic label::-webkit-scrollbar,#AddService .ServicePic label::-webkit-scrollbar{
-    display: none;
-  }
-  #AddProductPrice>div{
-    width:100%;
-  }
-  #AddProductPrice label{
-    min-width:70%;
-    max-width:70%;
-  }
-  #AddProductPrice .error, #AddProductVariation .error{
-    width:70%;
-  }
-  #AddProductVariation input[type='text']{
-  outline:0px;
-  min-width:70%;
-  max-width:70%;
-  height:48px;
-}
-  #AddProductBtn{
-    width:100%;
-  }
-}
-@media screen and (max-width:700px) and (orientation:landscape){
-  #ProfileHead{
-    width:100%;
-  }
-  .AdjustPic{
-    width:80%;
-    height:90%;
-    left:10%;
-    top:5%
-  }
-  .AdjustPic .Pic{
-    width:150px;
-    height:150px;
-  }
- #AddProductVariation>div:nth-child(2)>div{
-    align-items:center;
-  }
-}
-@media screen and (min-width:700px) and (max-width:999px){
-  .AdjustPic{
-    width:50%;
-    height:90%;
-    top:5%;
-    left:25%;
-  }
-  #alert{
-    width:60%;
-    left:20%;
-  }
-}
-@media screen and (min-width:700px) and (max-width:999px) and (min-height:700px){
-  .AdjustPic{
-    height:50%;
-    width:60%;
-    top:20%;
-    left:20%;
-  }
-}
-@media screen and (max-width:999px){
-  .Tip.Mobile{
-    display: block;
-  }
-  .Tip.Desktop{
-    display: none;
-  }
-  .AdjustPic .Pic{
-    overflow: scroll;
-  }
 }

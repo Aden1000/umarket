@@ -84,13 +84,13 @@ switch($HTTP_REFERER){
       $stmt->close();
       $script="<script>
       window.location.replace('$http://$host/Users/$AccountType/');
-      </script>;";
+      </script>";
       echo $script;
     }
     else{
       $script="<script>
       window.location.replace('$http://$host/login.html');
-      </script>;";
+      </script>";
     echo $script;
     };
     break;
@@ -145,7 +145,7 @@ switch($HTTP_REFERER){
       $stmt->close();
       $script="<script>
       window.location.replace('$http://$host/Users/$AccountType');
-      </script>;";
+      </script>";
       echo $script;
     }
     else{
@@ -160,7 +160,7 @@ switch($HTTP_REFERER){
     setcookie("PHPSESSID",session_id(),time()-1,"/");
     $script="<script>
     window.location.replace('$http://$host/login.html');
-    </script>;";
+    </script>";
     echo $script;
     break;
 }

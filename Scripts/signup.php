@@ -444,7 +444,7 @@ function checkUname($input,$table){
   else{
     $mysql=connect('select');
     $stmt=$mysql->prepare("SELECT Username FROM $table WHERE Username=?");
-    $stmt->bind_param("s",$Uname);
+    $stmt->bind_param("s",$input);
     $stmt->execute();
     $result=$stmt->get_result();
     if($result->num_rows>0){

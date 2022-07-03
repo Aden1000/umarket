@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Creator: CorelDRAW X7 -->
+
+<svg
+   xml:space="preserve"
+   width="5.987525mm"
+   height="6.3500252mm"
+   version="1.0"
+   style="clip-rule:evenodd;fill-rule:evenodd;image-rendering:optimizeQuality;shape-rendering:geometricPrecision;text-rendering:geometricPrecision"
+   viewBox="0 0 598752.5 635002.52"
+   id="svg33"
+   sodipodi:docname="Zoom In.svg"
+   inkscape:version="1.1.2 (b8e25be833, 2022-02-05)"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg"><sodipodi:namedview
+   id="namedview35"
+   pagecolor="#ffffff"
+   bordercolor="#999999"
+   borderopacity="1"
+   inkscape:pageshadow="0"
+   inkscape:pageopacity="0"
+   inkscape:pagecheckerboard="0"
+   inkscape:document-units="mm"
+   showgrid="false"
+   units="px"
+   fit-margin-right="0"
+   inkscape:zoom="23.416575"
+   inkscape:cx="11.295418"
+   inkscape:cy="12.000047"
+   inkscape:window-width="1366"
+   inkscape:window-height="745"
+   inkscape:window-x="-8"
+   inkscape:window-y="-8"
+   inkscape:window-maximized="1"
+   inkscape:current-layer="svg33"
+   fit-margin-top="0"
+   fit-margin-left="0"
+   fit-margin-bottom="0" />
+ <defs
+   id="defs11">
+  <style
+   type="text/css"
+   id="style9">
+   <![CDATA[
+    .str0 {stroke:#00C800;stroke-width:7620}
+    .fil0 {fill:#00C800}
+    .fil2 {fill:#00C800}
+    .fil1 {fill:white}
+   ]]>
+  </style>
+ </defs>
+ <g
+   id="Layer_x0020_1"
+   inkscape:label="Layer 1"
+   inkscape:groupmode="layer"
+   transform="translate(-7.5)">
+  <metadata
+   id="CorelCorpID_0Corel-Layer" />
+  <g
+   id="_2330098500208">
+   <g
+   id="g17">
+    <path
+   class="fil0"
+   d="m 308030,324860 2120,2110 c 9870,9880 9870,26010 0,35880 L 45400,627600 c -9870,9870 -26010,9870 -35880,0 l -2110,-2110 c -9870,-9880 -9870,-26010 0,-35880 L 272160,324860 c 9870,-9870 26000,-9870 35870,0 z"
+   id="path14" />
+    <path
+   id="1"
+   class="fil0"
+   d="m 296590,336300 2120,2110 -40,40 c 1760,1760 2650,4120 2650,6460 0,2400 -870,4770 -2610,6500 l -264750,264750 -40,-40 c -1760,1760 -4120,2650 -6460,2650 -2390,0 -4770,-870 -6500,-2610 l 40,-40 -2110,-2110 c -1760,-1760 -2650,-4120 -2650,-6460 0,-2340 890,-4700 2650,-6460 l -40,-40 264750,-264750 40,40 c 1760,-1760 4110,-2650 6450,-2650 2340,0 4700,890 6460,2650 z m 11440,-11440 2120,2110 c 9870,9880 9870,26010 0,35880 L 45400,627600 c -9870,9870 -26010,9870 -35880,0 l -2110,-2110 c -9870,-9880 -9870,-26010 0,-35880 L 272160,324860 c 9870,-9870 26000,-9870 35870,0 z" />
+   </g>
+   <g
+   id="g23">
+    <path
+   class="fil1"
+   d="m 386220,0 c 117380,0 212540,95160 212540,212550 0,117380 -95160,212540 -212540,212540 -117390,0 -212540,-95160 -212540,-212540 C 173680,95160 268830,0 386220,0 Z"
+   id="path19" />
+    <path
+   id="path21"
+   class="fil0"
+   d="m 386220,0 c 117380,0 212540,95160 212540,212550 0,117380 -95160,212540 -212540,212540 -117390,0 -212540,-95160 -212540,-212540 C 173680,95160 268830,0 386220,0 Z M 507810,90710 C 476790,59690 433790,40480 386220,40480 c -47570,0 -90570,19210 -121590,50230 -31100,31110 -50350,74190 -50350,121840 0,47650 19250,90730 50350,121830 31020,31020 74020,50230 121590,50230 47570,0 90570,-19210 121590,-50230 31100,-31100 50350,-74180 50350,-121830 0,-47640 -19250,-90730 -50350,-121840 z" />
+   </g>
+   <g
+   id="g29">
+    <rect
+   class="fil2 str0"
+   transform="matrix(9.20258e-8,-0.418858,0.800064,-4.03665e-6,369283,301209)"
+   width="423340"
+   height="42340"
+   id="rect25"
+   x="0"
+   y="0" />
+    <rect
+   class="fil2 str0"
+   x="297560"
+   y="195626"
+   width="177319"
+   height="33848"
+   id="rect27" />
+   </g>
+  </g>
+ </g>
+</svg>

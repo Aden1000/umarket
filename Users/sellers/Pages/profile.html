@@ -1,6 +1,5 @@
 <html lang='en'>
   <head id='SellersProfilePage'>
-    <link media='all' rel='stylesheet' href='Styles/profile.css'>
   </head>
   <body>
     <div id='ProfileHead'>
@@ -30,10 +29,15 @@
         </label>
       </div>
       <div class='AdjustPic hidden'>
-        <div class='Pic'></div>
-        <div>
-            Shift the picture to adjust it's position.
-          </div>
+        <div class='Pic'>
+        </div>
+        <div class='hidden'>
+          <img src='../../Images/Loading.svg' class='LoadingImg'>Editing...
+        </div>
+        <div class='hidden'>
+          <img src='../../Images/Zoom Out.svg' onclick='zoomOut(this)'>
+          <img src='../../Images/Zoom In.svg' onclick='zoomIn(this)'>
+        </div>
         <div>
           <input type='button' value='Cancel' onclick='adjustProfilePic(null,this.parentElement.parentElement.parentElement)'>
           <input type='button' value='Upload' onclick='adjustProfilePic(true,this.parentElement.parentElement.parentElement)'>
@@ -383,10 +387,15 @@
         </label>
       </div>
       <div class='AdjustPic hidden'>
-        <div class='Pic'></div>
-        <div>
-            Shift the picture to adjust it's position.
-          </div>
+        <div class='Pic'>
+        </div>
+        <div class='hidden'>
+          <img src='../../Images/Loading.svg' class='LoadingImg'>Editing...
+        </div>
+        <div class='hidden'>
+          <img src='../../Images/Zoom Out.svg' onclick='zoomOut(this)'>
+          <img src='../../Images/Zoom In.svg' onclick='zoomIn(this)'>
+        </div>
         <div>
           <input type='button' value='Cancel' onclick='adjustProfilePic(null,this.parentElement.parentElement.parentElement)'>
           <input type='button' value='Upload' onclick='adjustProfilePic(true,this.parentElement.parentElement.parentElement)'>

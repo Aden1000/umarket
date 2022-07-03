@@ -4,12 +4,462 @@
     <meta name='viewport' content='width=device-width, initial-scale=1'/>
     <meta charset='utf-8'/>
     <link rel='icon' href='../../Images/Umarket.ico'/>
-    <link rel='stylesheet' href='Styles/index.css' media='all'/>
+    <style>
+      /*for sellers index.html*/
+      @font-face{
+        font-family:'Calibri';
+        src:
+          url("../../../Fonts/Calibri.ttf") format('truetype'),    
+          url("../../../Fonts/Calibri.woff") format("woff"),
+          url("../../../Fonts/Calibri.woff2") format("woff2"),
+          url("../../../Fonts/Calibri.eot") format("embedded-opentype");
+      }
+      @font-face{
+        font-family:'Calibri Bold';
+        src:
+          url("../../../Fonts/Calibri Bold.ttf") format("truetype"),
+          url("../../../Fonts/Calibri Bold.woff") format("woff"),
+          url("../../../Fonts/Calibri Bold.woff2") format("woff2"),
+          url("../../../Fonts/Calibri Bold.eot") format("embedded-opentype"),
+          url("../../../Fonts/Calibri Bold.otf") format("opentype");
+      }
+      @font-face{
+        font-family:"Corbel";
+        src:
+          url('../../../Fonts/Corbel.ttf') format('truetype'),
+          url('../../../Fonts/Corbel.woff') format('woff'),
+          url('../../../Fonts/Corbel.woff2') format('woff2'),
+          url('../../../Fonts/Corbel.eot') format('embedded-opentype'),
+          url('../../../Fonts/Corbel.otf') format('opentype');
+
+      }
+      @font-face{
+        font-family:"Corbel Bold";
+        src:
+          url('../../../Fonts/Corbel Bold.ttf') format('truetype');
+      }
+      h1,h2,h3,h4{
+        font-family: "Corbel Bold";
+        color: rgb(0,200,0);
+      }
+      .hidden{
+        display: none;
+      }
+      .error{
+        color:rgb(255,0,0);
+        font-family: "Calibri bold";
+        margin-bottom: 15px;
+      }
+      input[type='button']{
+        cursor:pointer;
+        font-family: 'Calibri Bold' !important;
+      }
+      input[type='checkbox']{
+        border:1px solid rgb(0,200,0);
+        width:20px !important;
+        height:20px !important;
+        align-self: center;
+        color:white;
+        cursor: pointer;
+        appearance:none;
+        -moz-appearance:none;
+        -ms-appearance:none;
+        -webkit-appearance:none;
+        margin: 0px 5px 0px 0px;
+      }
+      input[type='checkbox']:checked{
+        background-image: url('../../../Images/Checked.svg');
+        background-position: center;
+        background-size: 15px;
+        background-repeat: no-repeat;
+      }
+      .Invalid{
+        border-color:rgb(255,0,0) !important;
+      }
+      div,label{
+        box-sizing: border-box;
+      }
+      #Banner{
+        position: fixed;
+        left:0px;
+        top:0px;
+        z-index:4;
+        height:80px;
+        width:100%;
+        display: -webkit-box;
+        display:-webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        box-shadow: 0px 0px 3px rgb(0,0,0);
+        padding:0px 10px 0px 10px;
+        background:white;
+        overflow-y: hidden;
+      }
+      #BannerTabs{
+        display: -webkit-box;
+        display:-webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        justify-content: space-around;
+        align-items: center;
+        font-family: "Corbel Bold";
+        font-size:15px;
+        width:90%;
+        height: 100%;
+      }
+      #BannerTabs>div{
+        display: -webkit-box;
+        display:-webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+      }
+      #BannerTabs img{
+        height:30px;
+      }
+      #Footer div[class='unselected'], #BannerTabs div[class='unselected']{
+        cursor: pointer;
+          filter:grayscale(1);
+        }
+      #BannerExtra{
+        height:120px;
+        width:100%;
+        background:white;
+        padding: 0px;
+        margin: 0px;
+      }
+      #PageName{
+        position: fixed;
+        top:80px;
+        left:25%;
+        z-index: 3;
+        width:50%;
+        height:40px;
+        padding:0px;
+        background: white;
+        overflow: hidden;
+      }
+      #PageName h1{
+          margin: 0px;
+        }
+      #MainContent{
+        display: -webkit-box;
+        display:-webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-direction: row;
+        position: relative;
+        left:25%;
+        width:50%;
+        background: white;
+        font-family:"Corbel";
+        overflow-x: hidden;
+      }
+      #MainContent>#MenuPage>div{
+        display: -webkit-box;
+        display:-webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        align-items: center;
+        width:100%;
+        height:40px;
+        border:1px solid rgb(150,150,150);
+        padding:5px;
+      }
+      #MainContent>#MenuPage>div img{
+        height:20px;
+        margin-right: 20px
+      }
+
+      .LoadingImg{
+        animation-name: Loading;
+        animation-iteration-count: infinite;
+        animation-timing-function: linear;
+        animation-duration: 2s;
+        height:30px;
+        margin-right:5px;
+      }
+      #MainContent>div{
+        min-width:100%;
+        height:auto;
+      }
+      #MainContent>div.hidden,#MainContent>div.loading{
+        display: block;
+        height:0px;
+        overflow: hidden;
+      }
+      #MainContent>div.hidden *{
+        visibility:hidden !important;
+      }
+      #MainContent>div.loading>.LoadingImg{
+        align-self: center;
+        position: fixed;
+        top:45%;
+        left:45%;
+        visibility:visible;
+      }
+      #MainContent>div:not(.loading)>.LoadingImg{
+        display: none;
+      }
+      @keyframes Loading{
+        to{
+          transform: rotateZ(360deg)
+        }
+      }
+
+      #Footer{
+        display: none; 
+        z-index: 5;
+      }
+      #FooterExtra{
+        display: none;
+      }
+      #UmarketImg{
+        width:150px;
+      }
+      #alert{
+        font-family: "Calibri";
+        transition: 1s;
+        -moz-transition: 1s;
+        -webkit-transition: 1s;
+        -ms-transition: 1s;
+        transition-property: position display;
+        position: fixed;
+        background: white;
+        width:40%;
+        top:5px;
+        left:30%;
+        z-index: 7;
+      }
+      #alert img:first-of-type{
+        width:20px;
+      }
+      #alert>div{
+        display: -webkit-box;
+        display:-webkit-flex;
+        display: -ms-flexbox;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content:space-around;
+        padding:10px;
+        column-gap: 10px;
+      }
+      #alert.failure>div{
+        background:rgba(255,0,0,0.2);
+        border: 1px solid rgb(255,0,0);
+        border-left:5px solid rgb(255,0,0);
+      }
+      #alert.success>div{
+        background:rgba(0,255,0,0.2);
+        border: 1px solid rgb(0,255,0);
+        border-left:5px solid rgb(0,200,0);
+        justify-content: flex-start;
+      }
+      #alert.info>div{
+        background:rgba(200,200,200,0.2);
+        border: 1px solid rgb(200,200,200);
+        border-left:5px solid rgb(200,200,200);
+      }
+      #alert.info img:first-of-type{
+        filter:grayscale(1);
+      }
+      #alert .close{
+        height:15px;
+        width:15px;
+        filter: grayscale(1);
+      }
+      #alert.hidden{
+        top:-50%;
+        display: block !important;
+      }
+      @media screen and (max-width:700px){
+        #Banner{
+          height:80px;
+          z-index: 4;
+        }
+        #BannerExtra{
+          height:120px;
+        }
+        #PageName{
+          top:80px;
+          left:0px;
+          z-index: 3;
+          height: 40px;
+          width: 100%;
+          padding-left:5px;
+          font-size: 100%;
+        }
+        #MainContent{
+          width:100%;
+          left:0px;
+          top:0px;
+        }
+        #Footer{
+          height:57px;
+          font-size:12px;
+        }
+        #FooterExtra{
+          height:57px
+        }
+        #alert{
+          width:98%;
+          left:1%;
+        }
+      }
+      @media screen and (max-width:700px) and (orientation:landscape){
+        #Banner{
+          height:80px;
+        }
+        #UmarketImg{
+          width:130px;
+        }
+        #BannerExtra{
+          height:120px;
+        }
+        #PageName{
+          left:0px;
+          top:80px;
+          height:40px;
+          width:100%;
+          z-index: 2;
+          padding-left: 5px;
+        }
+        #MainContent{
+          left:0px;
+          width:100%;
+        }
+        #Footer{
+          display: -webkit-box;
+          display:-webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          flex-wrap: nowrap;
+          justify-content: space-between;
+          align-items: center;
+          height:50px;
+          font-size: 12px;
+          overflow-x: scroll;
+          overflow-y: hidden
+        }
+        #Footer>div{
+          margin-right: 10px;
+          margin-left:10px;
+        }
+        #FooterExtra{
+          height:50px;
+        }
+      }
+      @media screen and (min-width:700px) and (max-width:999px){
+        #PageName{
+          left:15%;
+          width: 70%;
+        }
+        #MainContent{
+          width:70%;
+          left:15%;
+        }
+        #Footer{
+          width:70% !important;
+          left:15% !important;
+        }
+      }
+      @media screen and (min-width:700px) and (max-width:999px) and (orientation:landscape){
+        #Banner{
+          height:70px;
+          z-index: 3;
+        }
+        #BannerExtra{
+          height:110px;
+        }
+        #PageName{
+          top:70px;
+          left:5px;
+          height:40px;
+          width: 100%;
+          z-index: 2;
+        }
+        #MainContent{
+          left:0px;
+          width:100%;
+        }
+        #Footer{
+          display: -webkit-box;
+          display:-webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          height:57px;
+          width: 100% !important;
+          left:0px !important;
+        }
+        #Footer>div{
+          display: -webkit-box;
+          display:-webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          align-content: center;
+          font-family: "Corbel Bold";
+          margin-right: 10px;
+          margin-left:10px;
+        }
+        #FooterExtra{
+          height:57px;
+        }
+      }
+      @media screen and (max-width:999px){
+        #BannerTabs{
+          display: none;
+        }
+        #Footer{
+          display: -webkit-box;
+          display:-webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          justify-content: space-between;
+          align-items: center;
+          background: white;
+          width:100%;
+          position:fixed;
+          bottom:0px;
+          left:0px;
+          overflow-x: scroll;
+          color:rgb(0,200,0);
+          font-family: "Corbel Bold";
+          padding:5px;
+        }
+        #Footer div{
+          display: -webkit-box;
+          display:-webkit-flex;
+          display: -ms-flexbox;
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          align-content: center;
+        }
+        #Footer img{
+          height:25px;
+        }
+        #FooterExtra{
+          width:100%;
+          display: block; 
+        }
+        #UmarketImg{
+          width:120px
+        }
+      } 
+    </style>
   </head>
-  <body onresize='ResizePage()' onscroll='PageScroll()'>
+  <body onresize='ResizePage()' onscroll='PageScroll()' onload='ReloadProfile()'>
     <div id='Banner'>
-      <a href='../../index.html'>
-         <img  id='UmarketImg' src='../../Images/Umarket.svg'>
+      <a href='../../index.html' >
+         <img  id='UmarketImg' src='../../Images/Umarket.svg' alt='Home page link.'>
       </a>
       <div id='BannerTabs'>
         <div id='Profile' class='selected' onclick='ChangePage(this)' ondblclick='ReloadProfile(this)'>
@@ -93,8 +543,8 @@
         </div>
       </div>
     </div>
-    <script  src='Scripts/index.js'></script>
-    <script  src='Scripts/profile.js'></script>
-    <script  src='Scripts/jquery-3.6.0.js'></script>
+    <script src='Scripts/jquery-3.6.0.min.js'></script>
+    <script src='Scripts/index.min.js'></script>
+    <script src='Scripts/profile.min.js'></script>
   </body>
 </html>

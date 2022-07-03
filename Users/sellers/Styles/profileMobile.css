@@ -159,10 +159,10 @@ input[type='file']{
   font-family: "Calibri";
 }
 .Tip.Desktop{
-  display: block;
+  display: none;
 }
 .Tip.Mobile{
-  display: none;
+  display: block;
 }
 .Tip.hidden{
   display: none !important;
@@ -196,12 +196,12 @@ input[type='file']{
 }
 
 .AdjustPic{
-  width:40%;
-  height:70%;
+  width:70%;
+  height:50%;
   border:2px solid rgb(0,200,0);
   position: fixed;
   top:20%;
-  left:30%;
+  left:15%;
   background: white;
   z-index: 6;
   display: -webkit-box;
@@ -241,7 +241,7 @@ input[type='file']{
   height:240px;
   border:3px solid rgb(0,200,0);
   border-radius: 120px;
-  overflow: hidden;
+  overflow: scroll;
   display: -webkit-box;
   display:-webkit-flex;
   display: -ms-flexbox;
@@ -1043,6 +1043,7 @@ input[type='file']{
   flex-direction: row;
   align-items: center;
 }
+
 @media screen and (max-width:700px){
   #ProfileHead{
     width:100%;
@@ -1050,9 +1051,9 @@ input[type='file']{
   }
   .AdjustPic{
     width:98%;
-    height:70%;
+    height:400px;
     left:1%;
-    top:15%
+    top:15%;
   }
   #AddProduct, #AddService{
     width:100%;
@@ -1132,16 +1133,5 @@ input[type='file']{
     width:60%;
     top:20%;
     left:20%;
-  }
-}
-@media screen and (max-width:999px){
-  .Tip.Mobile{
-    display: block;
-  }
-  .Tip.Desktop{
-    display: none;
-  }
-  .AdjustPic .Pic{
-    overflow: scroll;
   }
 }

@@ -56,7 +56,7 @@ if(isset($_COOKIE['PHPSESSID']) && $_SESSION['initialized']==true && $_SESSION['
      </script>
    _END;
    echo $script;
-   require_once("./profile.php");
+  //  require_once("./profile.php");
  }
   else{
     //the current session id has not been logged in

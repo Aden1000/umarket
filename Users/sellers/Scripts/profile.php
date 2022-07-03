@@ -31,13 +31,15 @@ LoadProfile($Uname,$Fname,$Lname,$BusName,$CreationTime,$Email,$Title,false);
 function LoadProfile($Uname,$Fname,$Lname,$BusName,$CreationTime,$Email,$Title,$Constant){
   $profile=file_get_contents("../Pages/profile.html");
   $profile=str_replace(array("\n","\r"),"",$profile);
-  if(!file_exists("../$Uname/Profile/business_profile.txt") && !file_exists("../$Uname/Profile/business_profile_position.txt")){
-    $profilePic="<img src='Images/avatar.svg' class='AvatarSvg'>";  
+  if(!(file_exists("../$Uname/Profile/business_profile.txt") && file_exists("../$Uname/Profile/business_profile_left.txt") && file_exists("../$Uname/Profile/business_profile_top.txt") && file_exists("../$Uname/Profile/business_profile_width.txt"))){
+    $busProfilePic="<img src='Images/avatar.svg' class='AvatarSvg'>";  
   }
   else{
     $filename=file_get_contents("../$Uname/Profile/business_profile.txt");
-    $profilePic="<img src='./$Uname/Profile/$filename'>";
-    $top=file_get_contents("../$Uname/Profile/business_profile_position.txt");
+    $busProfilePic="<img src='./$Uname/Profile/$filename' onload='checkProfilePic(this)'>";
+    $top=file_get_contents("../$Uname/Profile/business_profile_top.txt");
+    $left=file_get_contents("../$Uname/Profile/business_profile_left.txt");
+    $width=file_get_contents("../$Uname/Profile/business_profile_width.txt");
   }
   $productJson=file_get_contents("../$Uname/Products/product.json");
   $productJson=json_decode($productJson,true);
@@ -50,14 +52,15 @@ function LoadProfile($Uname,$Fname,$Lname,$BusName,$CreationTime,$Email,$Title,$
   $maxService=$serviceJson['max'];
   $numberService=$serviceJson['numberServices'];
   $maxServicePic=$serviceJson['max'];
-  if(!file_exists("../$Uname/Profile/owner_profile.txt") && !file_exists("../$Uname/Profile/owner_profile_position.txt")){
+  if(!(file_exists("../$Uname/Profile/owner_profile.txt") && file_exists("../$Uname/Profile/owner_profile_left.txt") && file_exists("../$Uname/Profile/owner_profile_top.txt") && file_exists("../$Uname/Profile/owner_profile_width.txt"))){
     $ownerProfilePic="<img src='Images/Avatar.svg' class='AvatarSvg'>";
   }
   else{
-    $filename=file_get_contents("../$Uname/Profile/owner_profile.txt");
-    $ownerProfilePic="<img src='./$Uname/Profile/$filename'>";
-    $top2=file_get_contents("../$Uname/Profile/owner_profile_position.txt");
-  }
+    $filename2=file_get_contents("../$Uname/Profile/owner_profile.txt");
+    $ownerProfilePic="<img src='./$Uname/Profile/$filename2' onload='checkProfilePic(this)'>";
+    $top2=file_get_contents("../$Uname/Profile/owner_profile_top.txt");
+    $left2=file_get_contents("../$Uname/Profile/owner_profile_left.txt");
+    $width2=file_get_contents("../$Uname/Profile/owner_profile_width.txt");  }
 
   if(!file_exists("../$Uname/Profile/about_business.txt")){
     $aboutBusiness="N/A";
@@ -91,8 +94,13 @@ function LoadProfile($Uname,$Fname,$Lname,$BusName,$CreationTime,$Email,$Title,$
   $script.=<<<_END
     <script>
     $("#ProfilePage").append("$profile");
-    $('#ProfileHead .ProfilePic').html("$profilePic");
-    $("#ProfileHead .ProfilePic img").css('bottom',$top);
+    $('#ProfileHead .ProfilePic').html("$busProfilePic");
+    document.getElementsByClassName('ProfilePic').item(0).firstChild.style.right=$left;
+    document.getElementsByClassName('ProfilePic').item(0).firstChild.style.bottom=$top;
+    document.getElementsByClassName('ProfilePic').item(0).firstChild.style.width=$width;
+    if($("#ProfileHead .ProfilePic img").css('width')=='120px'){
+    $("#ProfileHead .ProfilePic img").css('width','');
+    }
     $("#ProfilePage #BusName").html("<h3>$BusName</h3>");
     $("#ProfilePage #Uname").html("@$Uname");
     $("#ProfilePage #CreationTime").html("Joined $CreationTime");
@@ -120,18 +128,15 @@ function LoadProfile($Uname,$Fname,$Lname,$BusName,$CreationTime,$Email,$Title,$
     $("#Ratings>div:nth-child(2)").html("$ratings");
     $("#AboutOwner .ProfilePic").html("$ownerProfilePic");
     $("#AboutOwner .ProfilePic img").css("bottom",$top2);
+    $("#AboutOwner .ProfilePic img").css("right",$left2);
+    $("#AboutOwner .ProfilePic img").css("width",$width2);
+    if($("#AboutOwner .ProfilePic img").css("width")=='60px'){
+    $("#AboutOwner .ProfilePic img").css("width",'');
+    }
     $("#AboutOwner #Fullname").html("<h3>$Title $Fname $Lname</h3>");
     $("#AboutOwner #email").html("$Email");
     $("#AboutOwner>div:nth-child(7)").html("$aboutYou");
-    setTimeout(function(){
-      if($("#ProfileHead .ProfilePic img").eq(0).height()>120){
-        $("#ProfileHead .ProfilePic").css('justify-content','flex-start');
-      }
-      if($("#AboutOwner .ProfilePic img").eq(0).height()>60){
-        $("#AboutOwner .ProfilePic").css("justify-content","flex-start");
-      }
-      $("#ProfilePage").removeClass('loading');
-    },3000);
+    checkDevice();
     </script>
     _END;
   if($profilePic=="<img src='Images/avatar.svg' class='AvatarSvg'>"){
@@ -181,27 +186,26 @@ function NewProfilePic($Type){
     case "Business":
       //delete the previously uploaded image
       if(file_exists("../$Uname/Profile/business_profile.txt")){
-    unlink("./$Uname/Profile/".file_get_contents("../$Uname/Profile/business_profile.txt"));
-  }
-      //create the cuttable profile pic
+        unlink("../$Uname/Profile/".file_get_contents("../$Uname/Profile/business_profile.txt"));
+      }
       $filename="business_profile_".time();
       rename("$img","../$Uname/Profile/$filename".".$ext");
       $profileTxt=fopen("../$Uname/Profile/business_profile.txt",'w');
-      $profilePositionTxt=fopen("../$Uname/Profile/business_profile_position.txt","w");
+      $profileTop=fopen("../$Uname/Profile/business_profile_top.txt","w");
+      $profileLeft=fopen("../$Uname/Profile/business_profile_left.txt","w");
+      $profileWidth=fopen("../$Uname/Profile/business_profile_width.txt","w");
       fwrite($profileTxt,$filename.".$ext");
-      fwrite($profilePositionTxt,"0");
+      fwrite($profileLeft,"");
+      fwrite($profileTop,"");
+      fwrite($profileWidth,"");
       fclose($profileTxt);
-      fclose($profilePositionTxt);
+      fclose($profileLeft);
+      fclose($profileTop);
+      fclose($profileWidth);
+      $type='update';
       echo <<<_END
       <script>
-      $("#ProfileHead .ProfilePic").html("<img src='$Uname/Profile/$filename.$ext'>");
-      $("#ProfileHead .ProfilePic img").eq(0).css('opacity','0');
-      setTimeout(function(){
-      if($("#ProfileHead .ProfilePic img").eq(0).height()>120){
-      $("#ProfileHead .ProfilePic").css('justify-content','flex-start');}
-      $("#ProfileHead .ProfilePic img").eq(0).css('opacity','1');
-      successAlert("Upload successful!");
-      },2000);
+      $("#ProfileHead .ProfilePic").html("<img src='$Uname/Profile/$filename.$ext' onload='checkProfilePic(this,$type)'>");
       $("#ProfileHead .ProfilePicOptions label:nth-child(3)").attr('class','');
       $("#ProfileHead .ProfilePicOptions label:nth-child(3)").attr('onclick','adjustProfilePic(false,this.parentElement.parentElement)');
       $("#ProfileHead .ProfilePicOptions label:nth-child(4)").attr('class','');
@@ -210,29 +214,29 @@ function NewProfilePic($Type){
       _END;
       break;
       
-    case "Owner":
+   case "Owner":
+      //delete the previously uploaded image
       if(file_exists("../$Uname/Profile/owner_profile.txt")){
-    unlink("./$Uname/Profile/".file_get_contents("../$Uname/Profile/owner_profile.txt"));
-  }
-      //create the cuttable profile pic
+        unlink("../$Uname/Profile/".file_get_contents("../$Uname/Profile/owner_profile.txt"));
+      }
       $filename="owner_profile_".time();
       rename("$img","../$Uname/Profile/$filename".".$ext");
       $profileTxt=fopen("../$Uname/Profile/owner_profile.txt",'w');
-      $profilePositionTxt=fopen("../$Uname/Profile/owner_profile_position.txt","w");
+      $profileTop=fopen("../$Uname/Profile/owner_profile_top.txt","w");
+      $profileLeft=fopen("../$Uname/Profile/owner_profile_left.txt","w");
+      $profileWidth=fopen("../$Uname/Profile/owner_profile_width.txt","w");
       fwrite($profileTxt,$filename.".$ext");
-      fwrite($profilePositionTxt,"0");
+      fwrite($profileLeft,"");
+      fwrite($profileTop,"");
+      fwrite($profileWidth,"");
       fclose($profileTxt);
-      fclose($profilePositionTxt);
+      fclose($profileLeft);
+      fclose($profileTop);
+      fclose($profileWidth);
+      $type='update';
       echo <<<_END
       <script>
-      $("#AboutOwner .ProfilePic").html("<img src='$Uname/Profile/$filename.$ext'>");
-      $("#AboutOwner .ProfilePic img").eq(0).css('opacity','0');
-      setTimeout(function(){
-      if($("#AboutOwner .ProfilePic img").eq(0).height()>60){
-      $("#AboutOwner .ProfilePic").css('justify-content','flex-start');}
-      $("#AboutOwner .ProfilePic img").eq(0).css('opacity','1');
-      successAlert("Upload successful!");
-      },2000);
+      $("#AboutOwner .ProfilePic").html("<img src='$Uname/Profile/$filename.$ext' onload='checkProfilePic(this,$type)'>");
       $("#AboutOwner .ProfilePicOptions label:nth-child(3)").attr('class','');
       $("#AboutOwner .ProfilePicOptions label:nth-child(3)").attr('onclick','adjustProfilePic(false,this.parentElement.parentElement)');
       $("#AboutOwner .ProfilePicOptions label:nth-child(4)").attr('class','');
@@ -245,17 +249,25 @@ function NewProfilePic($Type){
 }
 function AdjustProfilePic($Type){
   $Uname=$_SESSION['Uname'];
-  $top=sanitizeString($_POST['top']);
+  foreach($_POST as $key=>$value){
+    $_POST[$key]=sanitizeString($value);
+  }
+  extract($_POST);
   switch($Type){
     case "Business":
-      $profilePositionTxt=fopen("../$Uname/Profile/business_profile_position.txt","w");
-      fwrite($profilePositionTxt,$top);
-      fclose($profilePositionTxt);
+      $profileTop=fopen("../$Uname/Profile/business_profile_top.txt","w");
+      $profileLeft=fopen("../$Uname/Profile/business_profile_left.txt","w");
+      $profileWidth=fopen("../$Uname/Profile/business_profile_width.txt","w");
+      fwrite($profileTop,$top);
+      fwrite($profileLeft,$left);
+      fwrite($profileWidth,$width);
       echo <<<_END
       <script>
       $("#ProfileHead .ProfilePic img").css('bottom',$top);
-       if($("#ProfileHead .ProfilePic img").eq(0).height()>60){
-        $("#ProfileHead .ProfilePic").css("justify-content","flex-start");
+      $("#ProfileHead .ProfilePic img").css('right',$left);
+      $("#ProfileHead .ProfilePic img").css('width',$width);
+      if($("#ProfileHead .ProfilePic img").css('width')=='120px'){
+      $("#ProfileHead .ProfilePic img").css('width','');
       }
       successAlert("Editing successful!");
       $("#ProfileHead .AdjustPic").addClass('hidden');
@@ -265,17 +277,22 @@ function AdjustProfilePic($Type){
       break;
       
     case "Owner":
-      $profilePositionTxt=fopen("../$Uname/Profile/owner_profile_position.txt","w");
-      fwrite($profilePositionTxt,$top);
-      fclose($profilePositionTxt);
+      $profileTop=fopen("../$Uname/Profile/owner_profile_top.txt","w");
+      $profileLeft=fopen("../$Uname/Profile/owner_profile_left.txt","w");
+      $profileWidth=fopen("../$Uname/Profile/owner_profile_width.txt","w");
+      fwrite($profileTop,$top);
+      fwrite($profileLeft,$left);
+      fwrite($profileWidth,$width);
       echo <<<_END
       <script>
       $("#AboutOwner .ProfilePic img").css('bottom',$top);
-      if($("#AboutOwner .ProfilePic img").eq(0).height()>60){
-        $("#AboutOwner .ProfilePic").css("justify-content","flex-start");
+      $("#AboutOwner .ProfilePic img").css('right',$left);
+      $("#AboutOwner .ProfilePic img").css('width',$width);
+      if($("#AboutOwner .ProfilePic img").css('width')=='60px'){
+      $("#AboutOwner .ProfilePic img").css('width','');
       }
-      $("#AboutOwner .AdjustPic").addClass('hidden');
       successAlert("Editing successful!");
+      $("#AboutOwner .AdjustPic").addClass('hidden');
       </script>
       _END;
       exit;
@@ -286,10 +303,12 @@ function DeleteProfilePic($Type){
   $Uname=$_SESSION['Uname'];
   switch($Type){
     case "Business":
-      if(file_exists("../$Uname/Profile/business_profile.txt") && file_exists("../$Uname/Profile/business_profile_position.txt")){
+      if(file_exists("../$Uname/Profile/business_profile.txt") && file_exists("../$Uname/Profile/business_profile_left.txt") && file_exists("../$Uname/Profile/business_profile_top.txt") && file_exists("../$Uname/Profile/business_profile_width.txt")){
       unlink("../$Uname/Profile/".file_get_contents("../$Uname/Profile/business_profile.txt"));
       unlink("../$Uname/Profile/business_profile.txt");
-      unlink("../$Uname/Profile/business_profile_position.txt");
+      unlink("../$Uname/Profile/business_profile_left.txt");
+      unlink("../$Uname/Profile/business_profile_top.txt");
+      unlink("../$Uname/Profile/business_profile_width.txt");
       }
       $img="<img src='Images/avatar.svg' class='AvatarSvg'>";
       echo<<<_END
